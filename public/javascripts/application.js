@@ -29,6 +29,10 @@ function setSubMenu(li){
 
 function loadTipoMedidas(el){
 	var op = $("select#selectTipoMedidas").val();
-	
+  $.ajax({
+    url:'/tipoMedidas',
+    data:'id='+op,
+    dataType:'script'
+  });
 }
 

@@ -1,4 +1,4 @@
-<div class="clear">
+<div class="clear medida_item">
 	<div class="left span-4"><%=f.label f.object.medida.nome%></div>
 	<%=f.hidden_field :medida_id,{:value => f.object.medida.id}%>
 	<div class="left span-3"><%= f.text_field :quantidade, :class => "span-2"%>&nbsp;<%=f.object.medida.unidade%></div>
