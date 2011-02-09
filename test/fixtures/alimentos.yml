@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nome: MyString
+  idioma: MyString
+  porcao: 1.5
+  usuario_cadastro_id: 1
+  usuario_aprovacao_id: 1
+
+two:
+  nome: MyString
+  idioma: MyString
+  porcao: 1.5
+  usuario_cadastro_id: 1
+  usuario_aprovacao_id: 1

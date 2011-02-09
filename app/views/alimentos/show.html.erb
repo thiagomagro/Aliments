@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @alimento.nome %>
+</p>
+
+<p>
+  <b>Idioma:</b>
+  <%= @alimento.idioma %>
+</p>
+
+<p>
+  <b>Porcao:</b>
+  <%= @alimento.porcao %>
+</p>
+
+<p>
+  <b>Usuario cadastro:</b>
+  <%= @alimento.usuario_cadastro_id %>
+</p>
+
+<p>
+  <b>Usuario aprovacao:</b>
+  <%= @alimento.usuario_aprovacao_id %>
+</p>
+<%for ca in @componente_alimentos%>
+  <div><%=ca.componente.ordem%> : <%=ca.componente.nome%> : <%=ca.quantidade%></div>
+<%end%>
+
+<%for m in @alimento.alimento_medidas%>
+  <div><%=m.medida.nome%></div>
+<%end%>
+
+
+
+<%= link_to 'Edit', edit_alimento_path(@alimento) %> |
+<%= link_to 'Back', alimentos_path %>
+

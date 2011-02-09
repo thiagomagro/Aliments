@@ -1,0 +1,10 @@
+<%= form_tag sessions_path do %>
+  <p>
+    <label>Login</label><br/><%= text_field :usuario, :login, :class => "span-4"%>
+  </p>
+  <p>
+    <label>Senha</label><br/><%= password_field :usuario, :senha, :class => "span-4"%>
+  </p><br/>
+	<%=submit_tag "Login", :class => "button" %>
+<% end %>
+

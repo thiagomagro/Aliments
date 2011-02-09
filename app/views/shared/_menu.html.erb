@@ -1,0 +1,45 @@
+<div class="laranjaGradient">
+	<div class="clear container">
+    <div id="menu">
+      <ul>
+        <li><a href="javascript:void(0)">A Aliments</a></li>
+        <li><a href="javascript:void(0)">Você</a></li>
+        <%unless usuario_logged.nil?%>
+        <li><a href="javascript:void(0)">Sua Alimentação</a></li>
+        <%end%>
+        <%unless usuario_logged.nil? && usuario_admin? != 0%>
+          <li><a href="javascript:void(0)">Gerenciamento</a></li>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="borderBottomCinza">
+	<div class="clear container">
+    <div class="clear container" id="subMenu">
+      <ul>
+        <li><a href="" >Quem Somos</a></li>
+      </ul>
+
+      <ul>
+        <li><%= link_to 'Cadastre-se', new_usuario_path if usuario_logged.nil?%></li>
+        <li><%= link_to 'Minhas informações', edit_usuario_path(usuario_logged) unless usuario_logged.nil?%></li>
+      </ul>
+      <%unless usuario_logged.nil?%>
+        <ul>
+          <li><a href="" >Minhas refeições</a></li>
+          <li><a href="" >Nova Refeição</a></li>
+        </ul>
+      <%end%>
+        <%unless usuario_logged.nil? && usuario_admin? != 0%>
+          <ul>
+            <li><%= link_to 'Alimentos',alimentos_path %></li>
+            <li><%= link_to 'Novo Alimento', { :controller => "alimentos",:action => "new" }%></li>
+          </ul>
+        <%end%>
+    </div>
+
+  </div>
+</div>
+

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @usuario.nome %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @usuario.email %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%= @usuario.login %>
+</p>
+
+<p>
+  <b>Senha:</b>
+  <%= @usuario.senha %>
+</p>
+
+<p>
+  <b>Nascimento:</b>
+  <%= @usuario.nascimento %>
+</p>
+
+<p>
+  <b>Sexo:</b>
+  <%= @usuario.sexo %>
+</p>
+
+<p>
+  <b>Perfil:</b>
+  <%= @usuario.perfil.nome unless @usuario.perfil.nil?%>
+</p>
+
+
+<%= link_to 'Edit', edit_usuario_path(@usuario) %> |
+<%= link_to 'Back', usuarios_path %>
+

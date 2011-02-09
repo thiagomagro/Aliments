@@ -1,0 +1,31 @@
+<h1>Listing alimentos</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Idioma</th>
+    <th>Porcao</th>
+    <th>Usuario cadastro</th>
+    <th>Usuario aprovacao</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @alimentos.each do |alimento| %>
+  <tr>
+    <td><%= alimento.nome %></td>
+    <td><%= alimento.idioma %></td>
+    <td><%= alimento.porcao %></td>
+    <td><%= alimento.usuario_cadastro_id %></td>
+    <td><%= alimento.usuario_aprovacao_id %></td>
+    <td><%= link_to 'Show', alimento %></td>
+    <td><%= link_to 'Edit', edit_alimento_path(alimento) %></td>
+    <td><%= link_to 'Destroy', alimento, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Alimento', new_alimento_path %>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Aliments</title>
+	<%= javascript_include_tag "jquery-1.5.min","rails","application" %>
+	<%= csrf_meta_tag %>
+	<%= stylesheet_link_tag 'blueprint/screen' %>
+	<%= stylesheet_link_tag 'main' %>
+
+</head>
+<body>
+	<div class="cinza1 padding10">
+		<div class="container">
+			<%= render "shared/header" %>
+		</div>
+	</div>
+  <%= render ("shared/menu")%>
+	<div class="cinzaGradient">
+		<div class="container">
+		  <div class="column span-18">
+  			<%= yield %>
+		  </div>
+		  <div class="column span-6 last side">Lateral</div>
+		</div>
+	</div>
+</body>
+</html>
+

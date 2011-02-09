@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nome: MyString
+  email: MyString
+  usuario: MyString
+  senha: MyString
+  nascimento: 2011-02-04
+  sexo: false
+
+two:
+  nome: MyString
+  email: MyString
+  usuario: MyString
+  senha: MyString
+  nascimento: 2011-02-04
+  sexo: false

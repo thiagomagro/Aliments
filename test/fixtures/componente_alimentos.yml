@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  quantidade: 1.5
+  porcao: 1.5
+  observacao: MyString
+
+two:
+  quantidade: 1.5
+  porcao: 1.5
+  observacao: MyString

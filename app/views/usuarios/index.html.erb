@@ -1,0 +1,33 @@
+<h1>Listing usuarios</h1>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Usuario</th>
+    <th>Senha</th>
+    <th>Nascimento</th>
+    <th>Sexo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @usuarios.each do |usuario| %>
+  <tr>
+    <td><%= usuario.nome %></td>
+    <td><%= usuario.email %></td>
+    <td><%= usuario.login %></td>
+    <td><%= usuario.senha %></td>
+    <td><%= usuario.nascimento %></td>
+    <td><%= usuario.sexo %></td>
+    <td><%= link_to 'Show', usuario %></td>
+    <td><%= link_to 'Edit', edit_usuario_path(usuario) %></td>
+    <td><%= link_to 'Destroy', usuario, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Usuario', new_usuario_path %>
+

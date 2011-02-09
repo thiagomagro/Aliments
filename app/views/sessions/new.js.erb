@@ -1,0 +1,6 @@
+if(!$("#loginForm").html()){
+	$("#loginForm").html("<%= escape_javascript( render(:partial => "login") ) %>");
+}else{
+	$("#loginForm").html("");
+}
+

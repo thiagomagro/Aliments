@@ -1,0 +1,12 @@
+<div>
+  <div class="right relative">
+    <%if  usuario_logged.nil?%>
+      <%= link_to "Login", new_session_path, :remote => true, :class => ("button")%>
+      <div id="loginForm" class="absolute"></div>
+    <%else%>
+      <%=usuario_logged.nome%> | <%= link_to "Logout", new_session_path, :method => :delete, :class => ("button")%>
+    <%end%>
+  </div>
+	<%=image_tag("logo_white.png")%>
+</div>
+

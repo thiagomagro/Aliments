@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  medida_id: 1
+  tipo_medida_id: 1
+
+two:
+  medida_id: 1
+  tipo_medida_id: 1

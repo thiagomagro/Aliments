@@ -1,0 +1,45 @@
+<%= form_for(@usuario) do |f| %>
+<% if @usuario.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+	<ul>
+		<% @usuario.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="column span-9">
+	<p>
+		<%= f.label :nome %><br/><%= f.text_field :nome %>
+	</p>
+	<p>
+		<%= f.label :email %><br/><%= f.text_field :email %>
+	</p>
+	<p>
+		<%= f.label :login %><br/><%= f.text_field :login %>
+	</p>
+	<p>
+		<%= f.label :senha %><br/><%= f.password_field :senha %>
+	</p>
+</div>
+<div class="column span-9 last">
+<p>
+	<%= f.label :nascimento %><br/><%= f.date_select :nascimento %>
+</p>
+<p>
+	<%=f.label :sexo%><br/>
+	<%= f.radio_button :sexo,true %> <%= label_tag(:sexo, "Masculino") %>
+	<%= f.radio_button :sexo,false %> <%= label_tag(:sexo, "Feminino") %>
+</p>
+
+<p>
+	<%=f.label :perfil%><br/>
+	<%= f.select(:perfil_id, Perfil.find(:all).collect {|p| [ p.nome, p.id ] },{ :include_blank => true })%>
+</p>
+</div>
+<div class="actions">
+	<%= f.submit "Cadastrar", :class => "button"%>
+</div>
+<% end %>
+

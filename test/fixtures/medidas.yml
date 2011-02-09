@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  correlacao: 1.5
+  nome: MyString
+  unidade: MyString
+
+two:
+  correlacao: 1.5
+  nome: MyString
+  unidade: MyString
