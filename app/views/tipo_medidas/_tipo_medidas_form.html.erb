@@ -1,0 +1,12 @@
+<% @alimento.alimento_medidas.each_with_index do |a,i|%>
+<%agora=Time.now.to_f  %>
+<div class="clear medida_item">
+	<div class="left span-4">
+	  <label for="alimento[alimento_medidas_attributes][<%=agora%>][quantidade]"><%=a.medida.nome%></labe>
+	</div>
+	<%=hidden_field_tag "alimento[alimento_medidas_attributes][#{agora}][medida_id]", a.medida.id, :class=>'medida_id'%>
+	<%=hidden_field_tag "alimento[alimento_medidas_attributes][#{agora}][id]", a.id, :class=>'alimento_medida_id'%>
+	<div class="left span-3"><%=text_field_tag "alimento[alimento_medidas_attributes][#{agora}][quantidade]",a.quantidade, :class => "span-2" %>&nbsp;<%=a.medida.unidade%></div>
+</div>
+<%end%>
+

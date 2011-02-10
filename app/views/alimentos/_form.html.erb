@@ -24,9 +24,9 @@
 		</p>
 
 		<div id="alimento_medidas">
-			<% f.fields_for :alimento_medidas do |am|%>
-				<%= render 'alimento_medida_form', :f => am unless am.object.medida.nil?%>
-			<%end%>
+
+  		<%= render 'tipo_medidas/tipo_medidas_form' , :alimento => @alimento%>
+
 		</div>
 	</div>
 	<div class="column span-9 last">

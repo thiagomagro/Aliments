@@ -3,3 +3,4 @@ module AlimentosHelper
     @grupos = TipoMedida.all
   end
 end
+

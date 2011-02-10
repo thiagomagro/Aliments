@@ -8,7 +8,7 @@ Aliments::Application.routes.draw do
   # first created -> highest priority.
 
   # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
+  match 'tipo_medidas/add_tipo/:id' => 'tipoMedidas#addTipo'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

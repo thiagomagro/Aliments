@@ -1,0 +1,20 @@
+var alimento_medidas = $("#alimento_medidas");
+
+alimento_medidas.append("<%= escape_javascript( render(:partial => "tipo_medidas_form", :alimento => @alimento) ) %>");
+
+var els = alimento_medidas.find(".medida_id")
+
+var removed = "";
+els.each(function(){
+  var id = $(this).val();
+  var el = $(this);
+  alimento_medidas.find(".medida_id").not(el).each(function(){
+    var id2 = $(this).val();
+    if(id2 != "" && id != "" && id2 == id && removed.indexOf(id+",") < 0){
+      $(this).parents(".medida_item").remove();
+      removed+=id+",";
+
+    }
+  });
+});
+

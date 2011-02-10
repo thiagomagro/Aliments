@@ -29,10 +29,30 @@ function setSubMenu(li){
 
 function loadTipoMedidas(el){
 	var op = $("select#selectTipoMedidas").val();
+  $("#alimento_medidas").find("").length;
   $.ajax({
-    url:'/tipoMedidas',
-    data:'id='+op,
+    url:'/tipo_medidas/add_tipo/'+op,
     dataType:'script'
   });
 }
+
+
+
+
+
+
+/*LIB*/
+jQuery.log = function(message) {
+    try{
+        console.debug(message);
+    }catch(e){
+    //alert(message);
+    }
+};
+
+jQuery.fn.debug = function() {
+    return this.each(function(){
+        $.log(this);
+    });
+};
 
