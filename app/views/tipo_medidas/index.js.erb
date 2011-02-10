@@ -1,6 +1,0 @@
-$("#alimento_medidas").html("");
-
-<%fields_for @tipoMedidas do |f|%>
-$("#alimento_medidas").append("<%=escape_javascript( render(:partial => 'alimento_medida_form', :collection => f))%>");
-<%end%>
-
