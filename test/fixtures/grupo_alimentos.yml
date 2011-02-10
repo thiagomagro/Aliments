@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  alimento_id: 1
+  grupo_id: 1
+  porcentagem: 1.5
+
+two:
+  alimento_id: 1
+  grupo_id: 1
+  porcentagem: 1.5

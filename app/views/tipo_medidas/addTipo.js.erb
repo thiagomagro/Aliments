@@ -1,6 +1,6 @@
 var alimento_medidas = $("#alimento_medidas");
 
-alimento_medidas.append("<%= escape_javascript( render(:partial => "tipo_medidas_form", :alimento => @alimento) ) %>");
+alimento_medidas.prepend("<%= escape_javascript( render(:partial => "tipo_medidas_form", :alimento => @alimento) ) %>");
 
 var els = alimento_medidas.find(".medida_id")
 
@@ -13,8 +13,20 @@ els.each(function(){
     if(id2 != "" && id != "" && id2 == id && removed.indexOf(id+",") < 0){
       $(this).parents(".medida_item").remove();
       removed+=id+",";
-
     }
   });
+});
+
+
+var els = alimento_medidas.find(".medida_item").get();
+els.sort(function(a, b) {
+    var keyA = $(a).find("label").text().toUpperCase();
+    var keyB = $(b).find("label").text().toUpperCase();
+    if (keyA < keyB) return -1;
+    if (keyA > keyB) return 1;
+    return 0;
+});
+$.each(els, function(index, row) {
+    alimento_medidas.append(row);
 });
 

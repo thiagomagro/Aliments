@@ -6,13 +6,15 @@ class CreateAlimentos < ActiveRecord::Migration
       t.float :porcao
       t.integer :usuario_cadastro_id
       t.integer :usuario_aprovacao_id
+      t.integer :marca_id
       t.string :banco
       t.string :idioma
       t.boolean :ativo
 
+
       t.timestamps
     end
-    execute "SELECT setval('alimentos_id_seq', 101508, true);"
+    #execute "SELECT setval('alimentos_id_seq', 101508, true);"
   end
 
   def self.down
