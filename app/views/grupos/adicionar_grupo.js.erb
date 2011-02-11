@@ -1,0 +1,15 @@
+var div = $("#grupos_alimentos");
+
+var add = true;
+div.find("input.grupo_alimentos_grupo_id").each(function(){
+  if($(this).val() == <%=@alimento_grupo.grupo.id%>){
+    add=false;
+    $(this).parents(".grupo_item").find("input[type='text']:first").focus();
+  }
+});
+
+if(add){
+  div.prepend("<%= escape_javascript( render(:partial => "/grupos/grupo_form", :locals => {:a => @alimento_grupo}) ) %>");
+  div.find("input[type='text']:first").focus();
+}
+

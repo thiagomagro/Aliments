@@ -19,11 +19,26 @@
 			</p>
 			<div id="marcaForm">
 				<p class="marcaSelected">
-					<%= f.label :marca%>: 
-					<%=@alimento.marca.nil? ? "Nenhuma" : @alimento.marca.nome%> | <button class="button pp" type="button" id="trocarMarca">Trocar Marca</button>			
+					<%= f.label :marca%>:
+					<%=@alimento.marca.nil? ? "Nenhuma" : @alimento.marca.nome%> |
+					<%=link_to "Trocar Marca", "/marcas/marca_alimento",:update=>"marcas",:method=> :post,:remote => true, :class=>"button pp" %>
 				</p>
 				<div id="marcas" class="hide">
-			</div>				
+			</div>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Grupos</legend>
+			<p>
+				Adicionar Grupo: <select name="gruposAlimentos" id="select_grupos_alimentos">
+					<option>Escolha</option>
+					<%= options_from_collection_for_select(getGruposAlimentos, :id, :nome) %>
+				</select>
+				<button class="button pp" type="button" onclick="javascript:adicionarGrupo(this)">Adicionar</button>
+			</p>
+
+			<div id="grupos_alimentos">
+				<%= render '/grupos/grupos_form' , :alimento => @alimento%>
 			</div>
 		</fieldset>
 		<fieldset>
@@ -36,9 +51,7 @@
 			</p>
 
 			<div id="alimento_medidas">
-
 				<%= render 'tipo_medidas/tipo_medidas_form' , :alimento => @alimento%>
-
 			</div>
 		</fieldset>
 	</div>

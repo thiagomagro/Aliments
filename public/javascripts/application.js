@@ -1,4 +1,4 @@
-// Place your application-specific JavaScript functions and classes here
+{// Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 var intervalSub = "";
 $(document).ready(function(){
@@ -17,10 +17,7 @@ $(document).ready(function(){
 		});
 
 		$("button#trocarMarca").live("click",function(){
-			$.ajax({
-				url:"/marcas/marca_alimentos",
-				dataType:"script"
-			})
+  		trocarMarca();
 		});
 		$("button#novaMarca").live("click",function(){
 			$.ajax({
@@ -30,27 +27,45 @@ $(document).ready(function(){
 		});
 	});
 
-	function setSubMenu(li){
-		$(li).parent().find("li").removeClass("active");
-		$(li).addClass("active");
-		var el = $("#subMenu");
-		el.find("ul").hide();
-		var ul = el.find("ul").get($(li).index());
-		$(ul).show();
-	}
+function trocarMarca(){
+			$.ajax({
+				url:"/marcas/marca_alimento",
+				dataType:"script"
+			});
+}
 
-	function loadTipoMedidas(el){
-		var op = $("select#selectTipoMedidas").val();
-		$.ajax({
-			url:'/tipo_medidas/add_tipo/'+op,
-			dataType:'script'
-		});
-	}
+function setSubMenu(li){
+	$(li).parent().find("li").removeClass("active");
+	$(li).addClass("active");
+	var el = $("#subMenu");
+	el.find("ul").hide();
+	var ul = el.find("ul").get($(li).index());
+	$(ul).show();
+}
 
+function loadTipoMedidas(el){
+	var op = $("select#selectTipoMedidas").val();
+	$.ajax({
+		url:'/tipo_medidas/add_tipo/'+op,
+		dataType:'script'
+	});
+}
 
+function	deleteAlimentoMedida(btn){
 
+}
 
+function adicionarGrupo(){
+  var op = $("select#select_grupos_alimentos").val();
+	$.ajax({
+		url:'/grupos/adicionar_grupo/'+op,
+		dataType:'script'
+	});
+}
 
+function deleteAlimentoGrupo(btn){
+  $(btn).parents("div.grupo_item").hide('fast').find("input.grupoDestroy").val("1");
+}
 
 /*LIB*/
 jQuery.log = function(message) {
@@ -66,4 +81,5 @@ jQuery.fn.debug = function() {
 		$.log(this);
 	});
 };
+}
 

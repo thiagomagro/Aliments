@@ -9,17 +9,9 @@ class MarcasController < ApplicationController
     @marca = Marca.new
   end
 
-  def create
-    @marca = Marca.new(params[:marca])
-
-    respond_to do |format|
-      if @marca.save
-        format.html { redirect_to(@marca, :notice => 'Marca was successfully created.') }
-        format.xml  { render :xml => @marca, :status => :created, :location => @marca }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @marca.errors, :status => :unprocessable_entity }
-      end
-    end
+  def marca_alimento
+    #@marca = Marca.new(params[:marca])
+     @marcas = Marca.all
   end
 end
+

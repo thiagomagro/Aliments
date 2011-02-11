@@ -2,7 +2,8 @@
 <%agora=Time.now.to_f  %>
 <div class="clear medida_item span-8">
 	<div class="left span-4">
-	 	<%=image_tag("delete.png")%>  <label for="alimento[alimento_medidas_attributes][<%=agora%>][quantidade]"><%=a.medida.nome%></labe>
+  	<%=link_to_function (image_tag("delete.png")), 'deleteAlimentoMedida(this);'%>
+    <label for="alimento[alimento_medidas_attributes][<%=agora%>][quantidade]"><%=a.medida.nome%></labe>
 	</div>
 	<%=hidden_field_tag "alimento[alimento_medidas_attributes][#{agora}][medida_id]", a.medida.id, :class=>'medida_id'%>
 	<%=hidden_field_tag "alimento[alimento_medidas_attributes][#{agora}][_destroy]", 0, :class=>'medidaDestroy'%>

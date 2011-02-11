@@ -1,0 +1,14 @@
+<%agora=Time.now.to_f  %>
+<div class="clear grupo_item span-8">
+  <div class="left span-4">
+    <%=hidden_field_tag "alimento[grupo_alimentos_attributes][#{agora}][id]", a.id, :class=>'grupo_alimentos_id'%>
+    <%=hidden_field_tag "alimento[grupo_alimentos_attributes][#{agora}][grupo_id]", a.grupo.id, :class=>'grupo_alimentos_grupo_id'%>
+  	<%=hidden_field_tag "alimento[grupo_alimentos_attributes][#{agora}][_destroy]", 0, :class=>'grupoDestroy'%>
+  	<%=link_to_function (image_tag("delete.png")), 'deleteAlimentoGrupo(this);'%>
+    <label for="alimento[grupo_alimentos_attributes][<%=agora%>][porcentagem]"><%=a.grupo.nome%></labe>
+	</div>
+	<div class="left span-3">
+  <%=text_field_tag "alimento[grupo_alimentos_attributes][#{agora}][porcentagem]",a.porcentagem, :class => "span-2" %>&nbsp;%
+  </div>
+</div>
+

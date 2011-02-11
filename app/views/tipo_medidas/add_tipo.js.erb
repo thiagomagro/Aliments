@@ -1,5 +1,4 @@
 var alimento_medidas = $("#alimento_medidas");
-
 alimento_medidas.prepend("<%= escape_javascript( render(:partial => "tipo_medidas_form", :alimento => @alimento) ) %>");
 
 var els = alimento_medidas.find(".medida_id")

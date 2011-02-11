@@ -2,14 +2,15 @@ Aliments::Application.routes.draw do
 #  get "home/index"
   root :to => "home#index"
 
-  resources :alimentos, :usuarios, :sessions, :tipoMedidas, :medidas, :marcas
+  resources :alimentos, :usuarios, :sessions, :tipoMedidas, :medidas, :marcas, :grupos
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
-  match 'tipo_medidas/add_tipo/:id' => 'tipoMedidas#addTipo',
-        'marcas/marca_alimento' => 'marcas#marcaAlimento'
+  match 'tipo_medidas/add_tipo/:id' => 'tipo_medidas#add_tipo'
+  match 'marcas/marca_alimento/' => 'marcas#marca_alimento', :via => [:get, :post]
+  match 'grupos/adicionar_grupo/:id' => 'grupos#adicionar_grupo', :via => [:get, :post]
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:

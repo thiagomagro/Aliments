@@ -115,15 +115,24 @@ fieldset{
 	border:0px;
 	padding:0px;
 	margin:0px;
+	margin-bottom:10px;
+	padding-left:12px;
 }
 
 fieldset legend{
 	color:#999;
 	font-weight:normal;
 	font-size:150%;
-	border-left:6px solid #ccc;	
+	border-left:6px solid #ccc;
+	border-top:1px solid #ddd;
 	padding-left:4px;
 	margin-bottom:6px;
+	margin-left:-13px;
+}
+
+fieldset fieldset legend{
+  border-left:6px solid #ccc;
+  font-size: 120%;
 }
 
 fieldset hr{
@@ -135,7 +144,7 @@ fieldset hr{
 }
 
 fieldset legend{
-	
+
 }
 /* FIM FORM */
 
@@ -185,6 +194,18 @@ button.verde:hover, a.verde:hover, input.verde:hover{
 	background-color: #445009;
 	color: #fff;
 	border:1px solid #c3cd18;
+}
+
+button.vermelho, a.vermelho, input.vermelho{
+	background-color: #cc3333;
+	color: #445009;
+	border:1px solid #ff9999;
+	color:#fff;
+}
+button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
+	background-color: #aa1111;
+	color: #fff;
+	border:1px solid #cc3333;
 }
 /* FIM BUTTON */
 

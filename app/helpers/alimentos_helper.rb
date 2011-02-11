@@ -1,6 +1,10 @@
 module AlimentosHelper
   def getTipoMedidas
-    @grupos = TipoMedida.all
+    @tipos = TipoMedida.all
+  end
+
+  def getGruposAlimentos
+    @gruposAlimentos = Grupo.all
   end
 end
 
