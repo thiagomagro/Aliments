@@ -3,7 +3,7 @@ class Alimento < ActiveRecord::Base
   has_one :usuario_aprovacao, :class_name => "Usuario", :foreign_key => "usuario_aprovacao_id"
   has_one :usuario_cadastro, :class_name => "Usuario", :foreign_key => "usuario_cadastro_id"
 
-  has_one :marca
+  belongs_to :marca
 
   has_many :componente_alimentos, :dependent => :destroy
   has_many :componentes, :through => :componente_alimentos, :conditions => ['componentes.ativo = ?',true]

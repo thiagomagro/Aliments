@@ -2,39 +2,50 @@
 // This file is automatically included by javascript_include_tag :defaults
 var intervalSub = "";
 $(document).ready(function(){
-    $("#menu > ul > li").live('click',function(){
-        setSubMenu($(this));
-    });
-    $("#menu > ul > li").mouseout(function(){
-        clearInterval(intervalSub)
-    });
-    $("#menu > ul > li").mouseover(function(){
-        var el = $(this);
-        clearInterval(intervalSub)
-        intervalSub = setTimeout(function(){
-            setSubMenu(el);
-        },600);
+	$("#menu > ul > li").live('click',function(){
+		setSubMenu($(this));
+	});
+	$("#menu > ul > li").mouseout(function(){
+		clearInterval(intervalSub)
+	});
+	$("#menu > ul > li").mouseover(function(){
+		var el = $(this);
+		clearInterval(intervalSub)
+		intervalSub = setTimeout(function(){
+			setSubMenu(el);
+			},600);
+		});
 
-    });
-});
+		$("button#trocarMarca").live("click",function(){
+			$.ajax({
+				url:"/marcas/marca_alimentos",
+				dataType:"script"
+			})
+		});
+		$("button#novaMarca").live("click",function(){
+			$.ajax({
+				dataType:"script",
+				url:"/marcas/new"
+			});
+		});
+	});
 
-function setSubMenu(li){
-    $(li).parent().find("li").removeClass("active");
-    $(li).addClass("active");
-    var el = $("#subMenu");
-    el.find("ul").hide();
-    var ul = el.find("ul").get($(li).index());
-    $(ul).show();
-}
+	function setSubMenu(li){
+		$(li).parent().find("li").removeClass("active");
+		$(li).addClass("active");
+		var el = $("#subMenu");
+		el.find("ul").hide();
+		var ul = el.find("ul").get($(li).index());
+		$(ul).show();
+	}
 
-function loadTipoMedidas(el){
-	var op = $("select#selectTipoMedidas").val();
-  $("#alimento_medidas").find("").length;
-  $.ajax({
-    url:'/tipo_medidas/add_tipo/'+op,
-    dataType:'script'
-  });
-}
+	function loadTipoMedidas(el){
+		var op = $("select#selectTipoMedidas").val();
+		$.ajax({
+			url:'/tipo_medidas/add_tipo/'+op,
+			dataType:'script'
+		});
+	}
 
 
 
@@ -43,16 +54,16 @@ function loadTipoMedidas(el){
 
 /*LIB*/
 jQuery.log = function(message) {
-    try{
-        console.debug(message);
-    }catch(e){
-    //alert(message);
-    }
+	try{
+		console.debug(message);
+	}catch(e){
+		//alert(message);
+	}
 };
 
 jQuery.fn.debug = function() {
-    return this.each(function(){
-        $.log(this);
-    });
+	return this.each(function(){
+		$.log(this);
+	});
 };
 

@@ -11,35 +11,51 @@
 	</div>
 	<% end %>
 	<div class="column span-9">
-		<p>
-			<%= f.label :nome %><br />
-			<%= f.text_field :nome %>
-		</p>
+		<fieldset>
+			<legend>Alimento</legend>
+			<p>
+				<%= f.label :nome %><br />
+				<%= f.text_field :nome %>
+			</p>
+			<div id="marcaForm">
+				<p class="marcaSelected">
+					<%= f.label :marca%>: 
+					<%=@alimento.marca.nil? ? "Nenhuma" : @alimento.marca.nome%> | <button class="button pp" type="button" id="trocarMarca">Trocar Marca</button>			
+				</p>
+				<div id="marcas" class="hide">
+			</div>				
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Medidas</legend>
+			<p>
+				Adicionar Grupo: <select name="tipoMedidas" id="selectTipoMedidas">
+					<option>Escolha</option>
+					<%= options_from_collection_for_select(getTipoMedidas, :id, :nome) %>
+				</select> <button class="button pp" type="button" onclick="javascript:loadTipoMedidas(this)">Adicionar</button>
+			</p>
 
-		<p>
-			<select name="tipoMedidas" id="selectTipoMedidas">
-				<option>Escolha</option>
-				<%= options_from_collection_for_select(getTipoMedidas, :id, :nome) %>
-			</select> <button class="button pp" type="button" onclick="javascript:loadTipoMedidas(this)">Adicionar</button>
-		</p>
+			<div id="alimento_medidas">
 
-		<div id="alimento_medidas">
+				<%= render 'tipo_medidas/tipo_medidas_form' , :alimento => @alimento%>
 
-  		<%= render 'tipo_medidas/tipo_medidas_form' , :alimento => @alimento%>
-
-		</div>
+			</div>
+		</fieldset>
 	</div>
 	<div class="column span-9 last">
-		<p>
-			<%= f.label :porcao %><br />
-			<%= f.text_field :porcao %>
-		</p>
-		<% f.fields_for :componente_alimentos do |ca|%>
-		<%= render 'componente_alimento_form', :f => ca unless !ca.object.componente.ativo?%>
-		<%end%>
+		<fieldset>
+			<legend>Nutrientes</legend>
+			<p>
+				<%= f.label :porcao %><br />
+				<%= f.text_field :porcao, :class => "span-2"%>
+			</p>
+			<% f.fields_for :componente_alimentos do |ca|%>
+			<%= render 'componente_alimento_form', :f => ca unless !ca.object.componente.ativo?%>
+			<%end%>
+		</fieldset>
 	</div>
 	<div class="actions">
-		<%= f.submit %>
+		<%= f.submit "Salvar", :class => "button"%>
 	</div>
 	<% end %>
 

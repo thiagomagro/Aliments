@@ -1,0 +1,3 @@
+var div = $("#marcaForm");
+div.hide('fast');
+div.html("<%=escape_javascript(render(:partial => "new", :marca => @marca))%>").show('fast');

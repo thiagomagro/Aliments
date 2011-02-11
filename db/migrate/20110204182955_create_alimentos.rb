@@ -11,7 +11,6 @@ class CreateAlimentos < ActiveRecord::Migration
       t.string :idioma
       t.boolean :ativo
 
-
       t.timestamps
     end
     #execute "SELECT setval('alimentos_id_seq', 101508, true);"
