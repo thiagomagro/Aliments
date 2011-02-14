@@ -6,9 +6,8 @@ gem 'rails', '3.0.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem "meta_search"
 gem "jquery-rails"
-
+gem 'thinking-sphinx', '2.0.0', :require => 'thinking_sphinx'
 # Use unicorn as the web server
 # gem 'unicorn'
 

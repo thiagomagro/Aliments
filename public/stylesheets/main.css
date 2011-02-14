@@ -10,6 +10,10 @@ h1{
 img{
 	vertical-align:middle;
 }
+
+p{
+  margin-bottom:4px;
+}
 /* FIM LAYOUTS DEFAULT*/
 
 /* CORES */
@@ -85,6 +89,20 @@ img{
 input, textarea, select{
 	padding-top:0px;
 	margin-top:0px;
+}
+
+label{
+  display:block;
+  padding:2px;
+  font-size:11px;
+  color:#999;
+  font-weight:normal;
+}
+
+label.title{
+  font-size:14px;
+  color:#555;
+  font-weight:bold;
 }
 /*FIM FORMS*/
 

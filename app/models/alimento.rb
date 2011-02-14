@@ -18,5 +18,9 @@ class Alimento < ActiveRecord::Base
   accepts_nested_attributes_for :alimento_medidas,:allow_destroy => true
   accepts_nested_attributes_for :grupo_alimentos,:allow_destroy => true
   accepts_nested_attributes_for :marca
+
+  define_index do
+    indexes nome
+  end
 end
 

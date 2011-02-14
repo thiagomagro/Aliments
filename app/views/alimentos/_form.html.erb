@@ -14,14 +14,15 @@
 		<fieldset>
 			<legend>Alimento</legend>
 			<p>
-				<%= f.label :nome %><br />
+				<%= f.label :nome, :class=>"title"%>
 				<%= f.text_field :nome %>
 			</p>
 			<div id="marcaForm">
 				<p class="marcaSelected">
-					<%= f.label :marca%>:
+					<%= f.label :marca, :class=>"title"%>
 					<%=@alimento.marca.nil? ? "Nenhuma" : @alimento.marca.nome%> |
 					<%=link_to "Trocar Marca", "/marcas/marca_alimento",:update=>"marcas",:method=> :post,:remote => true, :class=>"button pp" %>
+					<%= f.label "Marca atualmente atribuida ao alimento"%>
 				</p>
 				<div id="marcas" class="hide">
 			</div>
@@ -48,8 +49,16 @@
 					<option>Escolha</option>
 					<%= options_from_collection_for_select(getTipoMedidas, :id, :nome) %>
 				</select> <button class="button pp" type="button" onclick="javascript:loadTipoMedidas(this)">Adicionar</button>
+				<label>Adicione um grupo de medias à esse alimento</label>
 			</p>
-
+			<hr/>
+			<p>
+			  <button type="button" class="button pp" onclick="importarMedidas(this)">Importar</button>
+   			<label>Importe medidas de um outro alimento</label>
+			  <div id="search_form"></div>
+			</p>
+			<hr/>
+			<label>Medidas atualmente cadastradas:</label>
 			<div id="alimento_medidas">
 				<%= render 'tipo_medidas/tipo_medidas_form' , :alimento => @alimento%>
 			</div>

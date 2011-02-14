@@ -48,6 +48,9 @@ class AlimentosController < ApplicationController
     @alimento.componente_alimentos.sort!{|a,b|
       a.componente.nome <=> b.componente.nome
     }
+    @alimento.alimento_medidas.sort!{|a,b|
+      a.medida.nome <=> b.medida.nome
+    }
   end
 
   # POST /alimentos
@@ -94,8 +97,15 @@ class AlimentosController < ApplicationController
   end
 
   def search
-    @search = Alimento.search(params[:search])
-    @alimentos = @search.all
+    #@search = Alimento.search(params[:search])
+    #@alimentos = Alimento.find(:all, :conditions => ['nome LIKE ? ', '%'+params[:search]+'%'])
+    @alimentos = Alimento.search params[:search], :star => true
+  end
+
+  def search_form
+    respond_to do |format|
+      format.js # this renders your rjs file
+    end
   end
 end
 

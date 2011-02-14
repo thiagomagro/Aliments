@@ -25,6 +25,13 @@ $(document).ready(function(){
 				url:"/marcas/new"
 			});
 		});
+
+		$("input, select, textarea").live("focus",function(e){
+		  $(this).parent().parent().addClass("cinzaClaro");
+		});
+		$("input, select, textarea").live("blur",function(e){
+		  $(this).parent().parent().removeClass("cinzaClaro");
+		});
 	});
 
 function trocarMarca(){
@@ -52,7 +59,7 @@ function loadTipoMedidas(el){
 }
 
 function	deleteAlimentoMedida(btn){
-
+  $(btn).parents("div.medida_item").hide('fast').find("input.medidaDestroy").val("1");
 }
 
 function adicionarGrupo(){
@@ -65,6 +72,14 @@ function adicionarGrupo(){
 
 function deleteAlimentoGrupo(btn){
   $(btn).parents("div.grupo_item").hide('fast').find("input.grupoDestroy").val("1");
+}
+
+function importarMedidas(btn){
+	$.ajax({
+		url:'/alimentos/search_form/',
+		dataType:'script',
+		type:'POST'
+	});
 }
 
 /*LIB*/

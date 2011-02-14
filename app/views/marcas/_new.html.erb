@@ -1,15 +1,15 @@
 <fieldset>
   <legend>Nova Marca</legend>
 <p>
-  <label>Nome</label><br/>
+  <label class="title">Nome</label>
   <input type="text" name="alimento[marca_attributes][nome]"/>
 </p>
 <p>
-  <label>Email</label><br/>
+  <label class="title">Email</label>
   <input type="text" name="alimento[marca_attributes][email]"/>
 </p>
 <p>
-  <label>Site</label><br/>
+  <label class="title">Site</label>
   <input type="text" name="alimento[marca_attributes][site]"/>
 </p>
 <%=link_to "Cancelar", "/marcas/marca_alimento",:update=>"marcas",:method=> :post,:remote => true, :class=>"button pp vermelho" %>

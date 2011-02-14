@@ -1,6 +1,7 @@
 <div class="clear">
-	<div class="left span-4"><%=f.label f.object.componente.nome%></div>
+	<div class="left span-4"><%=f.label f.object.componente.nome, :class=>"title"%></div>
 	<%=f.hidden_field :componente_id,{:value => f.object.componente.id}%>
 	<div class="left span-3"><%= f.text_field :quantidade, :class => "span-2"%>&nbsp;<%=f.object.componente.unidade%></div>
+	<div class="clear"></div>
 </div>
 
