@@ -93,6 +93,16 @@ input, textarea, select{
 	top:20px;
 	right:0px;
 }
+
+.helperContainer{
+}
+
+.helperContainer .helperBox{
+  background-color:#fff;
+  padding:10px;
+  border:1px solid #ccc;
+}
+
 /*FIM LAYOUT SPECIFIC*/
 
 /* FORM */

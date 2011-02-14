@@ -3,7 +3,7 @@ class AlimentosController < ApplicationController
   # GET /alimentos
   # GET /alimentos.xml
   def index
-    @alimentos = Alimento.all.sort{|a,b| a.nome <=> b.nome}
+    #@alimentos = Alimento.all.sort{|a,b| a.nome <=> b.nome}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -87,11 +87,15 @@ class AlimentosController < ApplicationController
   def destroy
     @alimento = Alimento.find(params[:id])
     @alimento.destroy
-
     respond_to do |format|
       format.html { redirect_to(alimentos_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def search
+    @search = Alimento.search(params[:search])
+    @alimentos = @search.all
   end
 end
 

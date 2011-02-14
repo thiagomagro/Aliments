@@ -6,6 +6,8 @@ gem 'rails', '3.0.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem "meta_search"
+gem "jquery-rails"
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -29,3 +31,4 @@ gem 'pg'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
