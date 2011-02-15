@@ -12,7 +12,7 @@ Aliments::Application.routes.draw do
   match 'marcas/marca_alimento/' => 'marcas#marca_alimento', :via => [:get, :post]
   match 'grupos/adicionar_grupo/:id' => 'grupos#adicionar_grupo', :via => [:get, :post]
   match 'alimentos/search'
-  match 'alimentos/search_form', :via => [:get, :post]
+  match 'alimentos/search_import_form', :via => [:get, :post]
 
   # Keep in mind you can assign values other than :controller and :action
 

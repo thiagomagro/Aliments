@@ -102,7 +102,7 @@ class AlimentosController < ApplicationController
     @alimentos = Alimento.search params[:search], :star => true
   end
 
-  def search_form
+  def search_import_form
     respond_to do |format|
       format.js # this renders your rjs file
     end

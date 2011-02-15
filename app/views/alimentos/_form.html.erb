@@ -2,7 +2,6 @@
 	<% if @alimento.errors.any? %>
 	<div id="error_explanation">
 		<h2><%= pluralize(@alimento.errors.count, "error") %> prohibited this alimento from being saved:</h2>
-
 		<ul>
 			<% @alimento.errors.full_messages.each do |msg| %>
 			<li><%= msg %></li>

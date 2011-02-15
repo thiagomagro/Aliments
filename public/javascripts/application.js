@@ -32,13 +32,18 @@ $(document).ready(function(){
 		$("input, select, textarea").live("blur",function(e){
 		  $(this).parent().parent().removeClass("cinzaClaro");
 		});
+		
+		$(".enter_disable").live("keyup", function(e) {
+			e.preventDefault();
+		  if (e.keyCode == 34) return false;
+		});
 	});
 
 function trocarMarca(){
-			$.ajax({
-				url:"/marcas/marca_alimento",
-				dataType:"script"
-			});
+	$.ajax({
+		url:"/marcas/marca_alimento",
+		dataType:"script"
+	});
 }
 
 function setSubMenu(li){
@@ -58,7 +63,7 @@ function loadTipoMedidas(el){
 	});
 }
 
-function	deleteAlimentoMedida(btn){
+function deleteAlimentoMedida(btn){
   $(btn).parents("div.medida_item").hide('fast').find("input.medidaDestroy").val("1");
 }
 
@@ -76,7 +81,25 @@ function deleteAlimentoGrupo(btn){
 
 function importarMedidas(btn){
 	$.ajax({
-		url:'/alimentos/search_form/',
+		url:'/alimentos/search_import_form/',
+		dataType:'script',
+		type:'POST'
+	});
+}
+
+function enter_action(e,action,btn){
+	if(e.keyCode == 13){
+		e.preventDefault();
+		e.stopPropagation();
+		eval(action + "(btn)");	
+	}
+	return false;
+}
+
+function buscar_alimento(btn){
+	var v = $(btn).parents('.helperContainer').find("input[name='search']").val();
+	$.ajax({
+		url:'/alimentos/search?search='+v,
 		dataType:'script',
 		type:'POST'
 	});

@@ -1,10 +1,5 @@
 <h1>Listing alimentos</h1>
-<div class="helperContainer">
-  <%= form_tag('/alimentos/search', :remote => true) do %>
-    Buscar alimentos: <input type="text" name="search"/> <%= submit_tag "Buscar", :class => "button p" %>
-  <%end%>
-  <div id="searchResults" class="helperBox hide"></div>
-</div>
+
 <br />
 <%= link_to 'New Alimento', new_alimento_path %>
 
