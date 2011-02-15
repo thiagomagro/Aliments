@@ -9,10 +9,13 @@ Aliments::Application.routes.draw do
 
   # Sample of regular route:
   match 'tipo_medidas/add_tipo/:id' => 'tipo_medidas#add_tipo'
+  match 'tipo_medidas/importar/:id' => 'tipo_medidas#importar'
+  match 'tipo_medidas/importar'
+
   match 'marcas/marca_alimento/' => 'marcas#marca_alimento', :via => [:get, :post]
   match 'grupos/adicionar_grupo/:id' => 'grupos#adicionar_grupo', :via => [:get, :post]
   match 'alimentos/search'
-  match 'alimentos/search_import_form', :via => [:get, :post]
+  match 'alimentos/search_form', :via => [:get, :post]
 
   # Keep in mind you can assign values other than :controller and :action
 

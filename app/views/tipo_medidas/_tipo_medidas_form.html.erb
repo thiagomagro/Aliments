@@ -9,6 +9,7 @@
 	<%=hidden_field_tag "alimento[alimento_medidas_attributes][#{agora}][_destroy]", 0, :class=>'medidaDestroy'%>
 	<%=hidden_field_tag "alimento[alimento_medidas_attributes][#{agora}][id]", a.id, :class=>'alimento_medida_id'%>
 	<div class="left span-3"><%=text_field_tag "alimento[alimento_medidas_attributes][#{agora}][quantidade]",a.quantidade, :class => "span-2" %>&nbsp;<%=a.medida.unidade%></div>
+  <hr/>
 </div>
 <%end%>
 

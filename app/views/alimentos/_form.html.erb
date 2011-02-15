@@ -12,12 +12,12 @@
 	<div class="column span-9">
 		<fieldset>
 			<legend>Alimento</legend>
-			<p>
+			<p class="highlighter">
 				<%= f.label :nome, :class=>"title"%>
 				<%= f.text_field :nome %>
 			</p>
 			<div id="marcaForm">
-				<p class="marcaSelected">
+				<p class="marcaSelected highlighter">
 					<%= f.label :marca, :class=>"title"%>
 					<%=@alimento.marca.nil? ? "Nenhuma" : @alimento.marca.nome%> |
 					<%=link_to "Trocar Marca", "/marcas/marca_alimento",:update=>"marcas",:method=> :post,:remote => true, :class=>"button pp" %>
@@ -29,21 +29,21 @@
 		</fieldset>
 		<fieldset>
 			<legend>Grupos</legend>
-			<p>
+			<p class="highlighter">
 				Adicionar Grupo: <select name="gruposAlimentos" id="select_grupos_alimentos">
 					<option>Escolha</option>
 					<%= options_from_collection_for_select(getGruposAlimentos, :id, :nome) %>
 				</select>
 				<button class="button pp" type="button" onclick="javascript:adicionarGrupo(this)">Adicionar</button>
 			</p>
-
+      <hr/>
 			<div id="grupos_alimentos">
 				<%= render '/grupos/grupos_form' , :alimento => @alimento%>
 			</div>
 		</fieldset>
 		<fieldset>
 			<legend>Medidas</legend>
-			<p>
+			<p class="highlighter">
 				Adicionar Grupo: <select name="tipoMedidas" id="selectTipoMedidas">
 					<option>Escolha</option>
 					<%= options_from_collection_for_select(getTipoMedidas, :id, :nome) %>
@@ -58,6 +58,7 @@
 			</p>
 			<hr/>
 			<label>Medidas atualmente cadastradas:</label>
+			<hr/>
 			<div id="alimento_medidas">
 				<%= render 'tipo_medidas/tipo_medidas_form' , :alimento => @alimento%>
 			</div>

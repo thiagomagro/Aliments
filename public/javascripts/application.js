@@ -27,12 +27,12 @@ $(document).ready(function(){
 		});
 
 		$("input, select, textarea").live("focus",function(e){
-		  $(this).parent().parent().addClass("cinzaClaro");
+		  $(this).closest(".highlighter").addClass("cinzaClaro");
 		});
 		$("input, select, textarea").live("blur",function(e){
-		  $(this).parent().parent().removeClass("cinzaClaro");
+		  $(this).closest(".highlighter").removeClass("cinzaClaro");
 		});
-		
+
 		$(".enter_disable").live("keyup", function(e) {
 			e.preventDefault();
 		  if (e.keyCode == 34) return false;
@@ -81,7 +81,7 @@ function deleteAlimentoGrupo(btn){
 
 function importarMedidas(btn){
 	$.ajax({
-		url:'/alimentos/search_import_form/',
+		url:'/alimentos/search_form?action_form=importar',
 		dataType:'script',
 		type:'POST'
 	});
@@ -91,15 +91,16 @@ function enter_action(e,action,btn){
 	if(e.keyCode == 13){
 		e.preventDefault();
 		e.stopPropagation();
-		eval(action + "(btn)");	
+		eval(action + "(btn)");
 	}
 	return false;
 }
 
 function buscar_alimento(btn){
+  var action = $(btn).closest(".helperContainer").find("input[name='action_search']").val();
 	var v = $(btn).parents('.helperContainer').find("input[name='search']").val();
 	$.ajax({
-		url:'/alimentos/search?search='+v,
+		url:'/alimentos/search?search='+v+"&action_form="+action,
 		dataType:'script',
 		type:'POST'
 	});

@@ -99,10 +99,13 @@ class AlimentosController < ApplicationController
   def search
     #@search = Alimento.search(params[:search])
     #@alimentos = Alimento.find(:all, :conditions => ['nome LIKE ? ', '%'+params[:search]+'%'])
+    @action_form = params[:action_form]
     @alimentos = Alimento.search params[:search], :star => true
   end
 
-  def search_import_form
+  def search_form
+    @action_form = params[:action_form]
+    logger.info(@action)
     respond_to do |format|
       format.js # this renders your rjs file
     end

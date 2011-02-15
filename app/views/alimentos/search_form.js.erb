@@ -1,0 +1,6 @@
+var el = $("#search_form");
+el.hide('fast',function(){
+  el.html("<%= escape_javascript( render(:partial => "/alimentos/search_form/", :locals=>{:action_form => @action_form}) ) %>");
+  el.show('fast');
+});
+
