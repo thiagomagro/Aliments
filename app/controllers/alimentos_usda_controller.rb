@@ -11,16 +11,7 @@ class AlimentosUsdaController < ApplicationController
     end
   end
 
-  # GET /alimentos/1
-  # GET /alimentos/1.xml
   def show
-    @alimento = Alimento.find(params[:id])
-    @componente_alimentos = ComponenteAlimento.joins(:alimento,:componente).where("alimentos.id = ? and componentes.ativo=?",@alimento.id,true).order("componentes.ordem")
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @alimento }
-    end
   end
 
   # GET /alimentos/new
@@ -99,4 +90,29 @@ class AlimentosUsdaController < ApplicationController
     @action_form = params[:action_form]
     @alimentos = AlimentoUsda.search params[:search], :star => true
   end
+
+  def importar
+    @alimento = Alimento.new
+    alimento_usda = AlimentoUsda.find(params[:id])
+    @alimento.nome = alimento_usda.nome
+
+    componentes = Componente.where("ativo=?",true).order("ordem ASC")
+    componentes.each do |c|
+      @alimento.componente_alimentos.build({:componente => c})
+      #ca = ComponenteAlimento.new(:componente => c)
+      #@alimento.componente_alimentos.push(ca)
+    end
+
+    alimento_usda.componente_usda_alimentos.each do |cusa|
+            @alimento.componente_alimentos.each do |ca|
+              if cusa.componente_usda.nome == ca.componente.nome
+                ca.quantidade = cusa.quantidade
+              end
+            end
+    end
+
+    #redirect_to :controller=>'alimentos',:action=>'edit', :alimento => @alimento
+    render :template => "alimentos/edit"
+  end
 end
+

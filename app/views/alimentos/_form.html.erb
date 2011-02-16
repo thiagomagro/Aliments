@@ -73,7 +73,7 @@
 			</p>
 			<hr/>
 			<% f.fields_for :componente_alimentos do |ca|%>
-			<%= render 'componente_alimento_form', :f => ca unless !ca.object.componente.ativo?%>
+			<%= render '/alimentos/componente_alimento_form', :f => ca unless !ca.object.componente.ativo?%>
 			<%end%>
 		</fieldset>
 	</div>

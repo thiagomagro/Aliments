@@ -2,7 +2,7 @@ var el = $("#searchResults");
 el.hide('fast',function(){
 	$(el).html("");
 	<%@alimentos.each do |a|%>
-	el.append("<%= escape_javascript( render(:partial => "/alimentos_usda/search_#{@action_form}", :locals => {:alimento_usda => a}) ) %>");
+	el.append("<%= escape_javascript( render(:partial => "/alimentos_usda/search_#{@action_form}", :locals => {:alimento => a}) ) %>");
 	<%end%>
 	$(el).append("<div class=\"clear\"></div>");
 	var parent = $("#searchResults").parent();
