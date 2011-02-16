@@ -2,7 +2,7 @@ Aliments::Application.routes.draw do
 #  get "home/index"
   root :to => "home#index"
 
-  resources :alimentos, :usuarios, :sessions, :tipoMedidas, :medidas, :marcas, :grupos
+  resources :alimentos, :alimentos_usda, :usuarios, :sessions, :tipoMedidas, :medidas, :marcas, :grupos
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -16,6 +16,9 @@ Aliments::Application.routes.draw do
   match 'grupos/adicionar_grupo/:id' => 'grupos#adicionar_grupo', :via => [:get, :post]
   match 'alimentos/search'
   match 'alimentos/search_form', :via => [:get, :post]
+  
+  match 'alimentos_usda/search'
+  match 'alimentos_usda/search_form', :via => [:get, :post]
 
   # Keep in mind you can assign values other than :controller and :action
 

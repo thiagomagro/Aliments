@@ -68,9 +68,10 @@
 		<fieldset>
 			<legend>Nutrientes</legend>
 			<p>
-				<%= f.label :porcao %><br />
-				<%= f.text_field :porcao, :class => "span-2"%>
+				<%= f.label :porcao, :class=>"title"%>
+				<%= f.text_field :porcao, :class => "span-2"%> &nbsp; g
 			</p>
+			<hr/>
 			<% f.fields_for :componente_alimentos do |ca|%>
 			<%= render 'componente_alimento_form', :f => ca unless !ca.object.componente.ativo?%>
 			<%end%>

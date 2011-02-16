@@ -64,7 +64,9 @@ function loadTipoMedidas(el){
 }
 
 function deleteAlimentoMedida(btn){
-  $(btn).parents("div.medida_item").hide('fast').find("input.medidaDestroy").val("1");
+	if(confirm('Deseja excluir a medida?')){
+  		$(btn).parents("div.medida_item").hide('fast').find("input.medidaDestroy").val("1");
+	}
 }
 
 function adicionarGrupo(){
@@ -101,6 +103,16 @@ function buscar_alimento(btn){
 	var v = $(btn).parents('.helperContainer').find("input[name='search']").val();
 	$.ajax({
 		url:'/alimentos/search?search='+v+"&action_form="+action,
+		dataType:'script',
+		type:'POST'
+	});
+}
+
+function buscar_alimento_usda(btn){
+  var action = $(btn).closest(".helperContainer").find("input[name='action_search']").val();
+	var v = $(btn).parents('.helperContainer').find("input[name='search']").val();
+	$.ajax({
+		url:'/alimentos_usda/search?search='+v+"&action_form="+action,
 		dataType:'script',
 		type:'POST'
 	});

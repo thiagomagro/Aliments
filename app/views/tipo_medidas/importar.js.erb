@@ -1,9 +1,12 @@
 var alimento_medidas = $("#alimento_medidas");
 <%unless @alimento.alimento_medidas.size <=0%>
+if(confirm('Importar medidas de um outro alimento irá sobreescrever as medidas atuais, confirma?')){
   alimento_medidas.hide('fast',function(){
     alimento_medidas.find("div.medida_item").hide().find("input.medidaDestroy").val("1");
     alimento_medidas.append("<%= escape_javascript( render(:partial => "tipo_medidas_form", :alimento => @alimento) ) %>");
     alimento_medidas.show('fast');
+	$("#searchResults").hide('fast');
   });
+}
 <%end%>
 

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  alimento_usda_id: 1
+  componente_usda_id: 1
+  quantidade: 1.5
+
+two:
+  alimento_usda_id: 1
+  componente_usda_id: 1
+  quantidade: 1.5

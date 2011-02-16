@@ -1,4 +1,4 @@
-class AlimentosController < ApplicationController
+class AlimentosUsdaController < ApplicationController
   before_filter :authenticate
   # GET /alimentos
   # GET /alimentos.xml
@@ -44,12 +44,9 @@ class AlimentosController < ApplicationController
 
   # GET /alimentos/1/edit
   def edit
-    @alimento = Alimento.find(params[:id])
-    @alimento.componente_alimentos.sort!{|a,b|
-      a.componente.nome <=> b.componente.nome
-    }
-    @alimento.alimento_medidas.sort!{|a,b|
-      a.medida.nome <=> b.medida.nome
+    @alimento_usda = AlimentoUsda.find(params[:id])
+    @alimento_usda.componente_usda_alimentos.sort!{|a,b|
+      a.componente_usda.nome <=> b.componente_usda.nome
     }
   end
 
@@ -100,14 +97,6 @@ class AlimentosController < ApplicationController
     #@search = Alimento.search(params[:search])
     #@alimentos = Alimento.find(:all, :conditions => ['nome LIKE ? ', '%'+params[:search]+'%'])
     @action_form = params[:action_form]
-    @alimentos = Alimento.search params[:search], :star => true
-  end
-
-  def search_form
-    @action_form = params[:action_form]
-    respond_to do |format|
-      format.js # this renders your rjs file
-    end
+    @alimentos = AlimentoUsda.search params[:search], :star => true
   end
 end
-

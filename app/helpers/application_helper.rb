@@ -13,5 +13,9 @@ module ApplicationHelper
      usuario.perfil.nome.casecmp "administrador" unless usuario.nil? || usuario.perfil.nil?
    end
   end
+  
+  def button_for(name, options={})
+      return content_tag(:button, name, :class => options[:class], :type => options[:button_type])
+    end
 end
 

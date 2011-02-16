@@ -10,12 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210203837) do
+ActiveRecord::Schema.define(:version => 20110216010126) do
 
   create_table "alimento_medidas", :force => true do |t|
     t.integer  "alimento_id"
     t.integer  "medida_id"
     t.float    "quantidade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "alimento_usdas", :force => true do |t|
+    t.string   "nome"
+    t.string   "undb"
+    t.boolean  "ativo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,6 +47,22 @@ ActiveRecord::Schema.define(:version => 20110210203837) do
     t.string   "observacao"
     t.integer  "alimento_id"
     t.integer  "componente_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "componente_usda_alimentos", :force => true do |t|
+    t.integer  "alimento_usda_id"
+    t.integer  "componente_usda_id"
+    t.float    "quantidade"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "componente_usdas", :force => true do |t|
+    t.string   "nome"
+    t.string   "unidade"
+    t.boolean  "ativo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
