@@ -1,0 +1,10 @@
+<h1>Todos</h1>
+<div class="helperContainer">
+  <div id="searchResults" class="helperBox">
+    <%@alimentos.each do |a|%>
+      <%= render "/alimentos_usda/search_editar",:alimento => a%>
+    <%end%>
+    <div class="clear"></div>
+  </div>
+</div>
+

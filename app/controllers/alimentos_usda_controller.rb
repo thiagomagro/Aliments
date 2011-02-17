@@ -134,7 +134,7 @@ class AlimentosUsdaController < ApplicationController
 
   def list
     @alimentos = AlimentoUsda.all.sort{|a,b| a.nome <=> b.nome}
-    #render :action=>"search"
+
   end
 end
 
