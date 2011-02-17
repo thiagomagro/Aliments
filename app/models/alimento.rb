@@ -21,6 +21,7 @@ class Alimento < ActiveRecord::Base
 
   define_index do
     indexes nome
+    has ativo
   end
 end
 

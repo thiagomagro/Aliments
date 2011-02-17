@@ -76,11 +76,20 @@ class AlimentosUsdaController < ApplicationController
   # DELETE /alimentos/1
   # DELETE /alimentos/1.xml
   def destroy
-    @alimento = Alimento.find(params[:id])
-    @alimento.destroy
+    @alimento = AlimentoUsda.find(params[:id])
+    @alimento.ativo=false
+    #@alimento.save
+    #redirect_to(:controller=>"alimentos_usda",:action=>"index", :notice => 'Alimento USDA excluído.')
     respond_to do |format|
-      format.html { redirect_to(alimentos_url) }
-      format.xml  { head :ok }
+      if @alimento.save
+        format.html { 
+          redirect_to(:controller=>"alimentos_usda",:action=>"index", :notice => 'Alimento USDA excluído.')
+        }
+        format.xml  { render :xml => @alimento, :status => :created, :location => @alimento }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @alimento.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
@@ -88,7 +97,7 @@ class AlimentosUsdaController < ApplicationController
     #@search = Alimento.search(params[:search])
     #@alimentos = Alimento.find(:all, :conditions => ['nome LIKE ? ', '%'+params[:search]+'%'])
     @action_form = params[:action_form]
-    @alimentos = AlimentoUsda.search params[:search], :star => true
+    @alimentos = AlimentoUsda.search params[:search], :with=>{:ativo => [true,:nil]}, :star => true
   end
 
   def importar
@@ -104,11 +113,11 @@ class AlimentosUsdaController < ApplicationController
     end
 
     alimento_usda.componente_usda_alimentos.each do |cusa|
-            @alimento.componente_alimentos.each do |ca|
-              if cusa.componente_usda.nome == ca.componente.nome
-                ca.quantidade = cusa.quantidade
-              end
-            end
+      @alimento.componente_alimentos.each do |ca|
+        if cusa.componente_usda.nome == ca.componente.nome
+          ca.quantidade = cusa.quantidade
+        end
+      end
     end
 
     #redirect_to :controller=>'alimentos',:action=>'edit', :alimento => @alimento
