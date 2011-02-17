@@ -3,8 +3,6 @@ class AlimentosUsdaController < ApplicationController
   # GET /alimentos
   # GET /alimentos.xml
   def index
-    #@alimentos = Alimento.all.sort{|a,b| a.nome <=> b.nome}
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @alimentos }
@@ -82,7 +80,7 @@ class AlimentosUsdaController < ApplicationController
     #redirect_to(:controller=>"alimentos_usda",:action=>"index", :notice => 'Alimento USDA excluído.')
     respond_to do |format|
       if @alimento.save
-        format.html { 
+        format.html {
           redirect_to(:controller=>"alimentos_usda",:action=>"index", :notice => 'Alimento USDA excluído.')
         }
         format.xml  { render :xml => @alimento, :status => :created, :location => @alimento }
@@ -123,7 +121,7 @@ class AlimentosUsdaController < ApplicationController
     #redirect_to :controller=>'alimentos',:action=>'edit', :alimento => @alimento
     render :template => "alimentos/edit"
   end
-  
+
   def list
     @alimentos = AlimentoUsda.all.sort{|a,b| a.nome <=> b.nome}
     #render :action=>"search"

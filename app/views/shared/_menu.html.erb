@@ -35,7 +35,8 @@
         <%unless usuario_logged.nil? && usuario_admin? != 0%>
           <ul>
             <li><%= link_to 'Alimentos',alimentos_path %></li>
-            <li><%= link_to 'Novo Alimento', { :controller => "alimentos",:action => "new" }%></li>
+            <li><%= link_to 'Novo Alimento', new_alimento_path%></li>
+            <li><%= link_to 'Alimentos USDA',{ :controller => "alimentos_usda",:action => "index" }  %></li>
           </ul>
         <%end%>
     </div>
