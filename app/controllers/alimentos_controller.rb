@@ -89,7 +89,9 @@ class AlimentosController < ApplicationController
   # DELETE /alimentos/1.xml
   def destroy
     @alimento = Alimento.find(params[:id])
-    @alimento.destroy
+    @alimento.ativo = false
+    @alimento.save
+    #@alimento.destroy
     respond_to do |format|
       format.html { redirect_to(alimentos_url) }
       format.xml  { head :ok }

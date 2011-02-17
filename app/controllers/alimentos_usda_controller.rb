@@ -123,5 +123,10 @@ class AlimentosUsdaController < ApplicationController
     #redirect_to :controller=>'alimentos',:action=>'edit', :alimento => @alimento
     render :template => "alimentos/edit"
   end
+  
+  def list
+    @alimentos = AlimentoUsda.all.sort{|a,b| a.nome <=> b.nome}
+    #render :action=>"search"
+  end
 end
 

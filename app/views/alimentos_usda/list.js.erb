@@ -1,0 +1,11 @@
+var el = $("#searchResults");
+el.hide('fast',function(){
+	$(el).html("");
+	<%@alimentos.each do |a|%>
+	el.append("<%= escape_javascript( render(:partial => "/alimentos_usda/search_editar", :locals => {:alimento => a}) ) %>");
+	<%end%>
+	$(el).append("<div class=\"clear\"></div>");
+	var parent = $("#searchResults").parent();
+	el.show('fast');
+});
+
