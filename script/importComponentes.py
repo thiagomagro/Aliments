@@ -1,7 +1,7 @@
 import psycopg2
 
 conn = psycopg2.connect("host='74.55.126.83' port='5432' dbname='aliments_db' user='aliments' password='2wY1D9qn3t'")
-conn2 = psycopg2.connect("host='localhost' dbname='aliments_development' user='postgres' password='postgres'")
+conn2 = psycopg2.connect("host='localhost' dbname='aliments_production' user='postgres' password='aliments#diveo'")
 cur = conn.cursor()
 cur2 = conn2.cursor()
 
