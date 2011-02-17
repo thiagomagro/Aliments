@@ -75,7 +75,12 @@ class AlimentosUsdaController < ApplicationController
   # DELETE /alimentos/1.xml
   def destroy
     @alimento = AlimentoUsda.find(params[:id])
-    @alimento.ativo=false
+    if(@alimento.ativo)
+      @alimento.ativo=false
+    else
+      @alimento.ativo=true
+    end
+
     #@alimento.save
     #redirect_to(:controller=>"alimentos_usda",:action=>"index", :notice => 'Alimento USDA excluído.')
     respond_to do |format|
@@ -94,13 +99,17 @@ class AlimentosUsdaController < ApplicationController
   def search
     #@search = Alimento.search(params[:search])
     #@alimentos = Alimento.find(:all, :conditions => ['nome LIKE ? ', '%'+params[:search]+'%'])
+    deleted = params[:deleted]
+    #search = false
     @action_form = params[:action_form]
-    @alimentos = AlimentoUsda.search params[:search], :with=>{:ativo => [true,:nil]}, :star => true
+    @alimentos = AlimentoUsda.search params[:search], :with=>{:ativo => [deleted]}, :star => true
   end
 
   def importar
     @alimento = Alimento.new
     alimento_usda = AlimentoUsda.find(params[:id])
+    alimento_usda.ativo=false
+    alimento_usda.save
     @alimento.nome = alimento_usda.nome
 
     componentes = Componente.where("ativo=?",true).order("ordem ASC")

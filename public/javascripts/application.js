@@ -108,11 +108,11 @@ function buscar_alimento(btn){
 	});
 }
 
-function buscar_alimento_usda(btn){
+function buscar_alimento_usda(btn,deleted){
   var action = $(btn).closest(".helperContainer").find("input[name='action_search']").val();
 	var v = $(btn).parents('.helperContainer').find("input[name='search']").val();
 	$.ajax({
-		url:'/alimentos_usda/search?search='+v+"&action_form="+action,
+		url:'/alimentos_usda/search?search='+v+"&action_form="+action+"&deleted="+deleted,
 		dataType:'script',
 		type:'POST'
 	});
