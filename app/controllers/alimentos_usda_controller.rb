@@ -112,6 +112,7 @@ class AlimentosUsdaController < ApplicationController
     alimento_usda.save
     @alimento.nome = alimento_usda.nome
 
+
     componentes = Componente.where("ativo=?",true).order("ordem ASC")
     componentes.each do |c|
       @alimento.componente_alimentos.build({:componente => c})

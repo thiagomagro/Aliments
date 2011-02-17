@@ -118,6 +118,7 @@ function buscar_alimento_usda(btn,deleted){
 	});
 }
 
+
 /*LIB*/
 jQuery.log = function(message) {
 	try{
