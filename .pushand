@@ -1,2 +1,2 @@
 #! /bin/bash
-phd $0 aliments aliments.com.br
+phd $0 aliments aliments
