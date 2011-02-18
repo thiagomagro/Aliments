@@ -102,7 +102,7 @@ class AlimentosUsdaController < ApplicationController
     deleted = params[:deleted]
     #search = false
     @action_form = params[:action_form]
-    @alimentos = AlimentoUsda.search params[:search], :with=>{:ativo => [deleted]}, :star => true, :max_matches => 1_000, :per_page    => 1_000
+    @alimentos = AlimentoUsda.search params[:search], :with=>{:ativo => deleted}, :star => true, :max_matches => 1_000, :per_page    => 1_000
   end
 
   def importar

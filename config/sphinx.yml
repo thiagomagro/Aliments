@@ -5,6 +5,7 @@ test:
   enable_star: 1
   min_infix_len: 1
 production:
+  bin_path: '/usr/local/bin'
   enable_star: 1
   min_infix_len: 1
 
