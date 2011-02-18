@@ -1,3 +1,3 @@
-pkill searchd
+sudo pkill searchd
 
 

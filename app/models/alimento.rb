@@ -22,6 +22,8 @@ class Alimento < ActiveRecord::Base
   define_index do
     indexes nome
     has ativo
+    set_property :delta => true
   end
+
 end
 
