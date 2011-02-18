@@ -109,6 +109,9 @@ function buscar_alimento(btn){
 }
 
 function buscar_alimento_usda(btn,deleted){
+	if(deleted == null || deleted == 'undefined'){
+		deleted = 1;
+	}
   var action = $(btn).closest(".helperContainer").find("input[name='action_search']").val();
 	var v = $(btn).parents('.helperContainer').find("input[name='search']").val();
 	$.ajax({

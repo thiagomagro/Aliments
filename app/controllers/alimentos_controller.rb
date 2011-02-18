@@ -102,7 +102,7 @@ class AlimentosController < ApplicationController
     #@search = Alimento.search(params[:search])
     #@alimentos = Alimento.find(:all, :conditions => ['nome LIKE ? ', '%'+params[:search]+'%'])
     @action_form = params[:action_form]
-    @alimentos = Alimento.search params[:search], :with=>{:ativo => [true,:nil]}, :star => true
+    @alimentos = Alimento.search params[:search], :with=>{:ativo => [true,:nil]}, :star => true, :max_matches => 1_000, :per_page    => 1_000
   end
 
   def search_form
