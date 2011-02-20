@@ -37,7 +37,8 @@ $(document).ready(function(){
 			e.preventDefault();
 		  if (e.keyCode == 34) return false;
 		});
-	});
+		$(".tooltip").tipTip({});
+});
 
 function trocarMarca(){
 	$.ajax({
@@ -63,6 +64,14 @@ function loadTipoMedidas(el){
 	});
 }
 
+function adicionar_tipo_medida_medidas(el){
+	var op = $("select#select_tipo_medida_medidas").val();
+	$.ajax({
+		url:'/tipo_medidas/add_tipo_medida_medidas/'+op,
+		dataType:'script'
+	});
+}
+
 function deleteAlimentoMedida(btn){
 	if(confirm('Deseja excluir a medida?')){
   		$(btn).parents("div.medida_item").hide('fast').find("input.medidaDestroy").val("1");
@@ -80,6 +89,10 @@ function adicionarGrupo(){
 function deleteAlimentoGrupo(btn){
   $(btn).parents("div.grupo_item").hide('fast').find("input.grupoDestroy").val("1");
 }
+
+function delete_tipo_medida(btn){
+  $(btn).parents(".tipo_medida").hide('fast').find("input.tipo_medida_destroy").val("1");
+} 
 
 function importarMedidas(btn){
 	$.ajax({
@@ -121,6 +134,41 @@ function buscar_alimento_usda(btn,deleted){
 	});
 }
 
+
+function calculaCorrelacao(el){
+    var parent = $(el).parents('.medida_item');
+    var grupos = parent.find("input.medidaTipo");
+    
+    var cor = parent.find("input.correlacao").val();
+    var val = parent.find("input.quantidade").val().replace(",",".");
+    if(cor != "" && cor != 0 && val != "" && val != 0){
+        $(el).parents('form').find('.medida_item').not(parent).each(function(){
+            var innerGrupos = $(this).find("input.medidaTipo");
+            var find = false;
+            innerGrupos.each(function(){
+                var g = $(this);
+                grupos.each(function(){
+                    if($(this).val() == g.val()){
+                        find = true;
+                    }
+                });
+            });
+            if(find){
+                var inp = $(this).find("input.quantidade");
+                var ic = $(this).find("input.correlacao").val();
+                if($.trim(ic) != "" && $.trim(ic) != 0){
+                    if($.trim(inp.val()) == "" || $.trim(inp.val()) == 0){
+                        var ctemp = ((val / cor) * ic).toString();
+                        if(ctemp != 0){
+                            inp.val(ctemp);    
+                        }
+                    //inp.val((val * ic).toString().replace(".",","));
+                    }
+                }
+            }
+        });
+    }
+}
 
 /*LIB*/
 jQuery.log = function(message) {

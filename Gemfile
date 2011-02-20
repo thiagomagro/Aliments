@@ -7,7 +7,7 @@ gem 'rails', '3.0.3'
 
 gem 'pg'
 gem "jquery-rails"
-gem 'thinking-sphinx', '2.0.0', :require => 'thinking_sphinx'
+gem 'sunspot_rails', '>=1.2'
 gem 'whenever', :require => false
 # Use unicorn as the web server
 # gem 'unicorn'

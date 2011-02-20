@@ -57,7 +57,7 @@ class AlimentosController < ApplicationController
   # POST /alimentos.xml
   def create
     @alimento = Alimento.new(params[:alimento])
-
+    @alimento.ativo=true
     respond_to do |format|
       if @alimento.save
         format.html { redirect_to(@alimento, :notice => 'Alimento was successfully created.') }
@@ -73,6 +73,7 @@ class AlimentosController < ApplicationController
   # PUT /alimentos/1.xml
   def update
     @alimento = Alimento.find(params[:id])
+    @alimento.ativo=true
 
     respond_to do |format|
       if @alimento.update_attributes(params[:alimento])
@@ -101,8 +102,12 @@ class AlimentosController < ApplicationController
   def search
     #@search = Alimento.search(params[:search])
     #@alimentos = Alimento.find(:all, :conditions => ['nome LIKE ? ', '%'+params[:search]+'%'])
+    search = Alimento.search() do
+          keywords(params[:search])
+          with(:ativo).equal_to true
+    end
     @action_form = params[:action_form]
-    @alimentos = Alimento.search params[:search], :with=>{:ativo => [true,:nil]}, :star => true, :max_matches => 1_000, :per_page    => 1_000
+    @alimentos = search.results
   end
 
   def search_form

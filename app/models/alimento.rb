@@ -19,10 +19,9 @@ class Alimento < ActiveRecord::Base
   accepts_nested_attributes_for :grupo_alimentos,:allow_destroy => true
   accepts_nested_attributes_for :marca
 
-  define_index do
-    indexes nome
-    has ativo
-    set_property :delta => true
+  searchable do
+      text :nome
+      boolean :ativo, :using => :ativo?
   end
 
 end

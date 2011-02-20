@@ -97,12 +97,17 @@ class AlimentosUsdaController < ApplicationController
   end
 
   def search
-    #@search = Alimento.search(params[:search])
-    #@alimentos = Alimento.find(:all, :conditions => ['nome LIKE ? ', '%'+params[:search]+'%'])
-    deleted = params[:deleted]
-    #search = false
+    ativo = true
+    if(params[:deleted] == "0")
+      ativo = false
+    end
+    search = AlimentoUsda.search() do
+          keywords(params[:search])
+          #with(:nome).starting_with(params[:search])
+          with(:ativo).equal_to ativo
+    end
     @action_form = params[:action_form]
-    @alimentos = AlimentoUsda.search params[:search], :with=>{:ativo => deleted}, :star => true, :max_matches => 1_000, :per_page    => 1_000
+    @alimentos = search.results
   end
 
   def importar
@@ -111,8 +116,7 @@ class AlimentosUsdaController < ApplicationController
     alimento_usda.ativo=false
     alimento_usda.save
     @alimento.nome = alimento_usda.nome
-
-
+    @alimento.porcao = 100
     componentes = Componente.where("ativo=?",true).order("ordem ASC")
     componentes.each do |c|
       @alimento.componente_alimentos.build({:componente => c})

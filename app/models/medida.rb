@@ -5,5 +5,7 @@ class Medida < ActiveRecord::Base
 
   has_many :alimento_medidas, :dependent => :destroy
   has_many :alimentos, :through => :alimento_medidas
+  
+  accepts_nested_attributes_for :medida_tipo_medidas,:allow_destroy => true
 end
 
