@@ -1,0 +1,2 @@
+module MedidasHelper
+end

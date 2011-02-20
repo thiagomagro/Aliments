@@ -1,0 +1,26 @@
+<h1>Nova Medida</h1>
+
+<%= form_for(@medida) do |f| %>
+	<% if @medida.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@medida.errors.count, "error") %> prohibited this medida from being saved:</h2>
+		<ul>
+			<% @medida.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div class="column span-9">
+		<fieldset>
+			<legend>Medida</legend>
+			<p class="highlighter">
+				<%= f.label :nome, :class=>"title"%>
+				<%= f.text_field :nome %>
+			</p>
+		</fieldset>
+	</div>
+	<div class="actions">
+		<%= f.submit "Salvar", :class => "button"%>
+	</div>	
+<%end%>

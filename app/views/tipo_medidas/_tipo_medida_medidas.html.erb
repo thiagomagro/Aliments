@@ -1,0 +1,12 @@
+<%agora=Time.now.to_f  %>
+<div class="clear tipo_medida">
+<p class=" highlighter">
+	<div class="left span-4">
+  		<%=link_to_function (image_tag("delete.png")), 'delete_tipo_medida(this);', :class => "left"%>
+    	<label class="title"><%=mtm.tipo_medida.nome%></label>
+	</div>
+	<%=hidden_field_tag "medida[medida_tipo_medidas_attributes][#{agora}][tipo_medida_id]", mtm.tipo_medida.id,:class=>"tipo_medida_id"%>
+	<%=hidden_field_tag "medida[medida_tipo_medidas_attributes][#{agora}][id]", mtm.id,:class=>"tipo_medida_id"%>	
+	<%=hidden_field_tag "medida[medida_tipo_medidas_attributes][#{agora}][_destroy]", 0,:class=>"tipo_medida_destroy"%>
+</p>
+</div>

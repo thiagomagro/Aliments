@@ -1,0 +1,37 @@
+<h1>Editar</h1>
+<%= form_for(@medida) do |f| %>
+	<% if @medida.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@medida.errors.count, "error") %> prohibited this medida from being saved:</h2>
+		<ul>
+			<% @medida.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div class="column span-9">
+		<fieldset>
+			<legend>Medida</legend>
+			<p class="highlighter">
+				<%= f.label :nome, :class=>"title"%>
+				<%= f.text_field :nome %>
+			</p>
+		</fieldset>
+	</div>
+	<div class="column span-9 last">
+		<fieldset>
+			<legend>Tipos de Medida</legend>
+			Adicionar Grupo: <select name="select_tipo_medida_medidas" id="select_tipo_medida_medidas">
+				<option>Escolha</option>
+				<%= options_from_collection_for_select(getTipoMedidas, :id, :nome) %>
+			</select> <button class="button pp" type="button" onclick="javascript:adicionar_tipo_medida_medidas(this)">Adicionar</button>
+			<div id="medida_tipo_medidas">
+			<%@medida.medida_tipo_medidas.each do |mtm|%>
+				<%=render '/tipo_medidas/tipo_medida_medidas', :mtm => mtm%>
+			<%end%>
+			</div>
+		</fieldset>
+	</div>
+	<%= f.submit "Salvar", :class => "button"%>
+<%end%>

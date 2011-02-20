@@ -1,0 +1,21 @@
+<h1>Tipos de Medidas</h1>
+<%= link_to 'Novo Tipo de Medida', new_tipo_medida_path %>
+<table>
+	<thead>
+		<tr>
+			<td>Tipo de Medida</td>
+			<td>Medidas</td>
+		</tr>
+	</thead>
+<%@tipo_medidas.each do |m|%>
+	<tr>
+		<td><%=m.nome%></td>
+		<td>
+			<%m.medidas.each do |mm|%>
+				<%=mm.nome%>|
+			<%end%>
+		</td>		
+		<td><%= link_to 'Edit', edit_tipo_medida_path(m) %> <%= link_to 'Excluir', tipo_medida_path(m),:method=>:delete,:confirm=>"Deseja excluir o tipo de medida?" %></td>
+	</tr>
+<%end%>
+</table>

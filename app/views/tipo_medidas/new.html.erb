@@ -1,0 +1,26 @@
+<h1>Novo Tipo de Medida</h1>
+
+<%= form_for(@tipo_medida) do |f| %>
+	<% if @tipo_medida.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@tipo_medida.errors.count, "error") %> prohibited this tipo medida from being saved:</h2>
+		<ul>
+			<% @tipo_medida.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div class="column span-9">
+		<fieldset>
+			<legend>Tipo de Medida</legend>
+			<p class="highlighter">
+				<%= f.label :nome, :class=>"title"%>
+				<%= f.text_field :nome %>
+			</p>
+		</fieldset>
+	</div>
+	<div class="actions">
+		<%= f.submit "Salvar", :class => "button"%>
+	</div>	
+<%end%>

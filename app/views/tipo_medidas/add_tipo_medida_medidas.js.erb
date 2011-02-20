@@ -1,0 +1,11 @@
+var div = $("#medida_tipo_medidas");
+var add = true
+div.find(".tipo_medida_id").each(function(){
+	if($(this).val() == "<%=@medida_tipo_medida.tipo_medida.id%>"){
+		add = false
+	}
+});
+
+if(add){
+	$(div).append("<%= escape_javascript( render(:partial => "/tipo_medidas/tipo_medida_medidas", :locals =>{:mtm => @medida_tipo_medida}) ) %>")
+}
