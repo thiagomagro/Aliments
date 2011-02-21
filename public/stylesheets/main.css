@@ -20,6 +20,16 @@ p{
 .cinza1{
 	background-color: #777;
 }
+.cinza2{
+	background-color: #999;
+}
+.cinza3{
+	background-color: #bbb;
+}
+.cinza4{
+	background-color: #eee;
+}
+
 .laranja{
 	background-color: #ff7700;
 }
@@ -37,19 +47,6 @@ p{
 .laranjaClaroGradient{
 	background-color: #ffbb80;
 	border-bottom: 1px solid #fff;
-}
-
-.cinzaEscuro{
-	background-color: #777;
-
-}
-
-.cinzaEscuro{
-	background-color: #bbb;
-}
-
-.cinzaClaro{
-	background-color: #eee;
 }
 
 .cinzaGradient{
@@ -241,8 +238,8 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 /*MENU*/
 #menu{
 	margin:0px;
-	font-size: 180%;
-	padding-top:10px;
+	font-size: 150%;
+	padding-top:5px;
 }
 
 #menu ul{
@@ -259,6 +256,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 	padding-bottom:1px;
 }
 #menu ul li a{
+  /*text-shadow: 0px 1px 2px #666;*/
 	text-decoration: none;
 	color:#fff;
 	padding:7px;
@@ -268,7 +266,8 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 #menu ul li img{
 	display: none;
 	position: absolute;
-	margin-left:20px;
+	margin-left:15px;
+	margin-top:-2px;
 }
 
 #menu ul li a:hover{
@@ -280,6 +279,9 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 #menu ul .active a{
 	background-color: #fff;
 	color:#ff7700;
+  -moz-box-shadow: 0px -1px 2px #555;
+  -webkit-box-shadow: 0px -1px 2px #555;
+  box-shadow: 0px -1px 2px #555;
 	/*    -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;    */
 }
 
@@ -311,7 +313,6 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 #subMenu ul li a:hover{
 	color:#ff7700;
 	font-weight:bold;
-	background-color: #fff;
 
 /*    background-color: #ff9f4c;
 color:#fff;

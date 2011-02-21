@@ -2,29 +2,36 @@
 	<div class="clear container">
     <div id="menu">
       <ul>
-        <li><a href="javascript:void(0)">A Aliments</a></li>
-        <li><a href="javascript:void(0)">Você</a></li>
+        <li><a href="javascript:void(0)">A Aliments</a>
+          <%= image_tag "seta_white_down.gif"%>
+        </li>
+        <li><a href="javascript:void(0)">Você</a>
+          <%= image_tag "seta_white_down.gif"%>
+        </li>
         <%unless usuario_logged.nil?%>
-        <li><a href="javascript:void(0)">Sua Alimentação</a></li>
+        <li><a href="javascript:void(0)">Sua Alimentação</a>
+          <%= image_tag "seta_white_down.gif"%>
+        </li>
         <%end%>
         <%unless usuario_logged.nil? && usuario_admin? != 0%>
-          <li><a href="javascript:void(0)">Gerenciamento</a></li>
+          <li><a href="javascript:void(0)">Gerenciamento</a>
+          <%= image_tag "seta_white_down.gif"%>
+          </li>
         <%end%>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="borderBottomCinza">
+<div class="borderBottomCinza cinza3">
 	<div class="clear container">
     <div class="clear container" id="subMenu">
       <ul>
         <li><a href="" >Quem Somos</a></li>
       </ul>
-
       <ul>
-        <li><%= link_to 'Cadastre-se', new_usuario_path if usuario_logged.nil?%></li>
-        <li><%= link_to 'Minhas informações', edit_usuario_path(usuario_logged) unless usuario_logged.nil?%></li>
+        <li class="usuarios"><%= link_to 'Cadastre-se', new_usuario_path if usuario_logged.nil?%></li>
+        <li class="usuarios"><%= link_to 'Minhas informações', edit_usuario_path(usuario_logged) unless usuario_logged.nil?%></li>
       </ul>
       <%unless usuario_logged.nil?%>
         <ul>
@@ -34,15 +41,27 @@
       <%end%>
         <%unless usuario_logged.nil? && usuario_admin? != 0%>
           <ul>
-            <li><%= link_to 'Alimentos',alimentos_path %></li>
-            <li><%= link_to 'Novo Alimento', new_alimento_path%></li>
-            <li><%= link_to 'Alimentos USDA',{ :controller => "alimentos_usda",:action => "index" }  %></li>
-            <li><%= link_to 'Medidas',medidas_path %></li>
-            <li><%= link_to 'Tipo Medidas',tipo_medidas_path %></li>
+            <li class="alimentos"><%= link_to 'Alimentos',alimentos_path %></li>
+            <li class="alimentos_paths"><%= link_to 'Novo Alimento', new_alimento_path%></li>
+            <li class="alimentos_usda"><%= link_to 'Alimentos USDA',{ :controller => "alimentos_usda",:action => "index" }  %></li>
+            <li class="medidas"><%= link_to 'Medidas',medidas_path %></li>
+            <li class="tipo_medidas"><%= link_to 'Tipo Medidas',tipo_medidas_path %></li>
           </ul>
         <%end%>
     </div>
-
   </div>
 </div>
+<script type="text/javascript">
+  var el = $("#menu");
+  var ind = $("#subMenu li.<%=controller.controller_name %>").parent().index();
+  $.log(ind);
+	var li = el.find("ul li").get(ind);
+	$.log(li);
+	if(li){
+  	setSubMenu(li);
+	}
+
+
+
+</script>
 
