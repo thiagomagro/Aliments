@@ -17,6 +17,14 @@
 				<%= f.label :nome, :class=>"title"%>
 				<%= f.text_field :nome %>
 			</p>
+			<p class="highlighter">
+				<%= f.label :unidade, :class=>"title"%>
+				<%= f.text_field :unidade %>
+			</p>
+			<p class="highlighter">
+				<%= f.label "Correlação", :class=>"title"%>
+				<%= f.text_field :correlacao %>
+			</p>
 		</fieldset>
 	</div>
 	<div class="column span-9 last">
@@ -35,3 +43,4 @@
 	</div>
 	<%= f.submit "Salvar", :class => "button"%>
 <%end%>
+
