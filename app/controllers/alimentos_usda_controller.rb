@@ -137,7 +137,7 @@ class AlimentosUsdaController < ApplicationController
   end
 
   def list
-    @alimentos = AlimentoUsda.all.sort{|a,b| a.nome <=> b.nome}
+    @alimentos = AlimentoUsda.where(:ativo=>true).sort{|a,b| a.nome <=> b.nome}
 
   end
 end
