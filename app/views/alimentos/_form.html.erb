@@ -57,7 +57,10 @@
 			  <div id="search_form"></div>
 			</p>
 			<hr/>
-			<label>Medidas atualmente cadastradas:</label>
+			<div>
+				<%=link_to_function ("Limpar valores"), "limparValores(this,'fieldset','input.quantidade');", :class => "button pp vermelho right"%>
+				<label>Medidas atualmente cadastradas:</label>
+			</div>
 			<hr/>
 			<div id="alimento_medidas">
 				<%= render 'tipo_medidas/tipo_medidas_form' , :alimento => @alimento%>

@@ -3,19 +3,19 @@
     <div id="menu">
       <ul>
         <li><a href="javascript:void(0)">A Aliments</a>
-          <%= image_tag "seta_white_down.gif"%>
+          <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
         </li>
-        <li><a href="javascript:void(0)">Você</a>
-          <%= image_tag "seta_white_down.gif"%>
+        <li><a href="javascript:void(0)"><%= image_tag "icon_novo_usuario.png"%> Você</a>
+          <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
         </li>
         <%unless usuario_logged.nil?%>
         <li><a href="javascript:void(0)">Sua Alimentação</a>
-          <%= image_tag "seta_white_down.gif"%>
+          <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
         </li>
         <%end%>
         <%unless usuario_logged.nil? && usuario_admin? != 0%>
           <li><a href="javascript:void(0)">Gerenciamento</a>
-          <%= image_tag "seta_white_down.gif"%>
+          <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
           </li>
         <%end%>
       </ul>
@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<div class="borderBottomCinza cinza3">
+<div class="borderBottomCinza cinza1">
 	<div class="clear container">
     <div class="clear container" id="subMenu">
       <ul>

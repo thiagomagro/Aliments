@@ -134,7 +134,6 @@ function buscar_alimento_usda(btn,deleted){
 	});
 }
 
-
 function calculaCorrelacao(el){
     var parent = $(el).parents('.medida_item');
     var grupos = parent.find("input.medidaTipo");
@@ -168,6 +167,12 @@ function calculaCorrelacao(el){
             }
         });
     }
+}
+
+function limparValores(btn,parent,el){
+	if(confirm("Limpar os valores dos campos?")){
+		$(btn).parents(parent).find(el).val('');
+	}
 }
 
 /*LIB*/

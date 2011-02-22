@@ -206,8 +206,9 @@ button.pp,a.pp, input.pp{
 }
 
 button:hover, a.button:hover, input.button:hover{
-	background-color: #ddd;
-	color: #333;
+	background-color: #777;
+	color: #eee;
+	border:1px solid #333;
 }
 
 button.verde, a.verde, input.verde{
@@ -258,12 +259,12 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 #menu ul li a{
   /*text-shadow: 0px 1px 2px #666;*/
 	text-decoration: none;
-	color:#fff;
+	color:#555;
 	padding:7px;
 	padding-top:5px;
 }
 
-#menu ul li img{
+#menu ul li img.seta_down{
 	display: none;
 	position: absolute;
 	margin-left:15px;
@@ -272,20 +273,21 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 
 #menu ul li a:hover{
 	background-color: #fff;
-	color: #ffbb80;
+	color: #555;
 	/*    -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;    */
 }
 
 #menu ul .active a{
 	background-color: #fff;
-	color:#ff7700;
-  -moz-box-shadow: 0px -1px 2px #555;
-  -webkit-box-shadow: 0px -1px 2px #555;
-  box-shadow: 0px -1px 2px #555;
+	color:#333;
+	font-weight:bold;
+  -moz-box-shadow: 0px 0px 3px #555;
+  -webkit-box-shadow: 0px 0px 3px #555;
+  box-shadow: 0px 0px 3px #555;
 	/*    -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;    */
 }
 
-#menu ul .active img{
+#menu ul .active img.seta_down{
 	display: block;
 }
 
@@ -305,7 +307,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 
 #subMenu ul li a{
 	text-decoration: none;
-	color: #555;
+	color: #fff;
 	padding:6px;
 
 }

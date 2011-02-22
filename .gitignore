@@ -6,4 +6,4 @@ log/*.pid
 tmp/**/*
 config/database.yml
 db/schema.rb
-db/sphinx/
+solr/**/*
