@@ -1,4 +1,7 @@
-<h1>Editing usuario</h1>
+<h1>
+	<%="Atualizar Informações" unless usuario_logged?%>
+	<%="Novo Usuário" unless not usuario_logged?%>
+</h1>
 
 <%= render 'form' %>
 

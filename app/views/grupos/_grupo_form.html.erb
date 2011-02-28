@@ -5,7 +5,7 @@
     <%=hidden_field_tag "alimento[grupo_alimentos_attributes][#{agora}][grupo_id]", a.grupo.id, :class=>'grupo_alimentos_grupo_id'%>
   	<%=hidden_field_tag "alimento[grupo_alimentos_attributes][#{agora}][_destroy]", 0, :class=>'grupoDestroy'%>
   	<%=link_to_function (image_tag("delete.png")), 'deleteAlimentoGrupo(this);', :class => "left"%>
-    <label for="alimento[grupo_alimentos_attributes][<%=agora%>][porcentagem]" class="title"><%=a.grupo.nome%></labe>
+    <label for="alimento[grupo_alimentos_attributes][<%=agora%>][porcentagem]" class="title"><%=a.grupo.nome%></label>
 	</div>
 	<div class="left span-3">
   <%=text_field_tag "alimento[grupo_alimentos_attributes][#{agora}][porcentagem]",a.porcentagem, :class => "span-2" %>&nbsp;%

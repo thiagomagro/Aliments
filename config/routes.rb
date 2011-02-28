@@ -2,12 +2,13 @@ Aliments::Application.routes.draw do
 #  get "home/index"
   root :to => "home#index"
 
-  resources :alimentos, :alimentos_usda, :usuarios, :sessions, :tipo_medidas, :medidas, :marcas, :grupos
+  resources :alimentos, :alimentos_usda, :usuarios, :sessions, :tipo_medidas, :medidas, :marcas, :grupos, :lugares, :usuario_lugars
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
+  match 'usuarios/lugares/:id' => 'usuarios#lugares'
   match 'tipo_medidas/add_tipo/:id' => 'tipo_medidas#add_tipo'
   match 'tipo_medidas/importar/:id' => 'tipo_medidas#importar'
   match 'tipo_medidas/importar'

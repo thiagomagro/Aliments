@@ -1,0 +1,14 @@
+<%agora=Time.now.to_f  %>
+	<fieldset class="prepend-top">
+		<%=hidden_field_tag "usuario[usuario_lugars_attributes][#{agora}][id]", ul.id, :class=>'usuario_lugar'%>
+		<%=hidden_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar][id]", ul.lugar.id, :class=>'lugar_id'%>
+		<legend>
+			<%="Atualizar Lugar" unless ul.id.nil?%>
+			<%="Novo Lugar" unless not ul.id.nil?%>
+		</legend>
+		<p>
+			<label for="usuario[usuario_lugars_attributes][#{agora}][lugar][nome]" class="title">Nome</label>
+			<%=text_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar][nome]",ul.lugar.nome, :class => "span-2" %>
+		</p>
+
+	</fieldset>

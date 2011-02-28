@@ -1,0 +1,15 @@
+<h1>Meus Lugares</h1>
+<%= form_for(@usuario) do |u| %>
+<div class="">
+	<%="Nenhum lugar cadastrado." unless @usuario.usuario_lugars.size > 0%>
+	<%@usuario.usuario_lugars.each do |ul|%>
+		<div>
+			<%=ul.lugar.nome%> <%=link_to "editar", {:controller => :lugares, :action => :edit, :id => ul.id},:remote=>true,:update=>"lugaresForm",:class=>"button pp"%>
+		</div>
+	<%end%>
+</div>
+	<%=link_to "Adicionar Lugar", "/lugares/new",:update=>"lugaresForm",:method=> :get,:remote => true, :class=>"button pp" %>
+<div id="lugaresForm">
+</div>
+<%= button_for("Salvar", :button_type => "submit") %>
+<%end%>

@@ -13,6 +13,7 @@ img{
 
 p{
   margin-bottom:4px;
+  clear:both;
 }
 /* FIM LAYOUTS DEFAULT*/
 
@@ -116,6 +117,13 @@ label.title{
   background-color:#fff;
   padding:10px;
   border:1px solid #ccc;
+}
+
+.container h1{
+	background-image:url('../images/seta_separador.png');
+	background-repeat:no-repeat;
+	background-position:0px 40px;
+	padding-bottom:15px;
 }
 
 /*FIM LAYOUT SPECIFIC*/

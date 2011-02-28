@@ -83,5 +83,9 @@ class UsuariosController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def lugares
+    @usuario = Usuario.find(params[:id])
+  end
 end
 

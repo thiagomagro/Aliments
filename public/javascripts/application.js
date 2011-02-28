@@ -175,6 +175,10 @@ function limparValores(btn,parent,el){
 	}
 }
 
+function addLugar(btn){
+	var f = $(btn).parents("fieldset").remove();
+}
+
 /*LIB*/
 jQuery.log = function(message) {
 	try{

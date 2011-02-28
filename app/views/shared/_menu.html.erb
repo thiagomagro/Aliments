@@ -2,14 +2,14 @@
 	<div class="clear container">
     <div id="menu">
       <ul>
-        <li><a href="javascript:void(0)">A Aliments</a>
+        <li><a href="javascript:void(0)"><%= image_tag "icon_aliments.png"%>A Aliments</a>
           <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
         </li>
-        <li><a href="javascript:void(0)"><%= image_tag "icon_novo_usuario.png"%> Você</a>
+        <li><a href="javascript:void(0)"><%= image_tag "icon_usuario.png"%>Você</a>
           <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
         </li>
         <%unless usuario_logged.nil?%>
-        <li><a href="javascript:void(0)">Sua Alimentação</a>
+        <li><a href="javascript:void(0)"><%= image_tag "icon_refeicao.png"%>Sua Alimentação</a>
           <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
         </li>
         <%end%>
@@ -32,6 +32,7 @@
       <ul>
         <li class="usuarios"><%= link_to 'Cadastre-se', new_usuario_path if usuario_logged.nil?%></li>
         <li class="usuarios"><%= link_to 'Minhas informações', edit_usuario_path(usuario_logged) unless usuario_logged.nil?%></li>
+        <li class="usuarios"><%= link_to 'Meus Lugares', :controller=>"usuarios",:action=>"lugares",:id=>usuario_logged unless usuario_logged.nil?%></li>
       </ul>
       <%unless usuario_logged.nil?%>
         <ul>
@@ -60,8 +61,5 @@
 	if(li){
   	setSubMenu(li);
 	}
-
-
-
 </script>
 
