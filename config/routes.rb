@@ -19,7 +19,8 @@ Aliments::Application.routes.draw do
 
   match 'alimentos/search'
   match 'alimentos/search_form', :via => [:get, :post]
-
+  match 'alimentos/list', :via => [:get, :post]
+  
   match 'alimentos_usda/search'
   match 'alimentos_usda/search_form', :via => [:get, :post]
   match 'alimentos_usda/importar'

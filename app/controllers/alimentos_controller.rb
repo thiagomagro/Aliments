@@ -116,5 +116,13 @@ class AlimentosController < ApplicationController
       format.js # this renders your rjs file
     end
   end
+  
+  def list
+    ativo = true
+    if(params[:ativo] == "false")
+      ativo = false
+    end
+    @alimentos = Alimento.where(:ativo=>ativo).sort{|a,b| a.nome <=> b.nome}
+  end
 end
 

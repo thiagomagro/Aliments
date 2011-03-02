@@ -1,6 +1,9 @@
 <div class="helperContainer">
     <input type="hidden" name="action_search" value="<%=action_form%>"/>
     Buscar alimentos: <input type="text" name="search" onKeyPress="enter_action(event,'buscar_alimento',this)" class="enter_disable"/> <button type="button" onclick="buscar_alimento(this)" class="button pp	">Buscar</button>
-  <div id="searchResults" class="helperBox hide"></div>
+
+	<br/>ou busque <%=link_to "Todos",{:controller=>"alimentos",:action=>"list"},:method => :post%> os alimentos, ou em todos os <a href="/alimentos/list?ativo=false" data-method="post">Excluídos</a>
+	
+  <table id="searchResults" class="hide"></table>
 </div>
 

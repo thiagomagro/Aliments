@@ -137,8 +137,12 @@ class AlimentosUsdaController < ApplicationController
   end
 
   def list
-    @alimentos = AlimentoUsda.where(:ativo=>true).sort{|a,b| a.nome <=> b.nome}
-
+    ativo = true
+    if(params[:ativo] == "false")
+      ativo = false
+    end
+    @alimentos = AlimentoUsda.where(:ativo=>ativo).sort{|a,b| a.nome <=> b.nome}
   end
+
 end
 

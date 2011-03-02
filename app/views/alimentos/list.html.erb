@@ -1,8 +1,8 @@
-<h1>Todos USDA</h1>
+<h1>Todos Base de dados Aliments</h1>
 <div class="helperContainer">
   <table id="searchResults">
     <%@alimentos.each do |a|%>
-      <%= render "/alimentos_usda/search_editar",:alimento => a%>
+      <%= render "/alimentos/search_editar",:alimento => a%>
     <%end%>
   </table>
 
