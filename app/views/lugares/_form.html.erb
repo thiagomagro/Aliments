@@ -25,7 +25,7 @@
 			</div>
 			<div class="column span-4 last">
 				<label for="usuario[usuario_lugars_attributes][<%=agora%>][lugar_attributes][cep]" class="title">CEP</label>
-				<%=text_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar_attributes][cep]",ul.lugar.cep, :class => "span-3" %>
+				<%=text_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar_attributes][cep]",(sprintf '%08d', ul.lugar.cep unless (ul.lugar.cep.nil? || ul.lugar.cep==0)), :class => "span-3" %>
 			</div>
 		</p>
 		<p>

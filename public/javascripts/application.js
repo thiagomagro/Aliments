@@ -92,7 +92,16 @@ function deleteAlimentoGrupo(btn){
 
 function delete_tipo_medida(btn){
   $(btn).parents(".tipo_medida").hide('fast').find("input.tipo_medida_destroy").val("1");
-} 
+}
+
+function delete_item(btn,parent,input,msg){
+	if(msg){
+		if(!confirm(msg)){
+			return;
+		}
+	}
+  $(btn).parents(parent).hide('fast').find(input).val("1");
+}
 
 function importarMedidas(btn){
 	$.ajax({

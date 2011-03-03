@@ -3,13 +3,28 @@
 <div class="">
 	<%="Nenhum lugar cadastrado." unless @usuario.usuario_lugars.size > 0%>
 	<%@usuario.usuario_lugars.each do |ul|%>
-		<div>
-			<%=ul.lugar.nome%> <%=link_to "editar", {:controller => :lugares, :action => :edit, :id => ul.id},:remote=>true,:update=>"lugaresForm",:class=>"button pp"%>
+		<%agora=Time.now.to_f  %>
+		<div class="clear lugar_item">
+			<%=hidden_field_tag "usuario[usuario_lugars_attributes][#{agora}][id]", ul.id, :class=>'usuario_lugar'%>
+			<%=hidden_field_tag "usuario[usuario_lugars_attributes][#{agora}][_destroy]", 0, :class=>'usuario_lugar_destroy'%>
+			<div class="column span-8">
+				<%=image_tag("icon_house.png")%>
+				<span class="large"><%=ul.lugar.nome%> </span>
+			</div>
+			<div class="column spam-4 last">
+				<%=link_to "editar", {:controller => :lugares, :action => :edit, :id => ul.id},:remote=>true,:update=>"lugaresForm",:class=>"button pp"%>
+				<%=link_to_function (image_tag("delete.png")), "delete_item(this,'div.lugar_item','input.usuario_lugar_destroy','Deseja excluir o lugar?');", :class => ""%>
+			</div>
+			<hr class="span-10"/>
 		</div>
 	<%end%>
 </div>
-	<%=link_to "Adicionar Lugar", "/lugares/new",:update=>"lugaresForm",:method=> :get,:remote => true, :class=>"button pp" %>
+<div class="clear">
+<%=link_to "/lugares/new",:update=>"lugaresForm",:method=> :get,:remote => true, :class=>"button verde" do%>
+<%=image_tag("icon_add_house.png")%> Adicione um Lugar
+<%end%>
+</div>
 <div id="lugaresForm">
 </div>
-<%= button_for("Salvar", :button_type => "submit") %>
+<%= button_for("Salvar", :button_type => "submit",:class=>"prepend-top") %>
 <%end%>
