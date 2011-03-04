@@ -1,7 +1,8 @@
+<%agora=Time.now.to_f  %>
 <div class="clear">
-	<div class="left span-4"><%=f.label f.object.componente.nome, :class=>"title"%></div>
-	<%=f.hidden_field :componente_id,{:value => f.object.componente.id}%>
-	<div class="left span-3"><%= f.text_field :quantidade, :class => "span-2"%>&nbsp;<%=f.object.componente.unidade%></div>
+	<div class="left span-4"><label class="title"><%=ca.componente.nome%></label></div>
+	<%=hidden_field_tag "alimento[componente_alimentos_attributes][#{agora}][componente_id]", ca.componente.id,:class=>"componente_id"%>
+	<div class="left span-3"><%= text_field_tag "alimento[componente_alimentos_attributes][#{agora}][quantidade]",ca.quantidade, :class => "span-2"%>&nbsp;<%=ca.componente.unidade%></div>
 	<div class="clear"></div>
 </div>
 <hr/>

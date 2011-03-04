@@ -123,15 +123,20 @@ class AlimentosUsdaController < ApplicationController
       #ca = ComponenteAlimento.new(:componente => c)
       #@alimento.componente_alimentos.push(ca)
     end
-
+    kcal=0
+    kj=0
     alimento_usda.componente_usda_alimentos.each do |cusa|
       @alimento.componente_alimentos.each do |ca|
         if cusa.componente_usda.nome == ca.componente.nome
           ca.quantidade = cusa.quantidade
         end
+        if ca.componente.id==208
+          kcal=ca.quantidade
+        end
       end
     end
-
+    comp_kj = @alimento.componente_alimentos.detect{|ca| ca.componente.id == 268}
+    comp_kj.quantidade = (kcal * 4.19)
     #redirect_to :controller=>'alimentos',:action=>'edit', :alimento => @alimento
     render :template => "alimentos/edit"
   end

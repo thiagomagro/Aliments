@@ -45,9 +45,13 @@ class AlimentosController < ApplicationController
   # GET /alimentos/1/edit
   def edit
     @alimento = Alimento.find(params[:id])
-    @alimento.componente_alimentos.sort!{|a,b|
-      a.componente.nome <=> b.componente.nome
-    }
+    #@alimento.componente_alimentos.each do |ca|
+    #  ca.componente.ordem = 100 unless not ca.componente.ordem.nil?
+    #end
+    #.sort!{|a,b|
+    #  a.componente.ordem <=> b.componente.ordem unless (a.componente.ordem.nil? || b.componente.ordem.nil?)
+    #}
+    @alimento.componente_alimentos = @alimento.componente_alimentos.sort_by{|a| a.id}.reverse
     @alimento.alimento_medidas.sort!{|a,b|
       a.medida.nome <=> b.medida.nome
     }

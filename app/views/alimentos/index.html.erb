@@ -1,4 +1,5 @@
 <h1>Listar Alimentos</h1>
   <%=render :partial => "search_form", :locals => {:action_form => "editar"}%>
+	ou busque <%=link_to "Todos",{:controller=>"alimentos",:action=>"list"},:method => :post%> os alimentos, ou em todos os <a href="/alimentos/list?ativo=false" data-method="post">Excluídos</a>
 <br />
 <%= link_to 'New Alimento', new_alimento_path %>

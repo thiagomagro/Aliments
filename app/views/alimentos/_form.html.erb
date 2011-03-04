@@ -75,8 +75,8 @@
 				<%= f.text_field :porcao, :class => "span-2"%> &nbsp; g
 			</p>
 			<hr/>
-			<% f.fields_for :componente_alimentos do |ca|%>
-			<%= render '/alimentos/componente_alimento_form', :f => ca unless !ca.object.componente.ativo?%>
+				<% @alimento.componente_alimentos.sort_by{|c| "#{c.componente.ordem ? c.componente.ordem : 100}".to_i } .each do |ca|%>
+			<%= render '/alimentos/componente_alimento_form', :ca => ca unless !ca.componente.ativo?%>
 			<%end%>
 		</fieldset>
 	</div>
