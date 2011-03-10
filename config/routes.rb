@@ -7,8 +7,10 @@ Aliments::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  # Sample of regular route:
-  match 'usuarios/lugares/:id' => 'usuarios#lugares'
+  # Sample of regular route:  
+  match 'usuarios/lugares/:id' => 'usuarios#lugares'  
+  match 'usuarios/lugares', :via => [:get, :post]
+  match 'usuarios/update_lugares/:id' => 'usuarios#update_lugares'
   match 'tipo_medidas/add_tipo/:id' => 'tipo_medidas#add_tipo'
   match 'tipo_medidas/importar/:id' => 'tipo_medidas#importar'
   match 'tipo_medidas/importar'

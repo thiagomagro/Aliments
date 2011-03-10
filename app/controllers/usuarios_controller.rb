@@ -1,4 +1,6 @@
 class UsuariosController < ApplicationController
+  include ApplicationHelper
+  
   before_filter :authenticate, :except => [:new,:create]
   # GET /usuarios
   # GET /usuarios.xml
@@ -85,7 +87,22 @@ class UsuariosController < ApplicationController
   end
   
   def lugares
+    if(params[:id])
+      @usuario = Usuario.find(params[:id])
+    else
+      @usuario = usuario_logged
+    end
+  end
+  
+  
+  def update_lugares
     @usuario = Usuario.find(params[:id])
+    if @usuario.update_attributes(params[:usuario])
+      render "lugares"
+    else
+      render "lugares"
+    end
+    
   end
 end
 

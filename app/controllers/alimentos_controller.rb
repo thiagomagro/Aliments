@@ -128,5 +128,6 @@ class AlimentosController < ApplicationController
     end
     @alimentos = Alimento.where(:ativo=>ativo).sort{|a,b| a.nome <=> b.nome}
   end
+
 end
 

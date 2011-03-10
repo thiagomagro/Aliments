@@ -1,1 +1,5 @@
-alert('teste')
+$("#lugar_<%=@usuario_lugar.id%>").hide().html("<%= escape_javascript( render(:partial => "/lugares/lugar_form", :locals => {:ul => @usuario_lugar})) %>").show("fast");
+$("#lugaresForm").html("");
+<%@usuario_lugar.errors.each do |er|%>
+alert("<%=er%>");
+<%end%>

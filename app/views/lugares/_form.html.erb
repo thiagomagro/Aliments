@@ -1,45 +1,49 @@
 <%agora=Time.now.to_f  %>
+<%=form_for @usuario_lugar,:remote=>"true" do%>
 	<fieldset class="prepend-top">
-		<%=hidden_field_tag "usuario[usuario_lugars_attributes][#{agora}][id]", ul.id, :class=>'usuario_lugar'%>
-		<%=hidden_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar_id]", ul.lugar.id, :class=>'lugar_id'%>
+		<%=hidden_field_tag "id", ul.id, :class=>'usuario_lugar'%>
+		<%=hidden_field_tag "usuario_lugar[lugar_id]", ul.lugar.id, :class=>'lugar_id'%>
+		<%=hidden_field_tag "usuario_lugar[usuario_id]", ul.usuario.id, :class=>'lugar_usuario_id'%>
 		<legend>
 			<%="Atualizar Lugar" unless ul.id.nil?%>
 			<%="Novo Lugar" unless not ul.id.nil?%>
 		</legend>
 		<p>
-			<label for="usuario[usuario_lugars_attributes][<%=agora%>][lugar_attributes][nome]" class="title">Nome</label>
-			<%=text_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar_attributes][nome]",ul.lugar.nome, :class => "span-10" %>
+			<label for="usuario_lugar[lugar_attributes][nome]" class="title">Nome</label>
+			<%=text_field_tag "usuario_lugar[lugar_attributes][nome]",ul.lugar.nome, :class => "span-10" %>
 		</p>
 		<p>
-			<label for="usuario[usuario_lugars_attributes][<%=agora%>][lugar_attributes][endereco]" class="title">Endereço</label>
-			<%=text_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar_attributes][endereco]",ul.lugar.endereco, :class => "span-10" %>
+			<label for="usuario_lugar[lugar_attributes][endereco]" class="title">Endereço</label>
+			<%=text_field_tag "usuario_lugar[lugar_attributes][endereco]",ul.lugar.endereco, :class => "span-10" %>
 		</p>
 		<p>
 			<div class="column span-3">
-				<label for="usuario[usuario_lugars_attributes][<%=agora%>][lugar_attributes][numero]" class="title">Número</label>
-				<%=text_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar_attributes][numero]",ul.lugar.numero, :class => "span-2" %>
+				<label for="usuario_lugar[lugar_attributes][numero]" class="title">Número</label>
+				<%=text_field_tag "usuario_lugar[lugar_attributes][numero]",ul.lugar.numero, :class => "span-2" %>
 			</div>
 			<div class="column span-5">
-				<label for="usuario[usuario_lugars_attributes][<%=agora%>][lugar_attributes][complemento]" class="title">Complemento</label>
-				<%=text_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar_attributes][complemento]",ul.lugar.complemento, :class => "span-4" %>
+				<label for="usuario_lugar[lugar_attributes][complemento]" class="title">Complemento</label>
+				<%=text_field_tag "usuario_lugar[lugar_attributes][complemento]",ul.lugar.complemento, :class => "span-4" %>
 			</div>
 			<div class="column span-4 last">
-				<label for="usuario[usuario_lugars_attributes][<%=agora%>][lugar_attributes][cep]" class="title">CEP</label>
-				<%=text_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar_attributes][cep]",(sprintf '%08d', ul.lugar.cep unless (ul.lugar.cep.nil? || ul.lugar.cep==0)), :class => "span-3" %>
+				<label for="usuario_lugar[lugar_attributes][cep]" class="title">CEP</label>
+				<%=text_field_tag "usuario_lugar[lugar_attributes][cep]",(sprintf '%08d', ul.lugar.cep unless (ul.lugar.cep.nil? || ul.lugar.cep==0)), :class => "span-3" %>
 			</div>
 		</p>
 		<p>
 			<div class="column span-4 last">
-				<label for="usuario[usuario_lugars_attributes][<%=agora%>][lugar_attributes][bairro]" class="title">Bairro</label>
-				<%=text_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar_attributes][bairro]",ul.lugar.bairro, :class => "span-3" %>
+				<label for="usuario_lugars[lugar_attributes][bairro]" class="title">Bairro</label>
+				<%=text_field_tag "usuario_lugar[lugar_attributes][bairro]",ul.lugar.bairro, :class => "span-3" %>
 			</div>
 			<div class="column span-5">
-				<label for="usuario[usuario_lugars_attributes][<%=agora%>][lugar_attributes][cidade]" class="title">Cidade</label>
-				<%=text_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar_attributes][cidade]",ul.lugar.cidade, :class => "span-4" %>
+				<label for="usuario_lugar[lugar_attributes][cidade]" class="title">Cidade</label>
+				<%=text_field_tag "usuario_lugar[lugar_attributes][cidade]",ul.lugar.cidade, :class => "span-4" %>
 			</div>
 			<div class="column span-4">
-				<label for="usuario[usuario_lugars_attributes][<%=agora%>][lugar_attributes][estado]" class="title">Estado</label>
-				<%=text_field_tag "usuario[usuario_lugars_attributes][#{agora}][lugar_attributes][estado]",ul.lugar.estado, :class => "span-3" %>
+				<label for="usuario_lugar[lugar_attributes][estado]" class="title">Estado</label>
+				<%=text_field_tag "usuario_lugar[lugar_attributes][estado]",ul.lugar.estado, :class => "span-3" %>
 			</div>
 		</p>
 	</fieldset>
+	<%= button_for("Salvar", :button_type => "submit",:class=>"prepend-top") %>
+<%end%>

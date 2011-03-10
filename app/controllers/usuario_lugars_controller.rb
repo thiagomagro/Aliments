@@ -13,8 +13,12 @@ class UsuarioLugarsController < ApplicationController
   
   def update
     @usuario_lugar = UsuarioLugar.find(params[:id])
-    if @usuario.update_attributes(params[:usuario_lugar])
+    if @usuario_lugar.update_attributes(params[:usuario_lugar])
       flash[:notice] = "Lugar atualizado"
     end
+    #redirect_to :controller=>"usuarios",:action=>"lugares",:id=>@usuario_lugar.usuario.id
+    #render "/usuarios/"
+    #render :template => "/usuarios/lugares"    
+    #redirect_to "/usuarios/lugares"
   end
 end

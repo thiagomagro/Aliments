@@ -1,0 +1,20 @@
+<%agora=Time.now.to_f  %>
+<div id="lugar_<%=ul.id%>" class="clear lugar_item">
+  <%=hidden_field_tag "usuario[usuario_lugars_attributes][#{agora}][id]", ul.id, :class=>'usuario_lugar'%>
+  <%=hidden_field_tag "usuario[usuario_lugars_attributes][#{agora}][_destroy]", 0, :class=>'usuario_lugar_destroy'%>
+  <div class="column span-8">
+    <div class="left">
+      <%=image_tag("icon_house.png")%>
+    </div>
+    <div class="left">
+      <span class="title"><%=ul.lugar.nome%> </span><br/>
+      <%=ul.lugar.endereco%>, n. <%=ul.lugar.numero%>, <%=ul.lugar.complemento%> - CEP <%=ul.lugar.cep%><br/>
+      <%=ul.lugar.bairro%> <%=ul.lugar.cidade%> <%=ul.lugar.estado%>
+    </div>
+  </div>
+  <div class="column spam-4 last">
+    <%=link_to "editar", {:controller => :usuario_lugars, :action => :edit, :id => ul.id},:remote=>true,:update=>"lugaresForm",:class=>"button pp"%>
+    <%=link_to_function (image_tag("delete.png")), "delete_item(this,'div.lugar_item','input.usuario_lugar_destroy','Deseja excluir o lugar?');", :class => ""%>
+  </div>
+  <hr class="span-10"/>
+</div>
