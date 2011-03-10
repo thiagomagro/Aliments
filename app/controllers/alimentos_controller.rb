@@ -55,6 +55,19 @@ class AlimentosController < ApplicationController
     @alimento.alimento_medidas.sort!{|a,b|
       a.medida.nome <=> b.medida.nome
     }
+    
+=begin
+      @remove = []
+      over = []      
+      @alimento.componente_alimentos.each do |ca|
+        if(over.index(ca.componente.id).nil?)
+          over << ca.componente.id
+        else
+          @remove << ca
+        end
+      end
+=end
+    
   end
 
   # POST /alimentos
@@ -127,6 +140,21 @@ class AlimentosController < ApplicationController
       ativo = false
     end
     @alimentos = Alimento.where(:ativo=>ativo).sort{|a,b| a.nome <=> b.nome}
+    @alimentos.each do |a|
+      remove = []
+      over = []      
+      a.componente_alimentos.each do |ca|
+        if(over.index(ca.componente.id).nil?)
+          over << ca.componente.id
+        else
+          remove << ca.id
+        end
+      end
+      remove.each do |r|
+        ComponenteAlimento.find(r).destroy
+      end
+    end
+    
   end
 
 end
