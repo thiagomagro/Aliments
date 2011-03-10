@@ -1,6 +1,7 @@
 <%agora=Time.now.to_f  %>
 <div class="clear">
 	<div class="left span-4"><label class="title"><%=ca.componente.nome%></label></div>
+  <%=hidden_field_tag "alimento[componente_alimentos_attributes][#{agora}][id]", ca.id,:class=>"componente_alimento_id"%>  
 	<%=hidden_field_tag "alimento[componente_alimentos_attributes][#{agora}][componente_id]", ca.componente.id,:class=>"componente_id"%>
 	<div class="left span-3"><%= text_field_tag "alimento[componente_alimentos_attributes][#{agora}][quantidade]",ca.quantidade, :class => "span-2"%>&nbsp;<%=ca.componente.unidade%></div>
 	<div class="clear"></div>

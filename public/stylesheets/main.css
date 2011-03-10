@@ -15,6 +15,11 @@ p{
   margin-bottom:4px;
   clear:both;
 }
+
+p.error{
+  display:block;
+  float:none;
+}
 /* FIM LAYOUTS DEFAULT*/
 
 /* CORES */
@@ -109,6 +114,10 @@ label{
 
 label.inline{
 	display:inline;
+}
+
+.errorMsg{
+  display:block;
 }
 /*FIM FORMS*/
 

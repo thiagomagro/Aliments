@@ -1,5 +1,11 @@
 class UsuarioLugarsController < ApplicationController
   def create
+    @usuario_lugar = UsuarioLugar.new(params[:usuario_lugar])
+    if @usuario_lugar.save
+      flash[:notice] = "Lugar criado com sucesso"
+    else
+      flash[:notice] = "Erro na validação dos dados"
+    end
   end
   
   def new

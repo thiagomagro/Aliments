@@ -1,5 +1,9 @@
-$("#lugar_<%=@usuario_lugar.id%>").hide().html("<%= escape_javascript( render(:partial => "/lugares/lugar_form", :locals => {:ul => @usuario_lugar})) %>").show("fast");
-$("#lugaresForm").html("");
-<%@usuario_lugar.errors.each do |er|%>
-alert("<%=er%>");
+<%=render "/shared/validation", :form=>"form.edit_usuario_lugar", :obj=>@usuario_lugar if @usuario_lugar.errors %>
+
+<%if @usuario_lugar.errors.size <= 0%>
+  $("#lugar_<%=@usuario_lugar.id%>").hide().html("<%= escape_javascript( render(:partial => "/lugares/lugar_form", :locals => {:ul => @usuario_lugar})) %>").show("fast");
+  $("#lugares_form").html("");
+  <%@usuario_lugar.errors.each do |er|%>
+    alert("<%=er%>");
+  <%end%>
 <%end%>

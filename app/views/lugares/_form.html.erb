@@ -8,38 +8,40 @@
 			<%="Atualizar Lugar" unless ul.id.nil?%>
 			<%="Novo Lugar" unless not ul.id.nil?%>
 		</legend>
-		<p>
+		<p class="lugarnome">
 			<label for="usuario_lugar[lugar_attributes][nome]" class="title">Nome</label>
 			<%=text_field_tag "usuario_lugar[lugar_attributes][nome]",ul.lugar.nome, :class => "span-10" %>
-		</p>
-		<p>
+      <label>Nome do lugar a ser cadastrado (ex:Minha Casa, Escritório)</label>
+    </p>
+		<p class="lugarendereco">
 			<label for="usuario_lugar[lugar_attributes][endereco]" class="title">Endereço</label>
-			<%=text_field_tag "usuario_lugar[lugar_attributes][endereco]",ul.lugar.endereco, :class => "span-10" %>
+			<%=text_field_tag "usuario_lugar[lugar_attributes][endereco]",ul.lugar.endereco, :class => "span-10 last" %>
+      <label>Endereço do Lugar (ex: Av. Paulista)
 		</p>
 		<p>
-			<div class="column span-3">
+			<div class="column span-3 lugarnumero">
 				<label for="usuario_lugar[lugar_attributes][numero]" class="title">Número</label>
 				<%=text_field_tag "usuario_lugar[lugar_attributes][numero]",ul.lugar.numero, :class => "span-2" %>
 			</div>
-			<div class="column span-5">
+			<div class="column span-5 lugarcomplemento">
 				<label for="usuario_lugar[lugar_attributes][complemento]" class="title">Complemento</label>
 				<%=text_field_tag "usuario_lugar[lugar_attributes][complemento]",ul.lugar.complemento, :class => "span-4" %>
 			</div>
-			<div class="column span-4 last">
+			<div class="column span-4 last lugarcep">
 				<label for="usuario_lugar[lugar_attributes][cep]" class="title">CEP</label>
 				<%=text_field_tag "usuario_lugar[lugar_attributes][cep]",(sprintf '%08d', ul.lugar.cep unless (ul.lugar.cep.nil? || ul.lugar.cep==0)), :class => "span-3" %>
 			</div>
 		</p>
 		<p>
-			<div class="column span-4 last">
+			<div class="column span-4 last lugarbairro">
 				<label for="usuario_lugars[lugar_attributes][bairro]" class="title">Bairro</label>
 				<%=text_field_tag "usuario_lugar[lugar_attributes][bairro]",ul.lugar.bairro, :class => "span-3" %>
 			</div>
-			<div class="column span-5">
+			<div class="column span-5 lugarcidade">
 				<label for="usuario_lugar[lugar_attributes][cidade]" class="title">Cidade</label>
 				<%=text_field_tag "usuario_lugar[lugar_attributes][cidade]",ul.lugar.cidade, :class => "span-4" %>
 			</div>
-			<div class="column span-4">
+			<div class="column span-4 lugarestado">
 				<label for="usuario_lugar[lugar_attributes][estado]" class="title">Estado</label>
 				<%=text_field_tag "usuario_lugar[lugar_attributes][estado]",ul.lugar.estado, :class => "span-3" %>
 			</div>

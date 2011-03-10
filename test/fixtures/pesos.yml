@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  peso: 1.5
+  data: 2011-03-10
+  usuario_id: 1
+
+two:
+  peso: 1.5
+  data: 2011-03-10
+  usuario_id: 1

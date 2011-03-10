@@ -1,49 +1,57 @@
 <%= form_for(@usuario) do |f| %>
-<% if @usuario.errors.any? %>
-<div id="error_explanation">
-	<h2><%= pluralize(@usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
-	<ul>
-		<% @usuario.errors.full_messages.each do |msg| %>
-		<li><%= msg %></li>
-		<% end %>
-	</ul>
-</div>
-<% end %>
 <div class="column span-9">
-	<p class="highlighter">
-		<%= f.label :nome,:class=>"title"%>
+<div class="<%="error" if @usuario.errors.on(:nome)%>">
+    <%= f.label :nome,:class=>"title"%>
 		<%= f.text_field :nome %>
-	</p>
-	<p class="highlighter">
+    <span class="errorMsg"><%=@usuario.errors.on(:nome)%></span>
+  </div>
+  
+  <div class="<%="error" if @usuario.errors.on(:email)%>">
 		<%= f.label :email,:class=>"title" %>
 		<%= f.text_field :email %>
-	</p>
-	<p class="highlighter">
+    <span class="errorMsg"><%=@usuario.errors.on(:email)%></span>
+  </div>
+  <div class="highlighter <%="error" if @usuario.errors.on(:login)%>">
 		<%= f.label :login,:class=>"title" %>
 		<%= f.text_field :login %>
-	</p>
-	<p class="highlighter">
+    <span class="errorMsg"><%=@usuario.errors.on(:login)%></span>
+  </div>
+  <div class="<%="error" if @usuario.errors.on(:senha)%>">
 		<%= f.label :senha,:class=>"title" %>
 		<%= f.password_field :senha %>
-	</p>
+    <span class="errorMsg"><%=@usuario.errors.on(:senha)%></span>
+  </div>
 </div>
 <div class="column span-9 last">
-<p>
-	<%= f.label :nascimento,:class=>"title" %>
-	<%= f.date_select :nascimento %>
-</p>
-<p class="highlighter" >
-	<%=f.label :sexo,:class=>"title"%>
-	<%= f.radio_button :sexo,true %> <%= label_tag(:sexo, "Masculino",:class=>"inline") %>
-	<%= f.radio_button :sexo,false %> <%= label_tag(:sexo, "Feminino",:class=>"inline") %>
-</p>
+  <div class="highlighter <%="error" if @usuario.errors.on(:pesos)%>">
+    <%= f.label :peso,:class=>"title" %>
+  	<%= text_field_tag "peso_novo",(@usuario.peso.peso unless @usuario.peso.nil?), :class=>"span-2" %>
+    <span class="errorMsg"><%=@usuario.errors.on(:altura)%></span>
+  </div>
+  <div class="highlighter <%="error" if @usuario.errors.on(:altura)%>">
+    <%= f.label :altura,:class=>"title" %>
+  	<%= f.text_field :altura, :class=>"span-2" %>
+    <span class="errorMsg"><%=@usuario.errors.on(:altura)%></span>
+  </div>  
+  <div class="<%="error" if @usuario.errors.on(:sexo)%>">
+  	<%= f.label :nascimento,:class=>"title" %>
+  	<%= f.date_select :nascimento %>
+    <span class="errorMsg"><%=@usuario.errors.on(:nascimento)%></span>
+  </div>
+  <div class="<%="error" if @usuario.errors.on(:sexo)%>" >
+    <%=f.label :sexo,:class=>"title"%>
+  	<%= f.radio_button :sexo,true %> <%= label_tag(:sexo, "Masculino",:class=>"inline") %>
+  	<%= f.radio_button :sexo,false %> <%= label_tag(:sexo, "Feminino",:class=>"inline") %>
+    <span class="errorMsg"><%=@usuario.errors.on(:sexo)%></span>
+  </div>
 
-<p class="highlighter">
-	<%=f.label :perfil,:class=>"title"%>
-	<%= f.select(:perfil_id, Perfil.find(:all).collect {|p| [ p.nome, p.id ] },{ :include_blank => true })%>
-</p>
+  <div class="<%="error" if @usuario.errors.on(:perfil)%>">
+    <%=f.label :perfil,:class=>"title"%>
+  	<%= f.select(:perfil_id, Perfil.find(:all).collect {|p| [ p.nome, p.id ] },{ :include_blank => true })%>
+    <span class="errorMsg"><%=@usuario.errors.on(:perfil)%></span>
+  </div>
 </div>
-<div class="actions">
+<div class="actions clear">
 	<%= f.submit "Cadastrar", :class => "button"%>
 </div>
 <% end %>

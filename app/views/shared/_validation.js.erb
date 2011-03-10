@@ -1,0 +1,14 @@
+$("<%=form%>").find(".error").removeClass("error");
+  var obj;
+  var error;
+<%obj.errors.each do |key,er|%>
+  obj = $(".<%=key.to_s.gsub('.','')%>","<%=form%>");
+  obj.addClass("error");
+  error = obj.find("span.errorMsg");
+  if(error == null || error.length <= 0){
+    error = document.createElement("span");
+    $(error).addClass("errorMsg");
+    obj.append(error);
+  }
+  $(error).html("<%=er%>");
+<%end%>

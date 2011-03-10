@@ -1,1 +1,8 @@
-alert("New");
+<%=render "/shared/validation", :form=>"#new_usuario_lugar", :obj=>@usuario_lugar if @usuario_lugar.errors %>
+
+<%if @usuario_lugar.errors.size <= 0%>
+  $("#lugares_list").append("<%= escape_javascript( render(:partial => "/lugares/lugar_form", :locals => {:ul => @usuario_lugar})) %>").find("div.no_result").remove();
+  $("#lugares_form").hide("fast",function(){
+    $(this).html("");
+  });
+<%end%>

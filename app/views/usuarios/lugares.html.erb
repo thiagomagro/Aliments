@@ -1,15 +1,16 @@
 <h1>Meus Lugares</h1>
-<div class="">
-	<%="Nenhum lugar cadastrado." unless @usuario.usuario_lugars.size > 0%>
+<div id="lugares_list">
+  <%if @usuario.usuario_lugars.size <= 0%>
+    <div class="no_result">Não existem lugares cadastrados</div>
+  <%end%>
 	<%@usuario.usuario_lugars.each do |ul|%>
     <%=render "/lugares/lugar_form",:ul=>ul%>
 	<%end%>
 </div>
-<div id="lugaresForm" class="clear">
+<div id="lugares_form" class="clear">
 </div>
-<div class="clear">
-		<%=link_to "/lugares/new",:update=>"lugaresForm",:method=> :get,:remote => true, :class=>"button verde p" do%>
+<div class="clear prepend-top">
+		<%=link_to "/lugares/new",:update=>"lugares_form",:method=> :get,:remote => true, :class=>"button verde p" do%>
 		<%=image_tag("icon_add_house.png")%> Adicione um Lugar
 		<%end%>&nbsp;
-
 </div>
