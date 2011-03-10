@@ -140,6 +140,7 @@ class AlimentosController < ApplicationController
       ativo = false
     end
     @alimentos = Alimento.where(:ativo=>ativo).sort{|a,b| a.nome <=> b.nome}
+=begin
     @alimentos.each do |a|
       remove = []
       over = []      
@@ -154,6 +155,7 @@ class AlimentosController < ApplicationController
         ComponenteAlimento.find(r).destroy
       end
     end
+=end
     
   end
 
