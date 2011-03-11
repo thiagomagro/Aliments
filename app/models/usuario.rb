@@ -8,6 +8,6 @@ class Usuario < ActiveRecord::Base
   accepts_nested_attributes_for :usuario_lugars,:allow_destroy => true
 
   has_many :pesos, :dependent => :destroy
-  has_one :peso, :dependent => :destroy
+  belongs_to :peso
 end
 

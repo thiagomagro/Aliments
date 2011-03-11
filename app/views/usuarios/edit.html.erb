@@ -2,7 +2,6 @@
 	<%="Atualizar Informações" unless usuario_logged?%>
 	<%="Novo Usuário" unless not usuario_logged?%>
 </h1>
-
 <%= render 'form' %>
 
 <%= link_to 'Show', @usuario %> |

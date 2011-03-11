@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tipo_refeicao_id: 1
+  lugar_id: 1
+  data: 2011-03-11
+  usuario_id: 1
+  restaurante_id: 1
+
+two:
+  tipo_refeicao_id: 1
+  lugar_id: 1
+  data: 2011-03-11
+  usuario_id: 1
+  restaurante_id: 1

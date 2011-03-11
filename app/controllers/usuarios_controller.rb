@@ -65,7 +65,9 @@ class UsuariosController < ApplicationController
     if params[:peso_novo]
       if @usuario.peso.nil? || params[:peso_novo].to_f != @usuario.peso.peso
         @usuario.pesos << Peso.new(:usuario=>@usuario,:data=>@usuario.peso.data,:peso=>@usuario.peso.peso) unless (@usuario.peso.nil? || params[:peso_novo].to_f == @usuario.peso.peso)
-        @usuario.peso = Peso.new(:peso=>params[:peso_novo],:data=>Date.current,:usuario=>@usuario)
+        # @usuario.peso.create(:peso=>params[:peso_novo],:data=>Date.current,:usuario=>@usuario)
+       @usuario.peso = Peso.new(:peso=>params[:peso_novo],:data=>Date.current,:usuario=>@usuario)
+      
       end
     end
     respond_to do |format|
