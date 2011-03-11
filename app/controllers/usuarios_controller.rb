@@ -62,7 +62,12 @@ class UsuariosController < ApplicationController
   # PUT /usuarios/1.xml
   def update
     @usuario = Usuario.find(params[:id])
-
+    if params[:peso_novo]
+      if @usuario.peso.nil? || params[:peso_novo].to_f != @usuario.peso.peso
+        @usuario.pesos << Peso.new(:usuario=>@usuario,:data=>@usuario.peso.data,:peso=>@usuario.peso.peso) unless (@usuario.peso.nil? || params[:peso_novo].to_f == @usuario.peso.peso)
+        @usuario.peso = Peso.new(:peso=>params[:peso_novo],:data=>Date.current,:usuario=>@usuario)
+      end
+    end
     respond_to do |format|
       if @usuario.update_attributes(params[:usuario])
         format.html { redirect_to(@usuario, :notice => 'Usuario was successfully updated.') }
