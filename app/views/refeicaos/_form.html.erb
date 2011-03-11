@@ -1,0 +1,31 @@
+<%= form_for(@refeicao) do |f| %>
+<div class="column span-9">
+    <div class="<%="error" if @refeicao.errors.on(:tipo_refeicao)%>">
+      <%=f.label :tipo_refeicao,:class=>"title"%>
+      <%= f.select(:tipo_refeicao_id, TipoRefeicao.find(:all).collect {|p| [ p.nome, p.id ] },{ :include_blank => false})%>
+      <label>Escolha o tipo de refeição que realizou</label>
+      <span class="errorMsg"><%=@refeicao.errors.on(:tipo_refeicao)%></span>
+    </div>  
+    <div class="<%="error" if @refeicao.errors.on(:data)%>">
+    	<%= f.label :data,:class=>"title" %>
+    	<%= f.datetime_select :data,:start_year => 2000 %>
+      <label>Data em que a refeição foi realizada</label>
+      <span class="errorMsg"><%=@refeicao.errors.on(:data)%></span>
+    </div>
+    <div class="<%="error" if @refeicao.errors.on(:lugar)%>">
+      <%=f.label :lugar,:class=>"title"%>
+      <%= f.select(:lugar_id, usuario_logged.lugars.collect {|p| [ p.nome, p.id ] },{ :include_blank => false})%>
+      <label>Escolha onde realizou a refeição</label>
+      <span class="errorMsg"><%=@refeicao.errors.on(:lugar)%></span>
+    </div>    
+</div>
+<div class="column span-9 last">
+  <fieldset>
+    <legend>Alimentos</legend>
+    <label>Encontre e adicione alimentos à sua refeição</label>
+  </fieldset>
+</div>
+<div class="actions clear">
+	<%= f.submit "Adicionar", :class => "button"%>
+</div>
+<%end%>

@@ -1,4 +1,4 @@
-1299869090
+1299877262
 AddAlturaToUsuario	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110310173829_add_altura_to_usuario.rb	class AddAlturaToUsuario 
 AddPesoUnicoToUsuario	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110310194644_add_peso_unico_to_usuario.rb	class AddPesoUnicoToUsuario 
 Alimento	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/models/alimento.rb	class Alimento 
@@ -50,6 +50,7 @@ CreateTipoMedidas	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/201
 CreateTipoRefeicaos	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110311182115_create_tipo_refeicaos.rb	class CreateTipoRefeicaos 
 CreateUsuarioLugars	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110223233147_create_usuario_lugars.rb	class CreateUsuarioLugars 
 CreateUsuarios	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110204163951_create_usuarios.rb	class CreateUsuarios 
+DatetimeToRefeicao	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110311193856_datetime_to_refeicao.rb	class DatetimeToRefeicao 
 DeltaAlimentos	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110218152112_delta_alimentos.rb	class DeltaAlimentos 
 FloatToDecimal	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110310190046_float_to_decimal.rb	class FloatToDecimal 
 Grupo	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/models/grupo.rb	class Grupo 
@@ -90,6 +91,10 @@ Peso	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/models/peso.rb	class Pe
 PesoTest	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/test/unit/peso_test.rb	class PesoTest 
 Refeicao	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/models/refeicao.rb	class Refeicao 
 RefeicaoTest	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/test/unit/refeicao_test.rb	class RefeicaoTest 
+RefeicaosController	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/refeicaos_controller.rb	class RefeicaosController 
+RefeicaosControllerTest	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/test/functional/refeicaos_controller_test.rb	class RefeicaosControllerTest 
+RefeicaosHelper	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/helpers/refeicaos_helper.rb	module RefeicaosHelper
+RefeicaosHelperTest	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/test/unit/helpers/refeicaos_helper_test.rb	class RefeicaosHelperTest 
 SessionsController	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/sessions_controller.rb	class SessionsController 
 SessionsControllerTest	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/test/functional/sessions_controller_test.rb	class SessionsControllerTest 
 SessionsHelper	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/helpers/sessions_helper.rb	module SessionsHelper
@@ -142,6 +147,7 @@ convert_number_column_value_with_comma_separator	/home/thiagomagro/ProjetosRuby/
 create	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/alimentos_controller.rb	  def create
 create	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/alimentos_usda_controller.rb	  def create
 create	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/medidas_controller.rb	  def create
+create	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/refeicaos_controller.rb	  def create
 create	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/sessions_controller.rb	  def create
 create	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/tipo_medidas_controller.rb	  def create
 create	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/usuario_lugars_controller.rb	  def create
@@ -189,6 +195,7 @@ down	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110310194644_a
 down	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110311142311_atividade_fisica_to_usuario.rb	  def self.down
 down	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110311180844_create_refeicaos.rb	  def self.down
 down	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110311182115_create_tipo_refeicaos.rb	  def self.down
+down	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110311193856_datetime_to_refeicao.rb	  def self.down
 edit	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/alimentos_controller.rb	  def edit
 edit	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/alimentos_usda_controller.rb	  def edit
 edit	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/lugares_controller.rb	  def edit
@@ -235,6 +242,7 @@ new	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/alimentos_us
 new	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/lugares_controller.rb	  def new
 new	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/marcas_controller.rb	  def new
 new	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/medidas_controller.rb	  def new
+new	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/refeicaos_controller.rb	  def new
 new	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/sessions_controller.rb	  def new
 new	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/tipo_medidas_controller.rb	  def new
 new	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/usuario_lugars_controller.rb	  def new
@@ -284,6 +292,7 @@ up	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110310194644_add
 up	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110311142311_atividade_fisica_to_usuario.rb	  def self.up
 up	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110311180844_create_refeicaos.rb	  def self.up
 up	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110311182115_create_tipo_refeicaos.rb	  def self.up
+up	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/db/migrate/20110311193856_datetime_to_refeicao.rb	  def self.up
 update	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/alimentos_controller.rb	  def update
 update	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/alimentos_usda_controller.rb	  def update
 update	/home/thiagomagro/ProjetosRuby/Pessoal/aliments/app/controllers/medidas_controller.rb	  def update
