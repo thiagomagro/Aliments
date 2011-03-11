@@ -35,7 +35,7 @@
   </div>  
   <div class="<%="error" if @usuario.errors.on(:sexo)%>">
   	<%= f.label :nascimento,:class=>"title" %>
-  	<%= f.date_select :nascimento %>
+  	<%= f.date_select :nascimento,:start_year => 1900 %>
     <span class="errorMsg"><%=@usuario.errors.on(:nascimento)%></span>
   </div>
   <div class="<%="error" if @usuario.errors.on(:sexo)%>" >
