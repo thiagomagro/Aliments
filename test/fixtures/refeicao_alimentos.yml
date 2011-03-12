@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  refeicao_id: 1
+  alimento_id: 1
+  medida_id: 1
+  medida_quantidade: 9.99
+  quantidade_gramas: 9.99
+
+two:
+  refeicao_id: 1
+  alimento_id: 1
+  medida_id: 1
+  medida_quantidade: 9.99
+  quantidade_gramas: 9.99

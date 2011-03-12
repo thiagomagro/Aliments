@@ -1,5 +1,5 @@
 var alimento_medidas = $("#alimento_medidas");
-<%unless @alimento.alimento_medidas.size <=0%>
+<%if @alimento.alimento_medidas.size > 0%>
 if(confirm('Importar medidas de um outro alimento irá sobreescrever as medidas atuais, confirma?')){
   alimento_medidas.hide('fast',function(){
     alimento_medidas.find("div.medida_item").hide().find("input.medidaDestroy").val("1");
@@ -8,5 +8,6 @@ if(confirm('Importar medidas de um outro alimento irá sobreescrever as medidas 
 	$("#searchResults").hide('fast');
   });
 }
+<%else%>
+  alert("O alimento selecionado não possui medidas para serem importadas");
 <%end%>
-

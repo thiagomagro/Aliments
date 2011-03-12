@@ -23,9 +23,11 @@
   <fieldset>
     <legend>Alimentos</legend>
     <label>Encontre e adicione alimentos à sua refeição</label>
+    <%=render "/alimentos/search_form", :action_form=>"refeicao"%>
+  
   </fieldset>
 </div>
 <div class="actions clear">
-	<%= f.submit "Adicionar", :class => "button"%>
+	<%= f.submit "Salvar", :class => "button"%>
 </div>
 <%end%>

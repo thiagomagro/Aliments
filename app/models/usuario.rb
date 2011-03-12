@@ -9,5 +9,7 @@ class Usuario < ActiveRecord::Base
 
   has_many :pesos, :dependent => :destroy
   belongs_to :peso
+  
+  has_many :refeicaos, :dependent => :destroy
 end
 

@@ -36,8 +36,8 @@
       </ul>
       <%unless usuario_logged.nil?%>
         <ul>
-          <li><a href="" >Minhas refeições</a></li>
-          <li><%= link_to 'Nova Refeição', new_refeicao_path%></li>
+          <li class="refeicaos"><%= link_to 'Minhas Refeições', "/refeicao/listar"%></li>
+          <li class="refeicaos"><%= link_to 'Nova Refeição', new_refeicao_path%></li>
         </ul>
       <%end%>
         <%unless usuario_logged.nil? && usuario_admin? != 0%>
