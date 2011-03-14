@@ -7,6 +7,15 @@ h1{
 	color:#555;
 }
 
+h2{
+  padding:0px;
+	padding-top:2px;
+  margin:0px;
+	font-size:170%;
+	color:#555;
+}
+
+
 img{
 	vertical-align:middle;
 }

@@ -1,5 +1,5 @@
-<div class="clear">
-  <div class="span-8"><%=alimento.nome%></div>
-  <div class="span-2"><%= link_to 'Importar',{:controller => "tipo_medidas",:action=>"importar", :id => alimento.id}, :method => :post, :remote => true, :confirm => "" %></div>
-</div>
+<tr class="clear">
+  <td class="span-8"><%=alimento.nome%></td>
+  <td class="span-2"><%= link_to 'Importar',{:controller => "refeicaos",:action=>"adicionar_alimento", :id => alimento.id}, :method => :post, :remote => true%></td>
+</tr>
 

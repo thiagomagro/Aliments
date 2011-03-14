@@ -1,5 +1,5 @@
 <%= form_for(@refeicao) do |f| %>
-<div class="column span-9">
+<div class="column span-7">
     <div class="<%="error" if @refeicao.errors.on(:tipo_refeicao)%>">
       <%=f.label :tipo_refeicao,:class=>"title"%>
       <%= f.select(:tipo_refeicao_id, TipoRefeicao.find(:all).collect {|p| [ p.nome, p.id ] },{ :include_blank => false})%>
@@ -19,12 +19,17 @@
       <span class="errorMsg"><%=@refeicao.errors.on(:lugar)%></span>
     </div>    
 </div>
-<div class="column span-9 last">
+<div class="column span-11 last">
   <fieldset>
     <legend>Alimentos</legend>
     <label>Encontre e adicione alimentos à sua refeição</label>
     <%=render "/alimentos/search_form", :action_form=>"refeicao"%>
-  
+    <hr class="prepend-top"/>
+    <div id="refeicao_alimentos">
+    <%@refeicao.refeicao_alimentos.each do |ra|%>
+      <%=render "/refeicaos/refeicao_alimento",:refeicao_alimento=>ra%>
+    <%end%>
+    </div>
   </fieldset>
 </div>
 <div class="actions clear">

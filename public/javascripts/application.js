@@ -188,6 +188,31 @@ function addLugar(btn){
 	var f = $(btn).parents("fieldset").remove();
 }
 
+function calcula_alimento_medida(el){
+  var c = $(el).parents(".refeicao_alimento");
+  var s = $(c).find("select.select_medida")
+  var mq = $(c).find("input.medida_quantidade");
+  var qg = $(c).find("input.quantidade_gramas");
+  var opt = $(s).find("option:selected");  
+  var rel = eval("(" + opt.attr("rel")+")");
+  
+  if($(el).hasClass("quantidade_gramas")){
+    if(rel && mq.val() != "" && mq.val() != 0){
+      if((rel.qtd * mq.val()) != $(qg).val()){
+        $(s).val("");
+        $(mq).val("");
+      }
+    }else{
+      $(s).val("");
+      $(mq).val("");
+    }      
+  }else{    
+    if(rel && mq.val() != "" && mq.val() != 0){
+      $(qg).val(rel.qtd * mq.val());
+    }
+  }  
+}
+
 /*LIB*/
 jQuery.log = function(message) {
 	try{

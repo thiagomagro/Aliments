@@ -10,7 +10,7 @@ class RefeicaosController < ApplicationController
     @refeicao.usuario = usuario_logged
     
     if @refeicao.save
-      render "/refeicaos/list"
+      redirect_to :action=> :list
     else
       render :action => "new"
     end
@@ -31,5 +31,10 @@ class RefeicaosController < ApplicationController
   
   def list
     @refeicoes = Refeicao.where(:usuario_id=>usuario_logged.id).sort{|a,b| b.data <=> b.data}
+  end
+  
+  def adicionar_alimento
+    alimento = Alimento.find(params[:id])
+    @refeicao_alimento = RefeicaoAlimento.new(:alimento => alimento)
   end
 end

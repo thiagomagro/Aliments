@@ -30,6 +30,7 @@ Aliments::Application.routes.draw do
   match 'alimentos_usda/importar/:id' => 'alimentos_usda#importar', :via => [:get, :post]
   
   match 'refeicao/listar' => 'refeicaos#list', :via => [:get, :post]
+  match 'refeicao/adicionar_alimento/:id'=> 'refeicaos#adicionar_alimento', :via => [:get, :post]
 
   # Keep in mind you can assign values other than :controller and :action
 
