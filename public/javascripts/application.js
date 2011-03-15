@@ -1,6 +1,7 @@
-{// Place your application-specific JavaScript functions and classes here
+// Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 var intervalSub = "";
+
 $(document).ready(function(){
 	$("#menu > ul > li").live('click',function(){
 		setSubMenu($(this));
@@ -33,10 +34,12 @@ $(document).ready(function(){
 		  $(this).closest(".highlighter").removeClass("cinzaClaro");
 		});
 
-		$(".enter_disable").live("keyup", function(e) {
-			e.preventDefault();
-		  if (e.keyCode == 34) return false;
-		});
+    $(".enter_disable").live("keyup", function(e) {      
+      e.preventDefault();            
+      if (e.keyCode == 34){
+        return false
+      };
+    });    
 		$(".tooltip").tipTip({});
 });
 
@@ -111,13 +114,11 @@ function importarMedidas(btn){
 	});
 }
 
-function enter_action(e,action,btn){
-	if(e.keyCode == 13){
-		e.preventDefault();
-		e.stopPropagation();
-		eval(action + "(btn)");
-	}
-	return false;
+function enter_action(e,action,btn){  
+  if(e.keyCode == 13){
+    eval(action + "(btn)");    
+    return false;
+  }  
 }
 
 function buscar_alimento(btn){
@@ -227,5 +228,4 @@ jQuery.fn.debug = function() {
 		$.log(this);
 	});
 };
-}
 

@@ -1,4 +1,4 @@
 <h1>Minhas Refeições</h1>
 <%@refeicoes.each do |r|%>
-<div><%=r.tipo_refeicao.nome%>   <%= link_to 'Edit', edit_refeicao_path(r) %></div>
+<div><%=r.tipo_refeicao.nome unless r.tipo_refeicao.nil?%>   <%= link_to 'Edit', edit_refeicao_path(r) %></div>
 <%end%>
