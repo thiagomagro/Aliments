@@ -44,7 +44,7 @@
     
     <div class="highlighter <%="error" if @usuario.errors.on(:atividade_fisica)%>">
     <%= f.label "Atividade Física",:class=>"title" %>
-    <%= f.select(:atividade_fisica,{"Leve"=>1,"Moderado"=>2,"Intenso"=>3}.sort {|a,b| a[1] <=> b[1]},{ :include_blank => true })%>
+    <%= f.select(:atividade_fisica,{"Sedentário"=>0,"Leve"=>1,"Moderado"=>2,"Intenso"=>3}.sort {|a,b| a[1] <=> b[1]},{ :include_blank => true })%>
     <label>
     Leve - 30 minutos por dia<br/>
     Moderado - 1 hora por dia<br/>

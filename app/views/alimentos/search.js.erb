@@ -1,11 +1,14 @@
 var el = $("#searchResults");
 el.hide('fast',function(){
 	$(el).html("");
-	<%@alimentos.each do |a|%>
-	el.append("<%= escape_javascript( render(:partial => "/alimentos/search_#{@action_form}", :locals => {:alimento => a}) ) %>");
-	<%end%>
-	$(el).append("<div class=\"clear\"></div>");
-	var parent = $("#searchResults").parent();
+  <%if @alimentos.size > 0%>
+  	<%@alimentos.each do |a|%>
+  	el.append("<%= escape_javascript( render(:partial => "/alimentos/search_#{@action_form}", :locals => {:alimento => a}) ) %>");
+  	<%end%>
+    $(el).append("<div class=\"clear\"></div>");
+  <%else%>
+    $(el).append("<div class=\"clear\">Nenhum alimento encontrado</div>");
+  <%end%>
 	el.show('fast');
 });
 

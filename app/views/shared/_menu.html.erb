@@ -1,4 +1,4 @@
-<div class="laranjaGradient">
+<div>
 	<div class="clear container">
     <div id="menu">
       <ul>
@@ -23,25 +23,25 @@
   </div>
 </div>
 
-<div class="borderBottomCinza cinza0">
+<div class="">
 	<div class="clear container">
     <div class="clear container" id="subMenu">
-      <ul>
+      <ul class="">
         <li><a href="" >Quem Somos</a></li>
       </ul>
-      <ul>
+      <ul class="prepend-1">
         <li class="usuarios"><%= link_to 'Cadastre-se', new_usuario_path if usuario_logged.nil?%></li>
         <li class="usuarios"><%= link_to 'Minhas informações', edit_usuario_path(usuario_logged) unless usuario_logged.nil?%></li>
         <li class="usuarios"><%= link_to 'Meus Lugares', :controller=>"usuarios",:action=>"lugares",:id=>usuario_logged unless usuario_logged.nil?%></li>
       </ul>
       <%unless usuario_logged.nil?%>
-        <ul>
+        <ul class="prepend-3">
           <li class="refeicaos"><%= link_to 'Minhas Refeições', "/refeicao/listar"%></li>
           <li class="refeicaos"><%= link_to 'Nova Refeição', new_refeicao_path%></li>
         </ul>
       <%end%>
         <%unless usuario_logged.nil? && usuario_admin? != 0%>
-          <ul>
+          <ul class="prepend-5">
             <li class="alimentos"><%= link_to 'Alimentos',alimentos_path %></li>
             <li class="alimentos_paths"><%= link_to 'Novo Alimento', new_alimento_path%></li>
             <li class="alimentos_usda"><%= link_to 'Alimentos USDA',{ :controller => "alimentos_usda",:action => "index" }  %></li>

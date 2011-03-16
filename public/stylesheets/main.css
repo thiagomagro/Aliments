@@ -1,10 +1,19 @@
 /* LAYOUTS DEFAULT*/
-body, textarea, input, select, option, button { color: #555; font-family: Calibri,Lucida Grande,Helvetica Neue,Helvetica,Arial,sans-serif; line-height: 1.5; }
+body, textarea, input, select, option, button {
+  color: #eee;
+  font-family: Calibri,Lucida Grande,Helvetica Neue,Helvetica,Arial,sans-serif;
+  /*font:"Lucida Grande",Lucida,helvetica,Arial,verdana,sans-serif*/
+  background-color:#444;
+  font-size:14px;
+}
+body{
+  background-color:#222;
+}
 
 h1{
-	padding-top:20px;
+	padding-top:30px;
 	font-size:300%;
-	color:#555;
+	color:#eee;
 }
 
 h2{
@@ -12,7 +21,7 @@ h2{
 	padding-top:2px;
   margin:0px;
 	font-size:170%;
-	color:#555;
+	color:#eee;
 }
 
 
@@ -80,16 +89,21 @@ p.error{
 
 /* CONTAINERS */
 .side{
-	background-image: url(../images/bg_side.png);
-	background-repeat: no-repeat;
+	/*background-image: url(../images/bg_side.png);
+  background-repeat: no-repeat;*/
 	min-height: 440px;
 	_height:440px;
 }
+
 /* FIM CONTAINERS */
 
 /* BOX */
-.padding10{
+.padding-10{
 	padding:10px;
+}
+
+.margin-4{
+  margin:4px;
 }
 
 .absolute{
@@ -99,24 +113,28 @@ p.error{
 .relative{
 	position: relative;
 }
+
+.boxItem{
+  border:1px solid #222;
+  background-color:#444;
+}
 /* FIM BOX */
 
 /*FORMS*/
-select{
-  font-size:10px;
+select{  
 }
 
 label{
   display:block;
   padding:2px;
   font-size:11px;
-  color:#999;
+  color:#ddd;
   font-weight:normal;
 }
 
 .title{
-  font-size:14px;
-  color:#555;
+  font-size:15px;
+  color:#eee;
   font-weight:bold;
 }
 
@@ -144,13 +162,6 @@ label.inline{
   border:1px solid #ccc;
 }
 
-.container h1{
-	background-image:url('../images/seta_separador.png');
-	background-repeat:no-repeat;
-	background-position:0px 40px;
-	padding-bottom:15px;
-}
-
 /*FIM LAYOUT SPECIFIC*/
 
 /* FORM */
@@ -160,13 +171,10 @@ form label{
 form button {
 }
 
+
 input,textarea{
-	border-top: 1px solid #7C7C7C;
-	border-left: 1px solid #C3C3C3;
-	border-right: 1px solid #C3C3C3;
-	border-bottom: 1px solid #DDD;
-	background: white url(/images/fieldbg.gif) repeat-x top;
-	padding:4px 2px;
+  padding:6px;
+  margin-bottom:0px;
 }
 
 fieldset{
@@ -178,24 +186,18 @@ fieldset{
 }
 
 fieldset legend{
-	color:#999;
+	color:#eee;
 	font-weight:normal;
-	font-size:150%;
-	border-left:6px solid #ccc;
-	border-top:1px solid #ddd;
-	padding-left:4px;
-	margin-bottom:6px;
-	margin-left:-13px;
+  font-size:170%;
 }
 
-fieldset fieldset legend{
-  border-left:6px solid #ccc;
-  font-size: 120%;
+fieldset fieldset legend{  
+  font-size: 140%;
 }
 
 fieldset hr{
-	background-color:#ddd;
-	border: 0px solid #ddd;
+	background-color:#555;
+	border: 0px solid #555;
 	padding:0px;
 	margin:0px;
 	margin-bottom:5px;
@@ -277,8 +279,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 }
 
 #menu ul{
-	list-style-type: none;
-	padding:0px 0px;
+  list-style-type: none;  
 	margin:0px;
 }
 
@@ -292,7 +293,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 #menu ul li a{
   /*text-shadow: 0px 1px 2px #666;*/
 	text-decoration: none;
-	color:#555;
+	color:#aaa;
 	padding:7px;
 	padding-top:5px;
 }
@@ -306,13 +307,13 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 
 #menu ul li a:hover{
 	background-color: #fff;
-	color: #555;
+	color:#ff7700;
 	/*    -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;    */
 }
 
 #menu ul .active a{
 	background-color: #fff;
-	color:#333;
+	color:#ff7700;
 	font-weight:bold;
   -moz-box-shadow: 0px 0px 5px #555;
   -webkit-box-shadow: 0px 0px 5px #555;
@@ -329,8 +330,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 
 #subMenu ul{
 	display: none;
-	list-style-type: none;
-	padding:6px;
+  list-style-type: none;  
 }
 
 #subMenu ul li{
