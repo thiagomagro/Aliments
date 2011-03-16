@@ -116,7 +116,31 @@ p.error{
 
 .boxItem{
   border:1px solid #222;
-  background-color:#444;
+  border:1px solid #222;
+  background-color:#fff;
+  -moz-box-shadow: 0px 2px 3px #333;
+  -webkit-box-shadow: 0px 2px 3px #333;
+  box-shadow: 0px 2px 3px #333;
+  
+  color:#333;
+  
+  -moz-border-radius: 10px; /* Firefox */
+  -webkit-border-radius: 10px; /* Safari, Chrome */
+  border-radius: 10px; /* CSS3 */
+  
+  padding: 10px 15px 10px 15px;
+  margin:2px;
+  
+  behavior: url(border-radius.htc);
+}
+
+.boxItem input, .boxItem textarea, .boxItem select, .boxItem option{
+  color:#333;
+  background-color:#eee;
+}
+
+.boxItem h1, .boxItem h2, .boxItem label, .boxItem label.title, .boxItem span{
+  color:#333;  
 }
 /* FIM BOX */
 
@@ -183,6 +207,7 @@ fieldset{
 	margin:0px;
 	margin-bottom:10px;
 	padding-left:12px;
+  border:1px dashed #444;
 }
 
 fieldset legend{
@@ -211,19 +236,19 @@ fieldset legend{
 
 /* BUTTON */
 button, a.button, input.button {
-/*    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;*/
-padding:6px;
-background-color: #efefef;
-color: #777;
-border:1px solid #fff;
-font-size: 18px;
-font-weight: bold;
-font-family: inherit;
-text-decoration: none;
-cursor: pointer;
--moz-box-shadow: 0px 2px 3px #333;
--webkit-box-shadow: 0px 2px 3px #333;
-box-shadow: 0px 2px 3px #333;
+  /*    -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;*/
+  padding:6px;
+  background-color: #efefef;
+  color: #777;
+  border:1px solid #fff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  -moz-box-shadow: 0px 2px 3px #333;
+  -webkit-box-shadow: 0px 2px 3px #333;
+  box-shadow: 0px 2px 3px #333;
 }
 
 button img, input.button img{

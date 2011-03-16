@@ -1,4 +1,10 @@
-<h1>Minhas Refeições</h1>
-<%@refeicoes.each do |r|%>
-<div><%=r.tipo_refeicao.nome unless r.tipo_refeicao.nil?%>   <%= link_to 'Edit', edit_refeicao_path(r) %></div>
-<%end%>
+<div class="span-10 column">
+  <h1>Minhas Refeições</h1>
+  <%@refeicoes.each do |r|%>
+    <div><%=r.tipo_refeicao.nome unless r.tipo_refeicao.nil?%>   <%= link_to 'Edit', edit_refeicao_path(r) %></div>
+    <%end%>
+</div>
+<div class="span-9 column last">
+  <div class="right">Calorias ingeridas hoje</div>
+  Grupos de alimento
+</div>

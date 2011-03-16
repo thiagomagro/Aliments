@@ -1,5 +1,5 @@
 <%agora=Time.now.to_f  %>
-<div class="clear refeicao_alimento boxItem padding-10 margin-4">
+<div class="clear refeicao_alimento boxItem">
   <%=hidden_field_tag "refeicao[refeicao_alimentos_attributes][#{agora}][_destroy]",0,:class=>"refeicao_alimento_destroy"%>
   <%=hidden_field_tag "refeicao[refeicao_alimentos_attributes][#{agora}][id]", refeicao_alimento.id%>
   <%=hidden_field_tag "refeicao[refeicao_alimentos_attributes][#{agora}][alimento_id]", (refeicao_alimento.alimento.id unless refeicao_alimento.alimento.nil?)%>

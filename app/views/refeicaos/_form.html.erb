@@ -21,15 +21,16 @@
     <div class="clear"></div>
 </div>
 <div class="prepend-top">  
-  <h2 class="">Alimentos</h2>
+  <fieldset>
+    <h2 class="">Alimentos</h2>
     <label>Encontre e adicione alimentos à sua refeição</label>
     <%=render "/alimentos/search_form", :action_form=>"refeicao"%>
-    <hr class="prepend-top"/>
     <div id="refeicao_alimentos">
     <%@refeicao.refeicao_alimentos.each do |ra|%>
       <%=render "/refeicaos/refeicao_alimento",:refeicao_alimento=>ra%>
     <%end%>
-  </div>    
+    </div>
+  </fieldset>
 </div>
 <div class="actions clear">
 	<%= f.submit "Salvar", :class => "button"%>
