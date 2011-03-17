@@ -8,6 +8,8 @@ body, textarea, input, select, option, button {
 }
 body{
   background-color:#222;
+  background-image:url("../images/bg1.jpg");
+  background-repeat:no-repeat;
 }
 
 h1{
@@ -114,6 +116,10 @@ p.error{
 	position: relative;
 }
 
+.text-right{
+  text-align:right;
+}
+
 .boxItem{
   border:1px solid #222;
   border:1px solid #222;
@@ -152,7 +158,7 @@ label{
   display:block;
   padding:2px;
   font-size:11px;
-  color:#ddd;
+  color:#aaa;
   font-weight:normal;
 }
 
@@ -173,8 +179,8 @@ label.inline{
 
 /*LAYOUT SPECIFIC*/
 #loginForm{
-	top:20px;
-	right:0px;
+	top:40px;
+	left:0px;
 }
 
 .helperContainer{
@@ -323,6 +329,10 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 	padding-top:5px;
 }
 
+#menu ul li img{
+  padding-right:4px;
+}
+
 #menu ul li img.seta_down{
 	display: none;
 	position: absolute;
@@ -351,6 +361,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 }
 
 #subMenu{
+  padding-top:10px;
 }
 
 #subMenu ul{

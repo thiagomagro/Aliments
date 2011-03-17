@@ -1,20 +1,14 @@
-<div>
-  <div class="right relative">
-    <%if  usuario_logged.nil?%>
-		<%link_to new_usuario_path, :class => ("button verde") do%>
-			<%=image_tag("icon_cadastrese.png")%>Cadastre-se
-		<%end%>&nbsp;
-      <%link_to new_session_path, :remote => true, :class => ("button p") do%>
-		<%=image_tag("icon_lock.png")%>Login
-	  <%end%>
-      <div id="loginForm" class="absolute"></div>
-    <%else%>
-      <%=usuario_logged.nome%> |
-		<%link_to new_session_path, :method => :delete, :class => "vermelho button p" do%>
-			<%=image_tag("icon_unlock.png")%>Logout
-		<%end%>
-    <%end%>
+<div>  
+  <div class="span-6">
+  <%if controller.controller_name.casecmp("home") && usuario_logged.nil?%>
+    <%=image_tag("logo_white.png")%>
+  <%else%>
+    <%=image_tag("logo_white_p.png")%>
+  <%end%>
   </div>
-	<%=image_tag("logo_white.png")%>
+  <div class="span-18 last">
+    <%= render ("shared/menu")%>
+  </div>
 </div>
+<div class="clear"></div>
 
