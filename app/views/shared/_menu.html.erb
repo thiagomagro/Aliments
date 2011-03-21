@@ -5,34 +5,34 @@
         <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
       </li>
       <%unless usuario_logged.nil?%>
-      <li><a href="javascript:void(0)"><%= image_tag "icon_usuario.png"%>Você</a>
-        <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
-      </li>
-      <li><a href="javascript:void(0)"><%= image_tag "icon_refeicao.png"%>Sua Alimentação</a>
-        <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
-      </li>
-      <%else%>
-      <li><%link_to new_usuario_path, :class => ("") do%>
-            <%=image_tag("icon_cadastrese.png")%>Cadastre-se
-          <%end%>
+        <li><a href="javascript:void(0)"><%= image_tag "icon_usuario.png"%>Você</a>
           <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
-      </li>
-      <li>
-      <%link_to new_session_path, :remote => true, :class => ("") do%>
-    		<%=image_tag("icon_lock.png")%>Login
-  	  <%end%>
-      <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
-      </li>
+        </li>
+        <li><a href="javascript:void(0)"><%= image_tag "icon_refeicao.png"%>Sua Alimentação</a>
+          <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
+        </li>
+      <%else%>
+        <li class="usuarios"><%link_to new_usuario_path, :class => ("url") do%>
+          <%=image_tag("icon_cadastrese.png")%>Cadastre-se
+            <%end%>
+            <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+        		<%=image_tag("icon_lock.png")%>Login
+          </a>
+          <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
+        </li>
       <%end%>
       <%unless usuario_logged.nil? && usuario_admin? != 0%>
-      <li><a href="javascript:void(0)">Gerenciamento</a>
-        <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
-      </li>
+        <li><a href="javascript:void(0)">Gerenciamento</a>
+          <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
+        </li>
       <%end%>
     </ul>
   </div>
 
-  <div class="clear" id="subMenu">
+  <div class="clear relative" id="subMenu">
     <ul class="">
       <li><a href="" >Quem Somos</a></li>
     </ul>    
@@ -48,7 +48,9 @@
     </ul>
     <%else%>
       <ul></ul>
-      <ul></ul>
+      <div id="loginForm" class="hide absolute">        
+        <%=render(:partial => "/sessions/login")%>
+      </div>
     <%end%>
     <%unless usuario_logged.nil? && usuario_admin? != 0%>
     <ul class="prepend-3">
@@ -63,10 +65,17 @@
 </div>
 <script type="text/javascript">
   var el = $("#menu");
-  var ind = $("#subMenu li.<%=controller.controller_name %>").parent().index();
-  $.log(ind);
-  var li = el.find("ul li").get(ind);
-  $.log(li);
+  var p = $("#subMenu li.<%=controller.controller_name %>");
+  var ind;  
+  var li;
+  if(!p || p.length <= 0){
+    p = el.find("li.<%=controller.controller_name %>");    
+    li = p;
+  }else{
+    ind = p.parent().index();  
+    li = el.find("ul li").get(ind);  
+  }
+  
   if(li){
     setSubMenu(li);
   }

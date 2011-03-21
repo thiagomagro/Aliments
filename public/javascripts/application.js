@@ -4,12 +4,18 @@ var intervalSub = "";
 
 $(document).ready(function(){
 	$("#menu > ul > li").live('click',function(){
+    if($(this).hasClass("url")){
+      window.location = $(this).attr("href");
+    }
 		setSubMenu($(this));
 	});
 	$("#menu > ul > li").mouseout(function(){
 		clearInterval(intervalSub)
 	});
 	$("#menu > ul > li").mouseover(function(){
+    if($(this).hasClass("url")){
+      return;
+    }
 		var el = $(this);
 		clearInterval(intervalSub)
 		intervalSub = setTimeout(function(){
@@ -51,12 +57,19 @@ function trocarMarca(){
 }
 
 function setSubMenu(li){
-	$(li).parent().find("li").removeClass("active");
-	$(li).addClass("active");
+  if(!li || li.length <= 0){
+    return;
+  }
 	var el = $("#subMenu");
-	el.find("ul").hide();
-	var ul = el.find("ul").get($(li).index());
-	$(ul).show();
+  
+  
+    $(li).parent().find("li").removeClass("active");  
+    $(li).addClass("active");
+  	el.children().hide();
+  	var ul = el.children().get($(li).index());
+  	$(ul).show();
+    var a = $(li).find("a");
+    
 }
 
 function loadTipoMedidas(el){

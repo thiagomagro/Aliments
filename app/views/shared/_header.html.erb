@@ -5,6 +5,11 @@
   <%else%>
     <%=image_tag("logo_white_p.png")%>
   <%end%>
+  <%unless usuario_logged.nil?%>
+    <%link_to "/sessions/destroy",:method=>:delete, :class => ("button red") do%>
+      Logout
+    <%end%>
+  <%end%>
   </div>
   <div class="span-18 last">
     <%= render ("shared/menu")%>

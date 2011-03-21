@@ -13,7 +13,7 @@ body{
 }
 
 h1{
-	padding-top:30px;
+	padding-top:20px;
 	font-size:300%;
 	color:#eee;
 }
@@ -104,6 +104,10 @@ p.error{
 	padding:10px;
 }
 
+.padding-4{
+	padding:4px;
+}
+
 .margin-4{
   margin:4px;
 }
@@ -134,10 +138,16 @@ p.error{
   -webkit-border-radius: 10px; /* Safari, Chrome */
   border-radius: 10px; /* CSS3 */
   
-  padding: 10px 15px 10px 15px;
+  padding: 5px 10px 5px 10px;
   margin:2px;
   
   behavior: url(border-radius.htc);
+}
+
+.boxItem h2{
+  padding:0px;
+  margin:0px;
+  font-size:120%;
 }
 
 .boxItem input, .boxItem textarea, .boxItem select, .boxItem option{
@@ -147,6 +157,14 @@ p.error{
 
 .boxItem h1, .boxItem h2, .boxItem label, .boxItem label.title, .boxItem span{
   color:#333;  
+}
+
+.boxItem label.title{
+  font-size:100%;
+}
+
+.boxItem label{
+  font-size:80%;
 }
 /* FIM BOX */
 
@@ -179,8 +197,10 @@ label.inline{
 
 /*LAYOUT SPECIFIC*/
 #loginForm{
-	top:40px;
-	left:0px;
+	top:1px;
+  right:0px;  
+  padding:10px;
+  background-image:url(../images/white30.png); 
 }
 
 .helperContainer{
@@ -324,9 +344,11 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 #menu ul li a{
   /*text-shadow: 0px 1px 2px #666;*/
 	text-decoration: none;
-	color:#aaa;
+	color:#333;
 	padding:7px;
 	padding-top:5px;
+  background-image:url(../images/white30.png);
+  
 }
 
 #menu ul li img{

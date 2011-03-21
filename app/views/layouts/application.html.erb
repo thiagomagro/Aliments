@@ -13,26 +13,6 @@
 	<div class="padding-10">
 		<div class="container">
 			<%= render "shared/header" %>
-      
-      
-  <div class="">
-    <%if  usuario_logged.nil?%>
-		<%link_to new_usuario_path, :class => ("button verde") do%>
-			<%=image_tag("icon_cadastrese.png")%>Cadastre-se
-		<%end%>&nbsp;
-      <%link_to new_session_path, :remote => true, :class => ("button p") do%>
-		<%=image_tag("icon_lock.png")%>Login
-	  <%end%>
-      <div id="loginForm" class="absolute"></div>
-    <%else%>
-      <%=usuario_logged.nome%> |
-		<%link_to new_session_path, :method => :delete, :class => "vermelho button p" do%>
-			<%=image_tag("icon_unlock.png")%>Logout
-		<%end%>
-    <%end%>
-  </div>
-  
-  
     </div>
   </div>
 	<div class="">
