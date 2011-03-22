@@ -13,11 +13,11 @@ $(document).ready(function(){
 		clearInterval(intervalSub)
 	});
 	$("#menu > ul > li").mouseover(function(){
-    if($(this).hasClass("url")){
+    if($(this).find("a").hasClass("url")){
       return;
     }
 		var el = $(this);
-		clearInterval(intervalSub)
+		clearTimeout(intervalSub)
 		intervalSub = setTimeout(function(){
 			setSubMenu(el);
 			},600);

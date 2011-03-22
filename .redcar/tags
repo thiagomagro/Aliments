@@ -1,4 +1,4 @@
-1300636434
+1300762112
 AtividadeFisicaToUsuario	/Users/thiagomagro/Sites/ruby/aliments/db/migrate/20110311142311_atividade_fisica_to_usuario.rb	class AtividadeFisicaToUsuario 
 CreateRefeicaoAlimentos	/Users/thiagomagro/Sites/ruby/aliments/db/migrate/20110312025851_create_refeicao_alimentos.rb	class CreateRefeicaoAlimentos 
 CreateRefeicaos	/Users/thiagomagro/Sites/ruby/aliments/db/migrate/20110311180844_create_refeicaos.rb	class CreateRefeicaos 
