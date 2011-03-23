@@ -12,9 +12,11 @@ body{
 }
 
 h1{
+  padding:0px;
+  margin:0px;
 	padding-top:20px;
-	font-size:300%;
-	color:#333;
+	font-size:350%;
+	color:#999;
 }
 
 h2{
@@ -23,6 +25,15 @@ h2{
   margin:0px;
 	font-size:170%;
 	color:#777;
+}
+
+h3{
+  padding:0px;
+  margin:0px;
+  margin-bottom:10px;
+	font-size:120%;
+	color:#ccc;
+  width:400px;
 }
 
 
@@ -47,7 +58,7 @@ p.error{
 }
 
 .cinza1{
-	background-color: #777;
+	background-color: #555;
 }
 .cinza2{
 	background-color: #999;
@@ -83,12 +94,16 @@ p.error{
 	background-repeat: repeat-x;
 }
 
-.borderBottomCinza{
+.border-bottom-cinza{
 	border-bottom:2px solid #ccc;
 }
 
-.borderBottomLaranja{
+.border-bottom-laranja{
 	border-bottom:1px solid #ff9933;
+}
+
+.border-top-black{
+	border-top:1px solid #111;
 }
 
 .white-30{
@@ -220,6 +235,7 @@ label.inline{
   right:0px;  
   padding:10px;  
 }
+
 
 .helperContainer{
 }
@@ -401,7 +417,6 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 
 #subMenu{
   padding:10px;
-  background-color:#fff5ea;
 }
 
 #subMenu ul{
@@ -416,7 +431,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 
 #subMenu ul li a{
 	text-decoration: none;
-	color: #333;
+	color: #fff;
 	padding:6px;
 
 }

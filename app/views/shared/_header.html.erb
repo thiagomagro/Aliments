@@ -5,11 +5,20 @@
       </div>
       
       <div class="span-12 last">
-        <div class="right">
-          <%link_to "/sessions/destroy",:method=>:delete, :class => ("button red") do%>
-          Logout
-          <%end%>
-        </div>
+        <%unless usuario_logged.nil?%>
+          <div class="right">
+            <%link_to "/sessions/destroy",:method=>:delete, :class => ("button vermelho") do%>
+              Logout
+            <%end%>
+          </div>
+        <%else%>
+          <div class="right">
+            <%link_to "/sessions/new", :class => ("button verde") do%>
+              <%= image_tag "icon_unlock.png", :class=>""%>
+              Login
+            <%end%>
+          </div>
+        <%end%>
       </div>
   </div>
 </div>
