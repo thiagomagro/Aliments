@@ -8,8 +8,7 @@ body, textarea, input, select, option, button {
 }
 body{
   background-color:#fff;
-  background-image:url("../images/bg2.jpg");
-  background-repeat:no-repeat;
+  
 }
 
 h1{
@@ -86,6 +85,26 @@ p.error{
 
 .borderBottomCinza{
 	border-bottom:2px solid #ccc;
+}
+
+.borderBottomLaranja{
+	border-bottom:1px solid #ff9933;
+}
+
+.white-30{
+    background-image:url(../images/white30.png); 
+}
+
+.white-70{
+  background-image:url(../images/white70.png); 
+}
+
+.white{
+  background-color:#fff;
+}
+
+.black-30{
+  background-image:url(../images/black30.png); 
 }
 /* FIM CORES */
 
@@ -199,8 +218,7 @@ label.inline{
 #loginForm{
 	top:1px;
   right:0px;  
-  padding:10px;
-  background-image:url(../images/white30.png); 
+  padding:10px;  
 }
 
 .helperContainer{
@@ -346,9 +364,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 	text-decoration: none;
 	color:#333;
 	padding:7px;
-	padding-top:5px;
-  background-image:url(../images/white30.png);
-  
+  padding-top:5px;
 }
 
 #menu ul li img{
@@ -360,6 +376,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 	position: absolute;
 	margin-left:15px;
 	margin-top:-2px;
+  z-index:100;
 }
 
 #menu ul li a:hover{
@@ -383,7 +400,8 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 }
 
 #subMenu{
-  padding-top:10px;
+  padding:10px;
+  background-color:#fff5ea;
 }
 
 #subMenu ul{
@@ -398,7 +416,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 
 #subMenu ul li a{
 	text-decoration: none;
-	color: #fff;
+	color: #333;
 	padding:6px;
 
 }

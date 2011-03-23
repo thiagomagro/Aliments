@@ -1,19 +1,16 @@
-<div class=" cinza1">  
-  <div class="span-6">
-  <%if controller.controller_name.casecmp("home") && usuario_logged.nil?%>
-    <%=image_tag("logo_white.png")%>
-  <%else%>
-    <%=image_tag("logo_white_p.png")%>
-  <%end%>
-  <%unless usuario_logged.nil?%>
-    <%link_to "/sessions/destroy",:method=>:delete, :class => ("button red") do%>
-      Logout
-    <%end%>
-  <%end%>
+<div class="cinza1 padding-10">  
+  <div class="container">    
+    <div class="span-12">
+        <%=image_tag("logo_white.png")%>
+      </div>
+      
+      <div class="span-12 last">
+        <div class="right">
+          <%link_to "/sessions/destroy",:method=>:delete, :class => ("button red") do%>
+          Logout
+          <%end%>
+        </div>
+      </div>
   </div>
-  <div class="span-18 last">
-    <%= render ("shared/menu")%>
-  </div>
-  <div class="clear"></div>
 </div>
 
