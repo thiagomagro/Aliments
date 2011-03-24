@@ -1,6 +1,6 @@
 if(!$("#loginForm").html()){
-	$("#loginForm").html("<%= escape_javascript( render(:partial => "login") ) %>");
+	$("#loginForm").html("<%= escape_javascript( render(:partial => "login") ) %>").show('fast');
 }else{
-	$("#loginForm").html("");
+	$("#loginForm").html("").hide('fast');
 }
 

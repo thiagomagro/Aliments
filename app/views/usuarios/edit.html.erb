@@ -1,7 +1,11 @@
 <h1>
-	<%="Atualizar Informações" unless usuario_logged?%>
-	<%="Novo Usuário" unless not usuario_logged?%>
+	<%="Atualize suas Informações" unless usuario_logged?%>
+	<%="Cadastre-se" unless not usuario_logged?%>
 </h1>
+<h3>
+	<%="Mantenha seu cadastro atualizado" unless usuario_logged?%>
+	<%="Fa" unless not usuario_logged?%>
+</h3>
 <%= render 'form' %>
 
 <%= link_to 'Show', @usuario %> |

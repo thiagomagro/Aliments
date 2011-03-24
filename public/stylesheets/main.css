@@ -12,11 +12,10 @@ body{
 }
 
 h1{
-  padding:0px;
-  margin:0px;
-	padding-top:20px;
-	font-size:350%;
-	color:#999;
+  padding:30px 10px 10px 0px;
+  margin:0px;  
+  font-size:350%;  
+  color:#777;  
 }
 
 h2{
@@ -24,15 +23,15 @@ h2{
 	padding-top:2px;
   margin:0px;
 	font-size:170%;
-	color:#777;
+	color:#555;
 }
 
 h3{
   padding:0px;
   margin:0px;
-  margin-bottom:10px;
+  margin-bottom:20px;
 	font-size:120%;
-	color:#ccc;
+	color:#aaa;
   width:400px;
 }
 
@@ -87,6 +86,10 @@ p.error{
 .laranjaClaroGradient{
 	background-color: #ffbb80;
 	border-bottom: 1px solid #fff;
+}
+
+.laranjaEscuro{
+  background-color:#995500;
 }
 
 .cinzaGradient{
@@ -231,9 +234,12 @@ label.inline{
 
 /*LAYOUT SPECIFIC*/
 #loginForm{
-	top:1px;
+	top:30px;
   right:0px;  
-  padding:10px;  
+  padding:10px;
+  z-index:100;
+  background-color:#fff;
+  border:1px solid #ccc;
 }
 
 

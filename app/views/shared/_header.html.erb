@@ -4,7 +4,7 @@
         <%=image_tag("logo_white.png")%>
       </div>
       
-      <div class="span-12 last">
+      <div class="span-12 last relative">
         <%unless usuario_logged.nil?%>
           <div class="right">
             <%link_to "/sessions/destroy",:method=>:delete, :class => ("button vermelho") do%>
@@ -13,11 +13,12 @@
           </div>
         <%else%>
           <div class="right">
-            <%link_to "/sessions/new", :class => ("button verde") do%>
+            <%link_to "/sessions/new",:remote=>true, :class => ("button verde") do%>
               <%= image_tag "icon_unlock.png", :class=>""%>
               Login
             <%end%>
           </div>
+          <div id="loginForm" class="absolute hide"></div>
         <%end%>
       </div>
   </div>
