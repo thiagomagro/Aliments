@@ -8,3 +8,4 @@ config/database.yml
 db/schema.rb
 solr/**/*
 .redcar
+./db/sphinx
