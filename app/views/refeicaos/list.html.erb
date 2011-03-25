@@ -1,5 +1,6 @@
 <div class="span-10 column">
   <h1>Minhas Refeições</h1>
+  <h3>Acompanhe aqui as refeições realizadas e qualidade da sua alimentação</h3>
   <%@refeicoes.each do |r|%>
     <div><%=r.tipo_refeicao.nome unless r.tipo_refeicao.nil?%>   <%= link_to 'Edit', edit_refeicao_path(r) %></div>
     <%end%>

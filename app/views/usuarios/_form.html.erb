@@ -65,12 +65,14 @@
       <label>O sexo também influe nos cálculos de IMC e ingestão de calorias diárias</label>
       <span class="errorMsg"><%=@usuario.errors.on(:sexo)%></span>
     </div>
-  
+    
+    <%if usuario_admin?%>
     <div class="<%="error" if @usuario.errors.on(:perfil)%>">
       <%=f.label :perfil,:class=>"title"%>
     	<%= f.select(:perfil_id, Perfil.find(:all).collect {|p| [ p.nome, p.id ] },{ :include_blank => true })%>
       <span class="errorMsg"><%=@usuario.errors.on(:perfil)%></span>
     </div>
+    <%end%>
   </fieldset>
 </div>
 <div class="actions clear">

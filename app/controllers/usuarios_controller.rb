@@ -46,7 +46,8 @@ class UsuariosController < ApplicationController
   # POST /usuarios.xml
   def create
     @usuario = Usuario.new(params[:usuario])
-
+    @usuario.perfil = Perfil.where("nome=?","Usuário").first if @usuario.perfil.nil?
+    
     respond_to do |format|
       if @usuario.save
         format.html { redirect_to(@usuario, :notice => 'Usuario was successfully created.') }
