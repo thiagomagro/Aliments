@@ -1,74 +1,74 @@
 <div class="laranjaGradient">
   <div class="clear container">
-  <div id="menu">
-    <ul>
-      <li><a href="javascript:void(0)"><%= image_tag "icon_aliments.png"%>A Aliments</a>
-        <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
-      </li>
-      <li><a href="javascript:void(0)"><%= image_tag "icon_usuario.png"%>Você</a>
-        <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
-      </li>
-      <%unless usuario_logged.nil?%>      
+    <div id="menu">
+      <ul>
+        <li><a href="javascript:void(0)"><%= image_tag "icon_aliments.png"%>A Aliments</a>
+          <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
+        </li>
+        <li><a href="javascript:void(0)"><%= image_tag "icon_usuario.png"%>Você</a>
+          <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
+        </li>
+        <%unless usuario_logged.nil?%>
         <li><a href="javascript:void(0)"><%= image_tag "icon_refeicao.png"%>Sua Alimentação</a>
           <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
-        </li>        
-      <%end%>
-      <%unless usuario_logged.nil? && usuario_admin? != 0%>
+        </li>
+        <%end%>
+        <%if !usuario_logged.nil? && usuario_admin?%>
         <li><a href="javascript:void(0)">Gerenciamento</a>
           <%= image_tag "seta_white_down.gif", :class=>"seta_down"%>
         </li>
-      <%end%>
-    </ul>
-  </div>
+        <%end%>
+      </ul>
+    </div>
   </div>
 </div>
 
 <div class="cinza0 border-bottom-cinza border-top-black">
   <div class="clear container">
-  <div class="relative " id="subMenu">
-    <ul class="">
-      <li><a href="" >Quem Somos</a></li>
-    </ul>    
-    <%unless usuario_logged.nil?%>
-    <ul class="prepend-2">
-      <li class="usuarios"><%= link_to 'Cadastre-se', new_usuario_path if usuario_logged.nil?%></li>
-      <li class="usuarios"><%= link_to 'Minhas informações', edit_usuario_path(usuario_logged) unless usuario_logged.nil?%></li>
-      <li class="usuarios"><%= link_to 'Meus Lugares', :controller=>"usuarios",:action=>"lugares",:id=>usuario_logged unless usuario_logged.nil?%></li>
-    </ul>
-    <ul class="prepend-4">
-      <li class="refeicaos"><%= link_to 'Minhas Refeições', "/refeicao/listar"%></li>
-      <li class="refeicaos"><%= link_to 'Nova Refeição', new_refeicao_path%></li>
-    </ul>
-    <%else%>
+    <div class="relative " id="subMenu">
+      <ul class="">
+        <li><a href="" >Quem Somos</a></li>
+      </ul>
+      <%unless usuario_logged.nil?%>
+      <ul class="prepend-2">
+        <li class="usuarios"><%= link_to 'Cadastre-se', new_usuario_path if usuario_logged.nil?%></li>
+        <li class="usuarios"><%= link_to 'Minhas informações', edit_usuario_path(usuario_logged) unless usuario_logged.nil?%></li>
+        <li class="usuarios"><%= link_to 'Meus Lugares', :controller=>"usuarios",:action=>"lugares",:id=>usuario_logged unless usuario_logged.nil?%></li>
+      </ul>
+      <ul class="prepend-4">
+        <li class="refeicaos"><%= link_to 'Minhas Refeições', "/refeicao/listar"%></li>
+        <li class="refeicaos"><%= link_to 'Nova Refeição', new_refeicao_path%></li>
+      </ul>
+      <%else%>
       <ul>
         <li class="usuarios"><%= link_to 'Cadastre-se', new_usuario_path%></li>
         <li class="sessions"><%= link_to 'Login','/sessions/new'%></li>
       </ul>
       
-    <%end%>
-    <%unless usuario_logged.nil? && usuario_admin? != 0%>
-    <ul class="prepend-3">
-      <li class="alimentos"><%= link_to 'Alimentos',alimentos_path %></li>
-      <li class="alimentos_paths"><%= link_to 'Novo Alimento', new_alimento_path%></li>
-      <li class="alimentos_usda"><%= link_to 'Alimentos USDA',{ :controller => "alimentos_usda",:action => "index" }  %></li>
-      <li class="medidas"><%= link_to 'Medidas',medidas_path %></li>
-      <li class="tipo_medidas"><%= link_to 'Tipo Medidas',tipo_medidas_path %></li>
-    </ul>
-    <%end%>
-  </div>
+      <%end%>
+      <%unless usuario_logged.nil? && usuario_admin?%>
+      <ul class="prepend-3">
+        <li class="alimentos"><%= link_to 'Alimentos',alimentos_path %></li>
+        <li class="alimentos_paths"><%= link_to 'Novo Alimento', new_alimento_path%></li>
+        <li class="alimentos_usda"><%= link_to 'Alimentos USDA',{ :controller => "alimentos_usda",:action => "index" }  %></li>
+        <li class="medidas"><%= link_to 'Medidas',medidas_path %></li>
+        <li class="tipo_medidas"><%= link_to 'Tipo Medidas',tipo_medidas_path %></li>
+      </ul>
+      <%end%>
+    </div>
   </div>
 </div>
 <script type="text/javascript">
   var el = $("#menu");
   var p = $("#subMenu li.<%=controller.controller_name %>");
-  var ind;  
+  var ind;
   var li;
   if(!p || p.length <= 0){
-    p = el.find("li.<%=controller.controller_name %>");    
+    p = el.find("li.<%=controller.controller_name %>");
     li = p;
   }else{
-    ind = p.parent().index();  
-    li = el.find("ul li").get(ind);  
+    ind = p.parent().index();
+    li = el.find("ul li").get(ind);
   }
   
   if(li){

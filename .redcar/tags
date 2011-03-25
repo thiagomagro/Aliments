@@ -1,1 +1,16 @@
-1300967889
+1301026074
+ApplicationHelper	/Users/thiagomagro/Sites/ruby/aliments/app/helpers/application_helper.rb	module ApplicationHelper
+UsuariosController	/Users/thiagomagro/Sites/ruby/aliments/app/controllers/usuarios_controller.rb	class UsuariosController 
+button_for	/Users/thiagomagro/Sites/ruby/aliments/app/helpers/application_helper.rb	  def button_for(name, options={})
+create	/Users/thiagomagro/Sites/ruby/aliments/app/controllers/usuarios_controller.rb	  def create
+destroy	/Users/thiagomagro/Sites/ruby/aliments/app/controllers/usuarios_controller.rb	  def destroy
+edit	/Users/thiagomagro/Sites/ruby/aliments/app/controllers/usuarios_controller.rb	  def edit
+index	/Users/thiagomagro/Sites/ruby/aliments/app/controllers/usuarios_controller.rb	  def index
+lugares	/Users/thiagomagro/Sites/ruby/aliments/app/controllers/usuarios_controller.rb	  def lugares
+new	/Users/thiagomagro/Sites/ruby/aliments/app/controllers/usuarios_controller.rb	  def new
+show	/Users/thiagomagro/Sites/ruby/aliments/app/controllers/usuarios_controller.rb	  def show
+update	/Users/thiagomagro/Sites/ruby/aliments/app/controllers/usuarios_controller.rb	  def update
+update_lugares	/Users/thiagomagro/Sites/ruby/aliments/app/controllers/usuarios_controller.rb	  def update_lugares
+usuario_admin?	/Users/thiagomagro/Sites/ruby/aliments/app/helpers/application_helper.rb	  def usuario_admin?
+usuario_logged	/Users/thiagomagro/Sites/ruby/aliments/app/helpers/application_helper.rb	  def usuario_logged
+usuario_logged?	/Users/thiagomagro/Sites/ruby/aliments/app/helpers/application_helper.rb	  def usuario_logged?

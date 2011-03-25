@@ -161,22 +161,16 @@ p.error{
   text-align:right;
 }
 
-.boxItem{
-  border:1px solid #222;
-  border:1px solid #222;
+.boxItem{    
   background-color:#eee;
-  -moz-box-shadow: 0px 2px 3px #333;
-  -webkit-box-shadow: 0px 2px 3px #333;
-  box-shadow: 0px 2px 3px #333;
-  
+  -moz-box-shadow: 0px 2px 4px #333;
+  -webkit-box-shadow: 0px 2px 4px #333;
+  box-shadow: 0px 2px 4px #333;
   color:#333;
-  
-  -moz-border-radius: 10px; /* Firefox */
-  -webkit-border-radius: 10px; /* Safari, Chrome */
-  border-radius: 10px; /* CSS3 */
-  
   padding: 5px 10px 5px 10px;
-  margin:2px;
+  margin:6px;
+  border-top:1px solid #fff;
+  border-bottom:3px solid #ccc;
   
   behavior: url(border-radius.htc);
 }
@@ -189,19 +183,20 @@ p.error{
 
 .boxItem input, .boxItem textarea, .boxItem select, .boxItem option{
   color:#333;
-  background-color:#eee;
+  background-color:#fff;
+  font-size:11px;
 }
 
 .boxItem h1, .boxItem h2, .boxItem label, .boxItem label.title, .boxItem span{
   color:#333;  
 }
 
-.boxItem label.title{
-  font-size:100%;
+.boxItem .title{
+  font-size:90%;
 }
 
 .boxItem label{
-  font-size:80%;
+  font-size:70%;
 }
 /* FIM BOX */
 
@@ -218,7 +213,7 @@ label{
 }
 
 .title{
-  font-size:15px;
+  font-size:14px;
   color:#555;
   font-weight:bold;
 }
@@ -234,14 +229,21 @@ label.inline{
 
 /*LAYOUT SPECIFIC*/
 #loginForm{
-	top:30px;
-  right:0px;  
-  padding:10px;
+  top:35px;  
+  right:0px;
+  padding:20px;
   z-index:100;
   background-color:#fff;
-  border:1px solid #ccc;
+  border:1px solid #ddd;
+  text-align:right;  
 }
 
+#loginForm img.seta_up{
+  position: absolute;  
+  top:-10px;
+  right:40px;
+  z-index:100;
+}
 
 .helperContainer{
 }
@@ -272,8 +274,9 @@ fieldset{
 	padding:0px;
 	margin:0px;
 	margin-bottom:10px;
-	padding-left:12px;
-  border:1px dashed #ccc;
+	padding:10px;
+  padding-top:0px;
+  border:1px dashed #ddd;
 }
 
 fieldset legend{
@@ -287,8 +290,8 @@ fieldset fieldset legend{
 }
 
 fieldset hr{
-	background-color:#ccc;
-	border: 0px solid #ccc;
+	background-color:#ddd;
+	border: 0px solid #ddd;
 	padding:0px;
 	margin:0px;
 	margin-bottom:5px;

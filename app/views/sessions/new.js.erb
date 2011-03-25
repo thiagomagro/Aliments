@@ -1,6 +1,8 @@
 if(!$("#loginForm").html()){
-	$("#loginForm").html("<%= escape_javascript( render(:partial => "login") ) %>").show('fast');
+	$("#loginForm").html("<%= escape_javascript( render(:partial => "login") ) %>").fadeIn('fast');
 }else{
-	$("#loginForm").html("").hide('fast');
+  $("#loginForm").fadeOut('fast',function(){
+    $(this).html("");
+  });
 }
 
