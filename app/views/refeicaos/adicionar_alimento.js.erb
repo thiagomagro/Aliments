@@ -1,8 +1,8 @@
 var div = document.createElement("div");
 $(div).html("<%= escape_javascript( render(:partial => "/refeicaos/refeicao_alimento", :locals => {:refeicao_alimento => @refeicao_alimento}) ) %>").hide();
-$("#searchResults").hide("fast",function(){
+$("#searchResults").fadeOut("fast",function(){
   $(this).html("");
   $("#refeicao_alimentos").append(div);
-  $(div).show('fast');
+  $(div).fadeIn('fast');
   $(div).find("select").focus();
 });

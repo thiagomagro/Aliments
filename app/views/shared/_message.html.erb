@@ -1,0 +1,8 @@
+<%agora=Time.now.to_i %>
+<div class="msg <%=classType%>" id="<%=agora%>">
+  <div class="right">
+    <%=link_to_function (image_tag ("close.png")),"delete_element(this,'##{agora}')"%>
+  </div>
+  <%=msg%>
+  <div class="clear"></div>
+</div>

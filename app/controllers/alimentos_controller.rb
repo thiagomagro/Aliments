@@ -32,9 +32,7 @@ class AlimentosController < ApplicationController
       @alimento.componente_alimentos.build({:componente => c})
       #ca = ComponenteAlimento.new(:componente => c)
       #@alimento.componente_alimentos.push(ca)
-    end
-
-    print @alimento.componente_alimentos
+    end    
 
     respond_to do |format|
       format.html # new.html.erb

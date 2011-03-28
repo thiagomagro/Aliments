@@ -1,0 +1,29 @@
+<div class="clear">
+  <h2>
+    <%=refeicao.tipo_refeicao.nome unless refeicao.tipo_refeicao.nil?%>
+    <%= link_to 'Edit', edit_refeicao_path(refeicao) %>
+  </h2>
+  <div class="alimentos_list">
+    <label>Alimentos Ingeridos</label>
+    <div>
+      <%refeicao.refeicao_alimentos.each do |ra|%>
+      <div class="clear">
+        <div class="span-6">
+          <%=ra.alimento.nome%><br/>
+          <%unless ra.medida.nil?%>
+          <span class="text-pp"><%=ra.medida_quantidade%> x</span> <span class="text-p"><%=ra.medida.nome%></span>
+          <%end%>
+        </div>
+        <div class="span-3 last text-p">
+          <%=number_with_precision(ra.quantidade_gramas,:precision => 2,:strip_insignificant_zeros => true)%> g |
+          <%cal=componentes_refeicao_alimento(ra)[208]%>
+          <span class="text-g">
+            <%=number_with_precision((cal * ra.quantidade_gramas),:precision => 2,:strip_insignificant_zeros => true)%>
+          </span> kcal
+        </div>
+        <hr/>
+      </div>
+      <%end%>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,16 @@
 <div class="span-10 column">
   <h1>Minhas Refeições</h1>
-  <h3>Acompanhe aqui as refeições realizadas e qualidade da sua alimentação</h3>
+  <h3>Acompanhe aqui as suas refeições realizadas, como anda a sua alimentação</h3>
   <%@refeicoes.each do |r|%>
-    <div><%=r.tipo_refeicao.nome unless r.tipo_refeicao.nil?%>   <%= link_to 'Edit', edit_refeicao_path(r) %></div>
-    <%end%>
+    <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>r}%>  
+  <%end%>
 </div>
 <div class="span-9 column last">
+  <%data=Time.now%>
+  <div class="span-9">
+  <span class="text-gg"><%=data.strftime("%d")%></span><span class="text-g">/
+    <%=data.strftime("%m")%></span><span class="text-p">/<%=data.strftime("%y")%></span>
+  </div>
   <div class="right">Calorias ingeridas hoje</div>
   Grupos de alimento
 </div>

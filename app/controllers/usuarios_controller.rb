@@ -50,9 +50,13 @@ class UsuariosController < ApplicationController
     
     respond_to do |format|
       if @usuario.save
+        flash[:success] = "Cadastro efetuado com sucesso, bem-vindo à Aliments"
+        flash[:subtitle] = "Para iniciar efetue o login"
         format.html { redirect_to(@usuario, :notice => 'Usuario was successfully created.') }
         format.xml  { render :xml => @usuario, :status => :created, :location => @usuario }
       else
+        flash[:error] = "Não foi possível efetuar seu cadastro."
+        flash[:subtitle] = "Verifique os erros e tente novamente"
         format.html { render :action => "new" }
         format.xml  { render :xml => @usuario.errors, :status => :unprocessable_entity }
       end
@@ -73,9 +77,11 @@ class UsuariosController < ApplicationController
     end
     respond_to do |format|
       if @usuario.update_attributes(params[:usuario])
+        flash[:success] = "Dados atualizados com sucesso"
         format.html { redirect_to(@usuario, :notice => 'Usuario was successfully updated.') }
         format.xml  { head :ok }
       else
+        flash[:error] = "Erro ao atualizar dados"
         format.html { render :action => "edit" }
         format.xml  { render :xml => @usuario.errors, :status => :unprocessable_entity }
       end

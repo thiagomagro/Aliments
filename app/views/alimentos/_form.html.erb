@@ -1,87 +1,87 @@
 <%= form_for(@alimento) do |f| %>
-	<% if @alimento.errors.any? %>
-	<div id="error_explanation">
-		<h2><%= pluralize(@alimento.errors.count, "error") %> prohibited this alimento from being saved:</h2>
-		<ul>
-			<% @alimento.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-			<% end %>
-		</ul>
-	</div>
-	<% end %>
-	<div class="column span-9">
-		<fieldset>
-			<legend>Alimento</legend>
-			<p class="highlighter">
-				<%= f.label :nome, :class=>"title"%>
-				<%= f.text_field :nome %>
-			</p>
-			<div id="marcaForm">
-				<p class="marcaSelected highlighter">
-					<%= f.label :marca, :class=>"title"%>
-					<%=@alimento.marca.nil? ? "Nenhuma" : @alimento.marca.nome%> |
-					<%=link_to "Trocar Marca", "/marcas/marca_alimento",:update=>"marcas",:method=> :post,:remote => true, :class=>"button pp" %>
-					<%= f.label "Marca atualmente atribuida ao alimento"%>
-				</p>
-				<div id="marcas" class="hide">
-			</div>
-			</div>
-		</fieldset>
-		<fieldset>
-			<legend>Grupos</legend>
-			<p class="highlighter">
-				Adicionar Grupo: <select name="gruposAlimentos" id="select_grupos_alimentos">
-					<option>Escolha</option>
-					<%= options_from_collection_for_select(getGruposAlimentos, :id, :nome) %>
-				</select>
-				<button class="button pp" type="button" onclick="javascript:adicionarGrupo(this)">Adicionar</button>
-			</p>
-      <hr/>
-			<div id="grupos_alimentos">
-				<%= render '/grupos/grupos_form' , :alimento => @alimento%>
-			</div>
-		</fieldset>
-		<fieldset>
-			<legend>Medidas</legend>
-			<p class="highlighter">
-				Adicionar Grupo: <select name="tipoMedidas" id="selectTipoMedidas">
-					<option>Escolha</option>
-					<%= options_from_collection_for_select(getTipoMedidas, :id, :nome) %>
-				</select> <button class="button pp" type="button" onclick="javascript:loadTipoMedidas(this)">Adicionar</button>
-				<label>Adicione um grupo de medias à esse alimento</label>
-			</p>
-			<hr/>
-			<p>
-			  <button type="button" class="button pp" onclick="importarMedidas(this)">Importar</button>
-   			<label>Importe medidas de um outro alimento</label>
-			  <div id="search_form"></div>
-			</p>
-			<hr/>
-			<div>
-				<%=link_to_function ("Limpar valores"), "limparValores(this,'fieldset','input.quantidade');", :class => "button pp vermelho right"%>
-				<label>Medidas atualmente cadastradas:</label>
-			</div>
-			<hr/>
-			<div id="alimento_medidas">
-				<%= render 'tipo_medidas/tipo_medidas_form' , :alimento => @alimento%>
-			</div>
-		</fieldset>
-	</div>
-	<div class="column span-9 last">
-		<fieldset>
-			<legend>Nutrientes</legend>
-			<p>
-				<%= f.label :porcao, :class=>"title"%>
-				<%= f.text_field :porcao, :class => "span-2"%> &nbsp; g
-			</p>
-			<hr/>
-				<% @alimento.componente_alimentos.sort_by{|c| "#{c.componente.ordem ? c.componente.ordem : 100}".to_i } .each do |ca|%>
-			<%= render '/alimentos/componente_alimento_form', :ca => ca unless !ca.componente.ativo?%>
-			<%end%>
-		</fieldset>
-	</div>
-	<div class="actions">
-		<%= f.submit "Salvar", :class => "button"%>
-	</div>
-	<% end %>
+<% if @alimento.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@alimento.errors.count, "error") %> prohibited this alimento from being saved:</h2>
+  <ul>
+    <% @alimento.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="column span-9">
+  <fieldset>
+    <legend>Alimento</legend>
+    <p class="highlighter">
+      <%= f.label :nome, :class=>"title"%>
+      <%= f.text_field :nome %>
+    </p>
+    <div id="marcaForm">
+      <p class="marcaSelected highlighter">
+        <%= f.label :marca, :class=>"title"%>
+        <%=@alimento.marca.nil? ? "Nenhuma" : @alimento.marca.nome%> |
+        <%=link_to "Trocar Marca", "/marcas/marca_alimento",:update=>"marcas",:method=> :post,:remote => true, :class=>"button pp" %>
+        <%= f.label "Marca atualmente atribuida ao alimento"%>
+      </p>
+      <div id="marcas" class="hide">
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Grupos</legend>
+    <p class="highlighter">
+      Adicionar Grupo: <select name="gruposAlimentos" id="select_grupos_alimentos">
+        <option>Escolha</option>
+        <%= options_from_collection_for_select(getGruposAlimentos, :id, :nome) %>
+      </select>
+      <button class="button pp" type="button" onclick="javascript:adicionarGrupo(this)">Adicionar</button>
+    </p>
+    <hr/>
+    <div id="grupos_alimentos">
+      <%= render '/grupos/grupos_form' , :alimento => @alimento%>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Medidas</legend>
+    <p class="highlighter">
+      Adicionar Grupo: <select name="tipoMedidas" id="selectTipoMedidas">
+        <option>Escolha</option>
+        <%= options_from_collection_for_select(getTipoMedidas, :id, :nome) %>
+      </select> <button class="button pp" type="button" onclick="javascript:loadTipoMedidas(this)">Adicionar</button>
+      <label>Adicione um grupo de medias à esse alimento</label>
+    </p>
+    <hr/>
+    <p>
+      <button type="button" class="button pp" onclick="importarMedidas(this)">Importar</button>
+      <label>Importe medidas de um outro alimento</label>
+      <div id="search_form"></div>
+    </p>
+    <hr/>
+    <div>
+      <%=link_to_function ("Limpar valores"), "limparValores(this,'fieldset','input.quantidade');", :class => "button pp vermelho right"%>
+      <label>Medidas atualmente cadastradas:</label>
+    </div>
+    <hr/>
+    <div id="alimento_medidas">
+      <%= render 'tipo_medidas/tipo_medidas_form' , :alimento => @alimento%>
+    </div>
+  </fieldset>
+</div>
+<div class="column span-9 last">
+  <fieldset>
+    <legend>Nutrientes</legend>
+    <p>
+      <%= f.label :porcao, :class=>"title"%>
+      <%= f.text_field :porcao, :class => "span-2"%> &nbsp; g
+    </p>
+    <hr/>
+    <% @alimento.componente_alimentos.sort_by{|c| "#{c.componente.ordem ? c.componente.ordem : 100}".to_i } .each do |ca|%>
+    <%= render '/alimentos/componente_alimento_form', :ca => ca unless !ca.componente.ativo?%>
+    <%end%>
+  </fieldset>
+</div>
+<div class="actions">
+  <%= f.submit "Salvar", :class => "button"%>
+</div>
+<% end %>
 

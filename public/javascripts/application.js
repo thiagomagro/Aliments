@@ -46,8 +46,24 @@ $(document).ready(function(){
         return false
       };
     });    
-		$(".tooltip").tipTip({});
+    $(".tooltip").tipTip({});
+    displayMsg();
 });
+
+function displayMsg(i){
+  if(!i){
+    i=0
+  }  
+  var msg = $("#msgBox .msg").eq(i);
+  if(msg){
+    msg.fadeIn();
+  }else{
+      return;
+  }
+  setTimeout(function(){
+    displayMsg(i+1);
+  },5000);
+}
 
 function trocarMarca(){
 	$.ajax({
@@ -117,6 +133,10 @@ function delete_item(btn,parent,input,msg){
 		}
 	}
   $(btn).parents(parent).hide('fast').find(input).val("1");
+}
+
+function delete_element(el,parent){
+  $(el).parents(parent).remove();
 }
 
 function importarMedidas(btn){
@@ -224,6 +244,12 @@ function calcula_alimento_medida(el){
     if(rel && mq.val() != "" && mq.val() != 0){
       $(qg).val(rel.qtd * mq.val());
     }
+  }  
+}
+
+function setCal(el){
+  if($(el).val() != ""){
+    $(el).parents("fieldset").find(".kj").val(eval($(el).val()) * 4.19);
   }  
 }
 

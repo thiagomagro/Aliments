@@ -1,5 +1,5 @@
 var el = $("#searchResults");
-el.hide('fast',function(){
+el.fadeOut('fast',function(){
 	$(el).html("");
   <%if @alimentos.size > 0%>
   	<%@alimentos.each do |a|%>
@@ -9,6 +9,6 @@ el.hide('fast',function(){
   <%else%>
     $(el).append("<div class=\"clear\">Nenhum alimento encontrado</div>");
   <%end%>
-	el.show('fast');
+	el.fadeIn('fast');
 });
 

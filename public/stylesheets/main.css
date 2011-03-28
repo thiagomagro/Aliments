@@ -1,6 +1,6 @@
 /* LAYOUTS DEFAULT*/
 body, textarea, input, select, option, button {
-  color: #333;
+  color: #555;
   font-family: Calibri,Lucida Grande,Helvetica Neue,Helvetica,Arial,sans-serif;
   /*font:"Lucida Grande",Lucida,helvetica,Arial,verdana,sans-serif*/
   background-color:#fff;
@@ -163,14 +163,11 @@ p.error{
 
 .boxItem{    
   background-color:#eee;
-  -moz-box-shadow: 0px 2px 4px #333;
-  -webkit-box-shadow: 0px 2px 4px #333;
-  box-shadow: 0px 2px 4px #333;
   color:#333;
   padding: 5px 10px 5px 10px;
   margin:6px;
-  border-top:1px solid #fff;
-  border-bottom:3px solid #ccc;
+  border-bottom:1px dotted #ccc;
+
   
   behavior: url(border-radius.htc);
 }
@@ -197,6 +194,26 @@ p.error{
 
 .boxItem label{
   font-size:70%;
+}
+
+.text-pp{
+  font-size:9px;
+}
+
+.text-p{
+  font-size:11px;
+}
+
+.text-m{
+  font-size:14px;
+}
+
+.text-g{
+  font-size:18px;
+}
+
+.text-gg{
+  font-size:32px;
 }
 /* FIM BOX */
 
@@ -245,6 +262,30 @@ label.inline{
   z-index:100;
 }
 
+#msgBox{
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  right:0px;
+}
+
+#msgBox .msg{
+  padding:10px;
+  padding-left:150px;
+  font-size:200%;
+  background-color:#ccc;
+  display:none;
+}
+
+#msgBox .errorMsg{
+
+}
+
+#msgBox .successMsg{
+  background-color:#eeffee;
+  color:#33aa00;
+}
+
 .helperContainer{
 }
 
@@ -289,7 +330,7 @@ fieldset fieldset legend{
   font-size: 140%;
 }
 
-fieldset hr{
+hr{
 	background-color:#ddd;
 	border: 0px solid #ddd;
 	padding:0px;

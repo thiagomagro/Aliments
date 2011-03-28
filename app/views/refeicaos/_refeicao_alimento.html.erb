@@ -5,22 +5,21 @@
   <%=hidden_field_tag "refeicao[refeicao_alimentos_attributes][#{agora}][alimento_id]", (refeicao_alimento.alimento.id unless refeicao_alimento.alimento.nil?)%>
   <div class="right"><%=link_to_function (image_tag("delete.png")), "delete_item(this,'div.refeicao_alimento','input.refeicao_alimento_destroy','Deseja excluir o alimento?');", :class => ""%></div>
   <div class="span-3"><h2><%=refeicao_alimento.alimento.nome unless refeicao_alimento.alimento.nil?%></h2></div>
+  <%unless refeicao_alimento.alimento.alimento_medidas.nil?%>
   <div class="span-4">
     <label class="title inline">Medida</label>
     <select class="select_medida" name="refeicao[refeicao_alimentos_attributes][<%=agora%>][medida_id]" onChange="calcula_alimento_medida(this)">
-      <%unless refeicao_alimento.alimento.alimento_medidas.nil?%>
       <option></option>
-        <%=refeicao_alimento.alimento.alimento_medidas.each do |am|%>
-          <%unless am.quantidade.nil?%>
-            <option 
-            <%unless refeicao_alimento.medida.nil?%>
-              <%if (am.medida.id == refeicao_alimento.medida.id)%>
-                selected="selected"
-              <%end%>
-            <%end%>
-            value="<%=am.medida.id%>" rel="{'qtd':<%=am.quantidade%>}"><%=am.medida.nome%></option>
-          <%end%>
-        <%end%>
+      <%=refeicao_alimento.alimento.alimento_medidas.each do |am|%>
+      <%unless am.quantidade.nil?%>
+      <option
+      <%unless refeicao_alimento.medida.nil?%>
+      <%if (am.medida.id == refeicao_alimento.medida.id)%>
+      selected="selected"
+      <%end%>
+      <%end%>
+      value="<%=am.medida.id%>" rel="{'qtd':<%=am.quantidade%>}"><%=am.medida.nome%></option>
+      <%end%>
       <%end%>
     </select>
   </div>
@@ -28,7 +27,8 @@
     <label class="title inline">Quantidade</label>
     <%=text_field_tag "refeicao[refeicao_alimentos_attributes][#{agora}][medida_quantidade]",refeicao_alimento.medida_quantidade, :class => "medida_quantidade span-1", :onblur => "calcula_alimento_medida(this)" %>
     <label>Quantidade da medida que foi ingerido</label>
-  </div>  
+  </div>
+  <%end%>
   <div class="span-4 <%="error" if refeicao_alimento.errors.on(:quantidade_gramas)%>">
     <label class="title inline">Peso</label>
     <%=text_field_tag "refeicao[refeicao_alimentos_attributes][#{agora}][quantidade_gramas]",refeicao_alimento.quantidade_gramas, :class => "quantidade_gramas span-2", :onblur => "calcula_alimento_medida(this)"  %> g

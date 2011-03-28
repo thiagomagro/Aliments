@@ -22,6 +22,11 @@
 		  <div class="column span-5 last side">Lateral</div>
 		</div>
 	</div>
+  <div id="msgBox">
+    <%=render :partial=>"/shared/message",:locals => {:classType => "errorMsg",:msg=>flash[:error]} unless flash[:error].nil?%>
+    <%=render :partial=>"/shared/message",:locals => {:classType => "infoMsg",:msg=>flash[:info]} unless flash[:info].nil?%>
+    <%=render :partial=>"/shared/message",:locals => {:classType => "successMsg",:msg=>flash[:success]} unless flash[:success].nil?%>
+  </div>
 </body>
 </html>
 
