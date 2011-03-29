@@ -59,20 +59,22 @@
   </div>
 </div>
 <script type="text/javascript">
-  var el = $("#menu");
-  var p = $("#subMenu li.<%=controller.controller_name %>");
-  var ind;
-  var li;
-  if(!p || p.length <= 0){
-    p = el.find("li.<%=controller.controller_name %>");
-    li = p;
-  }else{
-    ind = p.parent().index();
-    li = el.find("ul li").get(ind);
-  }
-  
-  if(li){
-    setSubMenu(li);
-  }
+  $(document).ready(function(){
+    var el = $("#menu");
+    var p = $("#subMenu li.<%=controller.controller_name %>");
+    var ind;
+    var li;
+    if(!p || p.length <= 0){
+      p = el.find("li.<%=controller.controller_name %>");
+      li = p;
+    }else{
+      ind = p.parent().index();
+      li = el.find("ul li").get(ind);
+    }
+    
+    if(li){
+      setSubMenu(li);
+    }
+  });
 </script>
 

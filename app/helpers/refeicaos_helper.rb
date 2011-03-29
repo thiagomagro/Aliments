@@ -1,10 +1,15 @@
 module RefeicaosHelper
   
   def componentes_refeicao(r)
-    comps = []
+    comps = {}
     r.refeicao_alimentos.each do |ra|
+      comps_ra = componentes_refeicao_alimento(ra)
+      comps_ra.keys.each do |k|
+        comps[k] = 0 if comps[k].nil?
+        comps[k] = comps[k] + (comps_ra[k])
+      end
     end
-    return 120
+    return comps
   end
   
   def componentes_refeicao_alimento(ra)
@@ -12,7 +17,7 @@ module RefeicaosHelper
       ra.alimento.componente_alimentos.each do |ca|
         comps[ca.componente.id] = 0 if comps[ca.componente.id].nil?
         #logger.info(ca.quantidade)
-        comps[ca.componente.id] = comps[ca.componente.id] + (ca.quantidade / ra.alimento.porcao) unless ca.quantidade.nil?
+        comps[ca.componente.id] = comps[ca.componente.id] + ((ca.quantidade / ra.alimento.porcao)*ra.quantidade_gramas) unless ca.quantidade.nil?
       end
       return comps
   end

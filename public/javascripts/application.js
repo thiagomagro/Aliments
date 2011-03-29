@@ -45,7 +45,21 @@ $(document).ready(function(){
       if (e.keyCode == 34){
         return false
       };
-    });    
+    });
+    
+    $(".toggleEl").live("click",function(e){
+      e.preventDefault();
+      var el = eval("("+$(this).attr("rel") + ")");
+      if(el){
+        $(this).parents(el.parent).toggleClass("selected");
+        var a = $(this).find(".plus");
+        if($(a).html().indexOf("+") > -1){
+          $(a).html($(a).html().replace("+","-"));
+        }else{
+          $(a).html($(a).html().replace("-","+"));
+        }
+      }
+    });
     $(".tooltip").tipTip({});
     displayMsg();
 });
@@ -252,6 +266,7 @@ function setCal(el){
     $(el).parents("fieldset").find(".kj").val(eval($(el).val()) * 4.19);
   }  
 }
+
 
 /*LIB*/
 jQuery.log = function(message) {

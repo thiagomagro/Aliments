@@ -1,10 +1,28 @@
-<div class="clear">
-  <h2>
+<div class="clear refeicaoList ">
+  <h2 class="text-g">
+    <a href="javascript:void(0)" class="expand toggleEl tooltip" title="Clique para expandir" rel="{parent:'.refeicaoList'}">
+      <span class="text-p plus">[+]</span>
+    <%comps_r = componentes_refeicao(refeicao)%>
     <%=refeicao.tipo_refeicao.nome unless refeicao.tipo_refeicao.nil?%>
-    <%= link_to 'Edit', edit_refeicao_path(refeicao) %>
+    <span class="text-pp"> | </span>
+    <span class="text-m"><%=number_with_precision(comps_r[208],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-m"> kcal</span>
+    </a>
+    <%= link_to edit_refeicao_path(refeicao),:class=>"button pp" do%>
+    <%= image_tag "edit.png", :class=>""%>Editar
+    <%end%>
   </h2>
+  <div class="refeicao_details text-p">
+    <div class="span-4">Carboidratos: <span class="text-m"><%=number_with_precision(comps_r[205],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-p"> g</span></div>
+    <div class="span-4">Proteínas: <span class="text-m"><%=number_with_precision(comps_r[203],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-p"> g</span></div>
+    <div class="span-4">Gordura Total: <span class="text-m"><%=number_with_precision(comps_r[204],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-p"> g</span></div>
+    <div class="span-4">Gordura Saturada: <span class="text-m"><%=number_with_precision(comps_r[606],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-p"> g</span></div>
+    <div class="span-4">Gordura Trans: <span class="text-m"><%=number_with_precision(comps_r[852],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-p"> g</span></div>
+    <div class="span-4">Fibra Alimentar: <span class="text-m"><%=number_with_precision(comps_r[291],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-p"> g</span></div>
+    <div class="span-4">Sódio: <span class="text-m"><%=number_with_precision(comps_r[307],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-p"> mg</span></div>
+    <div class="clear"></div>
+  </div>
   <div class="alimentos_list">
-    <label>Alimentos Ingeridos</label>
+    <div class="text-pp text-center">Alimentos Ingeridos</div>
     <div>
       <%refeicao.refeicao_alimentos.each do |ra|%>
       <div class="clear">
@@ -18,7 +36,7 @@
           <%=number_with_precision(ra.quantidade_gramas,:precision => 2,:strip_insignificant_zeros => true)%> g |
           <%cal=componentes_refeicao_alimento(ra)[208]%>
           <span class="text-g">
-            <%=number_with_precision((cal * ra.quantidade_gramas),:precision => 2,:strip_insignificant_zeros => true)%>
+            <%=number_with_precision(cal,:precision => 2,:strip_insignificant_zeros => true)%>
           </span> kcal
         </div>
         <hr/>
