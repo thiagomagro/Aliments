@@ -2,7 +2,7 @@
   <h2 class="text-g">
     <a href="javascript:void(0)" class="expand toggleEl tooltip" title="Clique para expandir" rel="{parent:'.refeicaoList'}">
       <span class="text-p plus">[+]</span>
-    <%comps_r = componentes_refeicao(refeicao)%>
+    <%comps_r = componentes_refeicao(refeicao) if comps_r.nil?%>
     <%=refeicao.tipo_refeicao.nome unless refeicao.tipo_refeicao.nil?%>
     <span class="text-pp"> | </span>
     <span class="text-m"><%=number_with_precision(comps_r[208],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-m"> kcal</span>

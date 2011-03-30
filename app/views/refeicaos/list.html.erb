@@ -2,8 +2,8 @@
   <h1>Minhas Refeições</h1>
   <h3>Acompanhe aqui as suas refeições realizadas, e saiba como anda a sua alimentação</h3>
   <div class="refeicaoListBox">
-    <%@refeicoes.each do |r|%>
-    <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>r}%>
+    <%refeicoes(usuario_logged,Date.today).each do |r|%>
+      <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>r}%>
     <%end%>
   </div>
 </div>

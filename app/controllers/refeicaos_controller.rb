@@ -30,7 +30,7 @@ class RefeicaosController < ApplicationController
   end
   
   def list
-    @refeicoes = Refeicao.where(:usuario_id=>usuario_logged.id).sort{|a,b| b.data <=> b.data}
+    #@refeicoes = Refeicao.where(:usuario_id=>usuario_logged.id).sort{|a,b| b.data <=> b.data}
   end
   
   def adicionar_alimento
