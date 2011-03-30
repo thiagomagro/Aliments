@@ -1,5 +1,5 @@
 module RefeicaosHelper
-  def componentes_refeicoes(rs){
+  def componentes_refeicoes(rs)
     comps = {}
     rs.each do |r|
       cr = componentes_refeicao(r)
@@ -9,7 +9,7 @@ module RefeicaosHelper
       end
     end
     return comps
-  }
+  end
   
   def componentes_refeicao(r)
     comps = {}

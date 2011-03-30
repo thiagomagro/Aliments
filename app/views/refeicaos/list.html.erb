@@ -2,18 +2,28 @@
   <h1>Minhas Refeições</h1>
   <h3>Acompanhe aqui as suas refeições realizadas, e saiba como anda a sua alimentação</h3>
   <div class="refeicaoListBox">
+    <%comps_refeicoes = componentes_refeicoes(refeicoes(usuario_logged,Date.today))%>
     <%refeicoes(usuario_logged,Date.today).each do |r|%>
-      <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>r}%>
+    <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>r}%>
     <%end%>
   </div>
 </div>
 <div class="span-9 column last">
   <%data=Time.now%>
+  
   <div class="span-9">
-    <span class="text-gg"><%=data.strftime("%d")%></span>
-    <span class="text-g">/<%=data.strftime("%m")%></span>
-    <span class="text-p">/<%=data.strftime("%y")%></span>
+    <div class="span-4">
+      <div class="box text-center">
+        <span class="text-gg"><%=data.strftime("%d")%></span>
+        <span class="text-g">/<%=data.strftime("%m")%></span>
+        <span class="text-p">/<%=data.strftime("%y")%></span>
+      </div>
+    </div>
+    <div class="span-5 last">
+      <div class="box text-center">
+        <span class="text-p">Você ingeriou hoje</span><br/>
+        <span class="text-gg"><%=number_with_precision(comps_refeicoes[208],:precision => 2,:strip_insignificant_zeros => true)%></span> kcal
+      </div>
+    </div>
   </div>
-  <div class="right">Calorias ingeridas hoje</div>
-  Grupos de alimento
 </div>

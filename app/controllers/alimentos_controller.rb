@@ -92,7 +92,7 @@ class AlimentosController < ApplicationController
 
     respond_to do |format|
       if @alimento.update_attributes(params[:alimento])
-        format.html { redirect_to(@alimento, :notice => 'Alimento was successfully updated.') }
+        format.html { redirect_to(:action=>'index', :notice => 'Alimento was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
