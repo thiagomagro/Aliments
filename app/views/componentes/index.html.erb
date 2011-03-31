@@ -1,0 +1,22 @@
+<h1>Lista de Componentes</h1>
+<table>
+  <thead>
+    <tr>
+      <td>Nome</td>
+      <td>Unidade</td>
+      <td>Ordem</td>
+      <td></td>
+    </tr>
+  </thead>
+<%@componentes.each do |c|%>
+<tr>
+  <td><%=c.nome%></td>
+  <td><%=c.unidade%></td>
+  <td><%=c.ordem%></td>
+  <td><%= link_to 'Editar', edit_componente_path(c) %></td>
+  <td><%= link_to 'Excluir', componente_path(c), :confirm => 'Deseja excluir o nutriente?', :method => :delete %></td>
+</tr>
+<%end%>
+</table>
+<br />
+<%= link_to 'Novo Componente', new_componente_path %>

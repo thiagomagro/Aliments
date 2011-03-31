@@ -1,0 +1,32 @@
+<%= form_for(@componente) do |c| %>
+	<% if @componente.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@componente.errors.count, "error") %> prohibited this medida from being saved:</h2>
+		<ul>
+			<% @componente.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div class="column span-9">
+		<fieldset>
+			<legend>Nutriente</legend>
+			<p class="highlighter">
+				<%= c.label :nome, :class=>"title"%>
+				<%= c.text_field :nome %>
+			</p>
+			<p class="highlighter">
+				<%= c.label :unidade, :class=>"title"%>
+				<%= c.text_field :unidade %>
+			</p>
+			<p class="highlighter">
+				<%= c.label :ordem, :class=>"title"%>
+				<%= c.text_field :ordem %>
+			</p>
+		</fieldset>
+	</div>
+	<div class="clear actions">
+		<%= c.submit "Salvar", :class => "button"%>
+	</div>	
+<%end%>

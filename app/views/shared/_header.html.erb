@@ -8,6 +8,7 @@
         <%unless usuario_logged.nil?%>
           <div class="right">
             <%link_to "/sessions/destroy",:method=>:delete, :class => ("button vermelho") do%>
+              <%= image_tag "icon_lock.png", :class=>""%>
               Logout
             <%end%>
           </div>

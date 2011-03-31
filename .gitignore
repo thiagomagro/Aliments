@@ -9,3 +9,4 @@ db/schema.rb
 solr/**/*
 .redcar
 ./db/sphinx
+solr/data/*

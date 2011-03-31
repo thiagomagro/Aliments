@@ -75,7 +75,7 @@ class AlimentosController < ApplicationController
     @alimento.ativo=true
     respond_to do |format|
       if @alimento.save
-        format.html { redirect_to(@alimento, :notice => 'Alimento was successfully created.') }
+        format.html { redirect_to(:action=>'index', :notice => 'Alimento was successfully created.') }
         format.xml  { render :xml => @alimento, :status => :created, :location => @alimento }
       else
         format.html { render :action => "new" }

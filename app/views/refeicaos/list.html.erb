@@ -22,8 +22,9 @@
     <div class="span-5 last">
       <div class="box text-center">
         <span class="text-p">Você ingeriou hoje</span><br/>
-        <span class="text-gg"><%=number_with_precision(comps_refeicoes[208],:precision => 2,:strip_insignificant_zeros => true)%></span> kcal
+        <span class="text-gg"><%=comps_refeicoes[208]?number_with_precision(comps_refeicoes[208],:precision => 2,:strip_insignificant_zeros => true):0%></span> kcal
       </div>
     </div>
   </div>
 </div>
+<div class="clear">Calendários!</div>

@@ -2,7 +2,7 @@ Aliments::Application.routes.draw do
 #  get "home/index"
   root :to => "home#index"
 
-  resources :alimentos, :alimentos_usda, :usuarios, :sessions, :tipo_medidas, :medidas, :marcas, :grupos, :lugares, :usuario_lugars, :refeicaos
+  resources :alimentos, :alimentos_usda, :usuarios, :sessions, :tipo_medidas, :medidas, :marcas, :grupos, :lugares, :usuario_lugars, :refeicaos, :componentes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
