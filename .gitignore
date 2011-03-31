@@ -6,7 +6,9 @@ log/*.pid
 tmp/**/*
 config/database.yml
 db/schema.rb
+solr
 solr/**/*
 .redcar
+.redcar/**/*
 ./db/sphinx
 solr/data/*
