@@ -25,16 +25,23 @@ module RefeicaosHelper
   
   def componentes_refeicao_alimento(ra)
     comps = {}
-      ra.alimento.componente_alimentos.each do |ca|
-        comps[ca.componente.id] = 0 if comps[ca.componente.id].nil?
-        #logger.info(ca.quantidade)
-        comps[ca.componente.id] = comps[ca.componente.id] + ((ca.quantidade / ra.alimento.porcao)*ra.quantidade_gramas) unless ca.quantidade.nil?
-      end
-      return comps
+    ra.alimento.componente_alimentos.each do |ca|
+      comps[ca.componente.id] = 0 if comps[ca.componente.id].nil?
+      #logger.info(ca.quantidade)
+      comps[ca.componente.id] = comps[ca.componente.id] + ((ca.quantidade / ra.alimento.porcao)*ra.quantidade_gramas) unless ca.quantidade.nil?
+    end
+    return comps
   end
   
   def refeicoes(usuario,date)
     refeicoes = Refeicao.find(:all,:conditions => ["extract(day from data) = ? AND extract(month from data) = ? AND extract(year from data) = ? AND usuario_id=?", date.day, date.month, date.year,usuario.id]).sort{|a,b| b.data <=> b.data}
     return refeicoes
+  end
+  
+  def getDatasRefeicao
+    @datas = Refeicao.count( :group => "DATE(data)",
+    #:conditions => ["created_at >= ? ", 7.days.ago],
+    :order => "DATE(data) ASC"
+    )
   end
 end

@@ -6,5 +6,6 @@ module AlimentosHelper
   def getGruposAlimentos
     @gruposAlimentos = Grupo.all
   end
+  
 end
 

@@ -28,3 +28,6 @@
   </div>
 </div>
 <div class="clear">Calendários!</div>
+<%getDatasRefeicao.collect do |data_r,count|%>
+  <div><%=data_r%>  -<%=count%></div>
+<%end%>

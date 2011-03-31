@@ -12,3 +12,4 @@ solr/**/*
 .redcar/**/*
 ./db/sphinx
 solr/data/*
+solr/data/*/**
