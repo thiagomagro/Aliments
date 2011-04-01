@@ -2,21 +2,24 @@
   <h1>Minhas Refeições</h1>
   <h3>Acompanhe aqui as suas refeições realizadas, e saiba como anda a sua alimentação</h3>
   <div class="refeicaoListBox">
-    <%comps_refeicoes = componentes_refeicoes(refeicoes(usuario_logged,Date.today))%>
-    <%refeicoes(usuario_logged,Date.today).each do |r|%>
-    <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>r}%>
+    <%refeicoes=refeicoes(usuario_logged)%>
+    <%refeicoes_dias = refeicoes_dias(refeicoes)%>
+    <%comps_refeicoes = componentes_refeicoes(refeicoes_dias[@data.strftime("%d/%m/%y")])%>
+    <%refeicoes_dias[@data.strftime("%d/%m/%y")].each do |r|%>
+      <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>r}%>
+    <%end%>
+    <%if refeicoes_dias[@data.strftime("%d/%m/%y")].nil? || refeicoes_dias[@data.strftime("%d/%m/%y")].size <= 0%>
+      <div class="error">Nenhuma refeição encontrada.</div>
     <%end%>
   </div>
 </div>
 <div class="span-9 column last">
-  <%data=Time.now%>
-  
   <div class="span-9">
     <div class="span-4">
       <div class="box text-center">
-        <span class="text-gg"><%=data.strftime("%d")%></span>
-        <span class="text-g">/<%=data.strftime("%m")%></span>
-        <span class="text-p">/<%=data.strftime("%y")%></span>
+        <span class="text-gg"><%=@data.strftime("%d")%></span>
+        <span class="text-g">/<%=@data.strftime("%m")%></span>
+        <span class="text-p">/<%=@data.strftime("%y")%></span>
       </div>
     </div>
     <div class="span-5 last">
@@ -27,7 +30,19 @@
     </div>
   </div>
 </div>
-<div class="clear">Calendários!</div>
-<%getDatasRefeicao.collect do |data_r,count|%>
-  <div><%=data_r%>  -<%=count%></div>
-<%end%>
+<div class="clear"></div>
+<div class="prepend-top">
+  <%keys = dias_array(refeicoes_dias.keys)%>
+  <%keys.sort.each do |ks|%>
+  <%k=ks.strftime("%d/%m/%y")%>
+  <%if @data.strftime("%d/%m/%y") != k%>
+  <div class="span-2 text-center box padding-4">
+    <%link_to :action=>"list",:data=>k do%>
+    <%=k%><br/>
+    <%=number_with_precision(componentes_refeicoes(refeicoes_dias[k])[208],:precision => 2,:strip_insignificant_zeros => true)%> kcal<br/>
+    <%=refeicoes_dias[k].size%>
+    <%end%>
+  </div>
+  <%end%>
+  <%end%>
+</div>

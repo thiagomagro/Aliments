@@ -33,9 +33,37 @@ module RefeicaosHelper
     return comps
   end
   
-  def refeicoes(usuario,date)
+  def refeicoes_data(usuario,date)
     refeicoes = Refeicao.find(:all,:conditions => ["extract(day from data) = ? AND extract(month from data) = ? AND extract(year from data) = ? AND usuario_id=?", date.day, date.month, date.year,usuario.id]).sort{|a,b| b.data <=> b.data}
     return refeicoes
+  end
+  
+  def refeicoes(usuario)
+    refeicoes = Refeicao.find(:all,:conditions => ["usuario_id=?",usuario.id]).sort{|a,b| b.data <=> b.data}
+    return refeicoes
+  end
+  
+  def refeicoes_dias(refeicoes)
+    datas = {}
+    refeicoes.each do |r|
+      data_s = r.data.strftime("%d/%m/%y")
+      datas[data_s] = [] if datas[data_s].nil?
+      datas[data_s] << r
+    end
+    return datas
+  end
+  
+  def dias_array(dias)
+    ds = []
+    dias.each do |k|
+      ds <<  Date.strptime(k, "%d/%m/%y")
+    end
+    return ds
+  end
+  
+  def calorias_refeicoes(refeicoes)
+    comps = componentes_refeicoes(refeicoes)
+    return comps[208] unless comps.nil?
   end
   
   def getDatasRefeicao

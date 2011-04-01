@@ -10,7 +10,7 @@ class RefeicaosController < ApplicationController
     @refeicao.usuario = usuario_logged
     
     if @refeicao.save
-      redirect_to :action=> :list
+      redirect_to :action=> :list, :data=>@refeicao.data.strftime("%d/%m/%y")
     else
       render :action => "new"
     end
@@ -23,13 +23,17 @@ class RefeicaosController < ApplicationController
   def update
     @refeicao = Refeicao.find(params[:id])    
     if @refeicao.update_attributes(params[:refeicao])
-        redirect_to :action=> :list
+        redirect_to :action=> :list, :data=>@refeicao.data.strftime("%d/%m/%y")
     else
         render :action => "edit"
     end
   end
   
   def list
+    @data = Date.today
+    if !params[:data].nil?
+      @data = DateTime.strptime(params[:data],"%d/%m/%y").to_time
+    end
     #@refeicoes = Refeicao.where(:usuario_id=>usuario_logged.id).sort{|a,b| b.data <=> b.data}
   end
   
