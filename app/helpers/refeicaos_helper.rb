@@ -13,11 +13,13 @@ module RefeicaosHelper
   
   def componentes_refeicao(r)
     comps = {}
-    r.refeicao_alimentos.each do |ra|
-      comps_ra = componentes_refeicao_alimento(ra)
-      comps_ra.keys.each do |k|
-        comps[k] = 0 if comps[k].nil?
-        comps[k] = comps[k] + (comps_ra[k])
+    unless r.nil?
+      r.refeicao_alimentos.each do |ra|
+        comps_ra = componentes_refeicao_alimento(ra)
+        comps_ra.keys.each do |k|
+          comps[k] = 0 if comps[k].nil?
+          comps[k] = comps[k] + (comps_ra[k])
+        end
       end
     end
     return comps
