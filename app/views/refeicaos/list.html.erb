@@ -3,7 +3,8 @@
   <h3>Acompanhe aqui as suas refeições realizadas, e saiba como anda a sua alimentação</h3>
   <div class="refeicaoListBox">
     <%refeicoes=refeicoes(usuario_logged)%>
-    <%refeicoes_dias = refeicoes_dias(refeicoes) unless refeicoes.nil? || refeicoes.size <= 0%>
+    <%unless refeicoes.nil? || refeicoes.size <= 0%>
+    <%refeicoes_dias = refeicoes_dias(refeicoes)%>
     <%unless refeicoes_dias.nil? || refeicoes_dias.size <= 0%>
     <%comps_refeicoes = componentes_refeicoes(refeicoes_dias[@data.strftime("%d/%m/%y")])%>
     <%refeicoes_dias[@data.strftime("%d/%m/%y")].each do |r|%>
@@ -11,6 +12,7 @@
     <%end%>
     <%if refeicoes_dias[@data.strftime("%d/%m/%y")].nil? || refeicoes_dias[@data.strftime("%d/%m/%y")].size <= 0%>
     <div class="error">Nenhuma refeição encontrada.</div>
+    <%end%>
     <%end%>
     <%end%>
   </div>
