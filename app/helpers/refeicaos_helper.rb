@@ -1,14 +1,14 @@
 module RefeicaosHelper
   def componentes_refeicoes(rs)
-    comps = {}
-    unless r.nil?
+    comps = {}  
+    unless rs.nil? || rs.size <= 0
       rs.each do |r|
         cr = componentes_refeicao(r)
         cr.keys.each do |k|
           comps[k] = 0 if comps[k].nil?
           comps[k] = comps[k] + (cr[k])
-        end
-      end
+        end        
+    end
     end
     return comps
   end

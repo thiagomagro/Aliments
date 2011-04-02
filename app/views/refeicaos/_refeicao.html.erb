@@ -1,5 +1,5 @@
 <div class="clear refeicaoList ">
-  <h2 class="text-g">
+  <h2 class="text-g">    
     <a href="javascript:void(0)" class="expand toggleEl tooltip" title="Clique para expandir" rel="{parent:'.refeicaoList'}">
       <span class="text-p plus">[+]</span>
     <%comps_r = componentes_refeicao(refeicao) if comps_r.nil?%>
@@ -9,6 +9,10 @@
     </a>
     <%= link_to edit_refeicao_path(refeicao),:class=>"button pp" do%>
     <%= image_tag "edit.png", :class=>""%>Editar
+    <%end%>
+    &nbsp;
+    <%= link_to refeicao, :confirm => 'Deseja excluir a refeição?', :method => :delete, :class=>"button pp" do%>
+      Excluir
     <%end%>
   </h2>
   <div class="refeicao_details text-p">

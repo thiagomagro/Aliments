@@ -219,6 +219,10 @@ p.error{
 .text-gg{
   font-size:32px;
 }
+
+.box a,.box a:link;{
+  text-decoration:none;
+}
 /* FIM BOX */
 
 /*FORMS*/

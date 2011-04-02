@@ -5,14 +5,14 @@
     <%refeicoes=refeicoes(usuario_logged)%>
     <%unless refeicoes.nil? || refeicoes.size <= 0%>
     <%refeicoes_dias = refeicoes_dias(refeicoes)%>
-    <%unless refeicoes_dias.nil? || refeicoes_dias.size <= 0%>
     <%comps_refeicoes = componentes_refeicoes(refeicoes_dias[@data.strftime("%d/%m/%y")])%>
-    <%refeicoes_dias[@data.strftime("%d/%m/%y")].each do |r|%>
-    <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>r}%>
+    <%unless refeicoes_dias.nil? || @data.nil? || refeicoes_dias[@data.strftime("%d/%m/%y")].nil?%>
+      <%refeicoes_dias[@data.strftime("%d/%m/%y")].each do |rf|%>
+        <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>rf}%>
+      <%end%>
     <%end%>
     <%if refeicoes_dias[@data.strftime("%d/%m/%y")].nil? || refeicoes_dias[@data.strftime("%d/%m/%y")].size <= 0%>
     <div class="error">Nenhuma refeição encontrada.</div>
-    <%end%>
     <%end%>
     <%end%>
   </div>
