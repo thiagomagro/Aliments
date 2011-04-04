@@ -105,4 +105,12 @@ module UsuariosHelper
   def imc(usuario)
     return (usuario.peso.peso / (usuario.altura ** 2))
   end
+  
+
+  def encrypt(text,salt)
+    if salt.nil?
+      salt="2pO$sdF#ca8@6ads-sD%f"
+    end
+    return Digest::SHA1.hexdigest("--#{salt}--#{text}--") 
+  end 
 end

@@ -1,10 +1,17 @@
 class SessionsController < ApplicationController
+  include UsuariosHelper
+  
   def new
   end
 
   def create
     usuario = Usuario.find_by_login_and_senha params[:usuario][:login],params[:usuario][:senha]
+    #usuario = Usuario.find_by_login_and_senha_segura params[:usuario][:login],encrypt(params[:usuario][:senha],nil)
     if usuario
+      if usuario.senha_segura.nil?
+        usuario.senha_segura = encrypt(usuario.senha,nil)
+        usuario.save
+      end
       session[:usuario] = usuario.id
       redirect_to :controller => :home
     else
