@@ -44,7 +44,6 @@ class AlimentosController < ApplicationController
   def edit
     @alimento = Alimento.find(params[:id])
     componentes = Componente.where("ativo=true")
-    @compss = []
     componentes.each do |c|
       existe = false
       @alimento.componente_alimentos.each do |ca|
