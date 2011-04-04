@@ -103,6 +103,7 @@ module UsuariosHelper
   end
   
   def imc(usuario)
+    return 0 if (usuario.peso.nil? || usuario.peso.peso.nil? || usuario.altura.nil?)
     return (usuario.peso.peso / (usuario.altura ** 2))
   end
   
