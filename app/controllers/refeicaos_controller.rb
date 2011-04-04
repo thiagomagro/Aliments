@@ -10,8 +10,10 @@ class RefeicaosController < ApplicationController
     @refeicao.usuario = usuario_logged
     
     if @refeicao.save
+      flash[:success] = "Refeição adicionada com sucesso"
       redirect_to :action=> :list, :data=>@refeicao.data.strftime("%d/%m/%y")
     else
+      flash[:error] = "Não foi possível salvar a refeição"
       render :action => "new"
     end
   end
@@ -21,11 +23,12 @@ class RefeicaosController < ApplicationController
   end
   
   def update
-    @refeicao = Refeicao.find(params[:id])    
+    @refeicao = Refeicao.find(params[:id])
     if @refeicao.update_attributes(params[:refeicao])
-        redirect_to :action=> :list, :data=>@refeicao.data.strftime("%d/%m/%y")
+      flash[:success] = "Refeição atualizada com sucesso"
+      redirect_to :action=> :list, :data=>@refeicao.data.strftime("%d/%m/%y")
     else
-        render :action => "edit"
+      render :action => "edit"
     end
   end
   
@@ -40,7 +43,7 @@ class RefeicaosController < ApplicationController
         @data = session[:data]
       end
     end
-
+    
     #@refeicoes = Refeicao.where(:usuario_id=>usuario_logged.id).sort{|a,b| b.data <=> b.data}
   end
   
@@ -50,7 +53,7 @@ class RefeicaosController < ApplicationController
   end
   
   def destroy
-    @refeicao = Refeicao.find(params[:id])    
+    @refeicao = Refeicao.find(params[:id])
     
     respond_to do |format|
       if @refeicao.destroy

@@ -166,14 +166,13 @@ p.error{
 }
 
 .boxItem{    
-  background-color:#eee;
+  background-color:#ded;
   color:#333;
   padding: 5px 10px 5px 10px;
   margin:6px;
-  border-bottom:1px dotted #ccc;
-
-  
+  border:1px solid #bcb;
   behavior: url(border-radius.htc);
+  -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;
 }
 
 .boxItem h2{
@@ -198,6 +197,13 @@ p.error{
 
 .boxItem label{
   font-size:70%;
+}
+
+.boxHeader{
+  color:#ddd;
+  padding: 5px 10px 5px 10px;
+  margin:6px;
+  background-color:#5f5f5f;
 }
 
 .text-pp{
@@ -491,6 +497,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 #menu ul li a:hover{
 	background-color: #fff;
 	color:#ff7700;
+  -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;
 	/*    -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;    */
 }
 
@@ -501,6 +508,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
   -moz-box-shadow: 0px 0px 5px #555;
   -webkit-box-shadow: 0px 0px 5px #555;
   box-shadow: 0px 0px 5px #555;
+  -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;
 	/*    -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;    */
 }
 
@@ -532,11 +540,13 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 #subMenu ul li a:hover{
 	color:#ff7700;
 	font-weight:bold;
-
+  background-color:#222;
+  border:1px solid #000;
+  -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;
 /*    background-color: #ff9f4c;
 color:#fff;
 border:1px solid #ffbb80;*/
-/*    -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;*/
+
 }
 
 

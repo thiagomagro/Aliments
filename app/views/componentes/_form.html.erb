@@ -24,6 +24,11 @@
 				<%= c.label :ordem, :class=>"title"%>
 				<%= c.text_field :ordem %>
 			</p>
+			<p class="highlighter">
+				<%= c.label :ativo, :class=>"title"%>
+      	<%= c.radio_button :ativo,true %> <%= label_tag(:ativo, "Sim",:class=>"inline") %>
+      	<%= c.radio_button :ativo,false %> <%= label_tag(:ativo, "Não",:class=>"inline") %>
+			</p>
 		</fieldset>
 	</div>
 	<div class="clear actions">

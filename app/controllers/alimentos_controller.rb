@@ -43,12 +43,21 @@ class AlimentosController < ApplicationController
   # GET /alimentos/1/edit
   def edit
     @alimento = Alimento.find(params[:id])
-    #@alimento.componente_alimentos.each do |ca|
-    #  ca.componente.ordem = 100 unless not ca.componente.ordem.nil?
-    #end
-    #.sort!{|a,b|
-    #  a.componente.ordem <=> b.componente.ordem unless (a.componente.ordem.nil? || b.componente.ordem.nil?)
-    #}
+    componentes = Componente.where("ativo=true")
+    @compss = []
+    componentes.each do |c|
+      existe = false
+      @alimento.componente_alimentos.each do |ca|
+        existe = true if ca.componente.id == c.id
+      end
+      unless existe
+        ca_new = ComponenteAlimento.new()
+        ca_new.alimento = @alimento
+        ca_new.componente = c
+        @alimento.componente_alimentos << ca_new
+      end
+    end    
+
     @alimento.componente_alimentos = @alimento.componente_alimentos.sort_by{|a| a.id}.reverse
     @alimento.alimento_medidas.sort!{|a,b|
       a.medida.nome <=> b.medida.nome
@@ -65,7 +74,6 @@ class AlimentosController < ApplicationController
         end
       end
 =end
-    
   end
 
   # POST /alimentos

@@ -1,6 +1,6 @@
 class ComponentesController < ApplicationController
   def index
-    @componentes = Componente.where("ativo=?",true).order("ordem asc, nome asc")
+    @componentes = Componente.order("ordem asc, nome asc")
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @alimentos }
