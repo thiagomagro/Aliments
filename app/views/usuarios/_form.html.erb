@@ -1,4 +1,7 @@
 <%= form_for(@usuario) do |f| %>
+  <%@usuario.errors.each do |e|%>
+  <%=e%>
+<%end%>
 <div class="column span-9">
   <div class="<%="error" if @usuario.errors.on(:nome)%>">
     <%= f.label :nome,:class=>"title"%>
@@ -19,10 +22,20 @@
   <label>Este será seu login de acesso ao site</label>
   <span class="errorMsg"><%=@usuario.errors.on(:login)%></span>
 </div>
-<div class="<%="error" if @usuario.errors.on(:senha)%>">
-  <%= f.label :senha,:class=>"title" %>
-  <%= f.password_field :senha %>
-  <span class="errorMsg"><%=@usuario.errors.on(:senha)%></span>
+<div class="<%="error" if (@usuario.errors.on(:senha) || @usuario.errors.on(:senha_atual))%>">
+  <%unless usuario_logged?%>
+  <%= f.label :senha_atual,:class=>"title" %>
+  <%= f.password_field :senha_atual %>
+  <span class="errorMsg"><%=@usuario.errors.on(:senha_atual)%></span>
+  <%end%>
+
+<%= f.label "Nova Senha",:class=>"title" %>
+<%= f.password_field :senha_flag %>
+<span class="errorMsg"><%=@usuario.errors.on(:senha_flag)%></span>
+
+<%= f.label "Confirmação da senha",:class=>"title" %>
+<%= f.password_field :senha_confirmacao %>
+<span class="errorMsg"><%=@usuario.errors.on(:senha_confirmacao)%></span>
 </div>
 </div>
 <div class="column span-9 last">

@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    usuario = Usuario.find_by_login_and_senha params[:usuario][:login],params[:usuario][:senha]
-    #usuario = Usuario.find_by_login_and_senha_segura params[:usuario][:login],encrypt(params[:usuario][:senha],nil)
+    #usuario = Usuario.find_by_login_and_senha params[:usuario][:login],params[:usuario][:senha]
+    usuario = Usuario.find_by_login_and_senha_segura params[:usuario][:login],encrypt(params[:usuario][:senha],nil)
     if usuario
       if usuario.senha_segura.nil?
         usuario.senha_segura = encrypt(usuario.senha,nil)
