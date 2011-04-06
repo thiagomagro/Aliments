@@ -22,7 +22,7 @@
   <label>Este será seu login de acesso ao site</label>
   <span class="errorMsg"><%=@usuario.errors.on(:login)%></span>
 </div>
-<div class="<%="error" if (@usuario.errors.on(:senha) || @usuario.errors.on(:senha_atual))%>">
+<div class="<%="error" if (@usuario.errors.on(:senha) || @usuario.errors.on(:senha_atual) || @usuario.errors.on(:senha_confirmacao))%>">
   <%unless usuario_logged?%>
   <%= f.label :senha_atual,:class=>"title" %>
   <%= f.password_field :senha_atual %>

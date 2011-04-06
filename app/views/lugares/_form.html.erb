@@ -29,7 +29,7 @@
 			</div>
 			<div class="column span-4 last lugarcep">
 				<label for="usuario_lugar[lugar_attributes][cep]" class="title">CEP</label>
-				<%=text_field_tag "usuario_lugar[lugar_attributes][cep]",(sprintf '%08d', ul.lugar.cep unless (ul.lugar.cep.nil? || ul.lugar.cep==0)), :class => "span-3" %>
+				<%=text_field_tag "usuario_lugar[lugar_attributes][cep]",cep_format(ul.lugar.cep), :class => "span-3 cepMask" %>
 			</div>
 		</p>
 		<p>

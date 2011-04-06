@@ -13,13 +13,18 @@
               <%= image_tag "icon_lock.png", :class=>""%>Logout
             <%end%>
           </div>
-          <div class="right boxHeader text-center">
+          <div class="right boxHeader text-center relative">
+            <a href="javascript:void(0)">
             <span class="text-p">Necessidade diária estimada</span><br/>
             <span class="text-g"><%=number_with_precision(calorias(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-pp"> kcal</span>
+            </a>
+            <div class="boxHelper absolute">Necessidade Estimada</div>
           </div>
           <div class="right boxHeader text-center">
+            <a href="javascript:void(0)">
             <span class="text-p">IMC</span><br/>
             <span class="text-g"><%=number_with_precision(imc(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%></span>
+            </a>
           </div>
         <%else%>
         <div class="padding-10">

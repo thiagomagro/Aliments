@@ -91,7 +91,7 @@ module UsuariosHelper
           naf = 1.45
         end
       end
-
+      
       if usuario.sexo
         cals = 662 - (9.53 * idade) + naf * ((15.91 * usuario.peso.peso) + (539.6 * usuario.altura))
       else
@@ -107,11 +107,19 @@ module UsuariosHelper
     return (usuario.peso.peso / (usuario.altura ** 2))
   end
   
-
+  
   def encrypt(text,salt)
     if salt.nil?
       salt="2pO$sdF#ca8@6ads-sD%f"
     end
-    return Digest::SHA1.hexdigest("--#{salt}--#{text}--") 
-  end 
+    return Digest::SHA1.hexdigest("--#{salt}--#{text}--")
+  end
+  
+  def cep_format(cep)
+    if cep.nil? || cep==0
+      return cep
+    else
+      return sprintf '%08d', cep
+    end
+  end
 end

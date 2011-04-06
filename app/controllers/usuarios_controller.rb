@@ -53,9 +53,9 @@ class UsuariosController < ApplicationController
       #end
     if params[:peso_novo]
       if @usuario.peso.nil? || params[:peso_novo].to_f != @usuario.peso.peso
-        @usuario.pesos << Peso.new(:usuario=>@usuario,:data=>@usuario.peso.data,:peso=>@usuario.peso.peso) unless (@usuario.peso.nil? || params[:peso_novo].to_f == @usuario.peso.peso)
+        @usuario.pesos << Peso.new(:data=>@usuario.peso.data,:peso=>@usuario.peso.peso) unless (@usuario.peso.nil? || params[:peso_novo].to_f == @usuario.peso.peso)
         # @usuario.peso.create(:peso=>params[:peso_novo],:data=>Date.current,:usuario=>@usuario)
-        @usuario.peso = Peso.new(:peso=>params[:peso_novo],:data=>Date.current,:usuario=>@usuario)
+        @usuario.peso = Peso.new(:peso=>params[:peso_novo],:data=>Date.current)
       end
     end
     
@@ -88,8 +88,8 @@ class UsuariosController < ApplicationController
         render :action => "edit"
         return
       end
+      @usuario.senha_segura = encrypt(usuario_temp.senha_flag,nil)
     end
-    
     
     if params[:peso_novo]
       if @usuario.peso.nil? || params[:peso_novo].to_f != @usuario.peso.peso
