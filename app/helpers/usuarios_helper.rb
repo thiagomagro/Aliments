@@ -107,6 +107,26 @@ module UsuariosHelper
     return (usuario.peso.peso / (usuario.altura ** 2))
   end
   
+  def imc_nome(usuario)
+    imc = imc(usuario)
+    if imc < 18.5
+      return "Baixo Peso"
+    end
+    if imc < 24.9
+      return "Saudável"
+    end
+    if imc < 29.9
+      return "Sobrepeso"
+    end
+    if imc < 34.9
+      return "Obesidade Grau 1"
+    end
+    if imc < 39.9
+      return "Obesidade Grau 2"
+    end
+    
+    return "Obesidade Grau 3"
+  end
   
   def encrypt(text,salt)
     if salt.nil?

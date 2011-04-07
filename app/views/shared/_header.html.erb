@@ -1,11 +1,11 @@
 <div class="cinza1">
   <div class="container">
-    <div class="span-12">
+    <div class="span-8">
       <div class="padding-10">
         <%=image_tag("logo_white.png")%>
       </div>
     </div>
-    <div class="span-12 last relative">
+    <div class="span-16 last relative">
       <%unless usuario_logged.nil?%>
       
       <div class="right">
@@ -13,37 +13,37 @@
         <%= image_tag "icon_lock.png", :class=>""%>Logout
         <%end%>
       </div>
+      <div class="right boxHeader zindex1000 padding-10">
+        Bem-vindo
+      </div>
       <div class="right boxHeader relative">
-      
-          <a href="javascript:void(0)" class="headerBoxLink text-center tooltip" title="Clique para saber mais sobre as Necessidades diárias de calorias">
-            <div class="right">
-              <%= image_tag "btn_mais.png", :class=>""%>
-            </div>
-            <span class="text-p">Necessidade diária estimada</span><br/>
-            <span class="text-g"><%=number_with_precision(calorias(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-pp"> kcal</span>
-          </a>
-        
-        <div class="boxHelper absolute hide">
-          <div class="text-center">
-            <%= image_tag "seta_down.png", :class=>""%>
-          </div>
-          Necessidade Estimada
-        </div>
-      </div>
-      <div class="right boxHeader text-center relative zindex1000">
-        <a href="javascript:void(0)" class="headerBoxLink tooltip" title="Clique para saber mais sobre índice de Massa Corporal">
-            <div class="right">
-              <%= image_tag "btn_mais.png", :class=>""%>
-            </div>
-          <span class="text-p">IMC</span><br/>
-          <span class="text-g"><%=number_with_precision(imc(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%></span>
+        <a href="javascript:void(0)" class="headerBoxLink text-center tooltip" title="Clique para saber mais sobre as Necessidades diárias de calorias">          
+          <span class="text-p">Necessidade diária estimada</span><br/>
+          <span class="text-g"><%=number_with_precision(calorias(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-pp"> kcal</span>
+          <%= image_tag "seta_white_down.gif", :class=>"absolute seta_down"%>
         </a>
-        <div class="boxHelper absolute hide">
-          <div class="text-center">
-            <%= image_tag "seta_down.png", :class=>""%>
-          </div>
+        
+        <div class="boxHelper absolute hide">          
+          <h4>Necessidade Estimada</h4>
         </div>
       </div>
+      <div class="right boxHeader relative zindex1000">
+        <a href="javascript:void(0)" class="headerBoxLink tooltip text-center" title="Clique para saber mais sobre índice de Massa Corporal">          
+          <span class="text-p">IMC</span><br/>
+          <span class="text-g"><%=number_with_precision(imc(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%> = <%=imc_nome(usuario_logged)%></span>
+          <%= image_tag "seta_white_down.gif", :class=>"absolute seta_down"%>
+        </a>
+        <div class="boxHelper absolute hide">          
+          <h4>IMC ou Índice de Massa Corporal</h4>
+          É uma medida internacional usada para classificar o peso ideal, possui as seguintes classificações:
+          IMC menor 18,9 -> Baixo Peso<br/>
+          IMC entre 19 e 24,9 -> Saudável<br/>
+          IMC entre 25 e 29,9 -> Sobrepeso<br/>
+          IMC entre 30 e 34,9 -> Obesidade Grau 1<br/>
+          IMC entre 35 e 39,9 -> Obesidade Grau 2<br/>
+          IMC acima de 40 -> Obesidade Grau 3
+        </div>
+      </div>      
       <%else%>
       <div class="padding-10">
         <div class="right">
