@@ -1,45 +1,62 @@
 <div class="cinza1">
-  <div class="container">    
+  <div class="container">
     <div class="span-12">
       <div class="padding-10">
         <%=image_tag("logo_white.png")%>
       </div>
-      </div>
-      <div class="span-12 last relative">
-        <%unless usuario_logged.nil?%>
-        
-          <div class="right">
-            <%link_to "/sessions/destroy",:method=>:delete, :class => ("button vermelho pp") do%>
-              <%= image_tag "icon_lock.png", :class=>""%>Logout
-            <%end%>
-          </div>
-          <div class="right boxHeader text-center relative">
-            <a href="javascript:void(0)">
-            <span class="text-p">Necessidade diária estimada</span><br/>
-            <span class="text-g"><%=number_with_precision(calorias(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-pp"> kcal</span>
-            </a>
-            <div class="boxHelper absolute">Necessidade Estimada</div>
-          </div>
-          <div class="right boxHeader text-center">
-            <a href="javascript:void(0)">
-            <span class="text-p">IMC</span><br/>
-            <span class="text-g"><%=number_with_precision(imc(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%></span>
-            </a>
-          </div>
-        <%else%>
-        <div class="padding-10">
-          <div class="right">
-            <%link_to "/sessions/new",:remote=>true, :class => ("button verde") do%>
-              <%= image_tag "icon_unlock.png", :class=>""%>
-              Login
-            <%end%>
-          </div>
-          <div class="relative">
-            <div id="loginForm" class="absolute hide"></div>
-          </div>
-        </div>
+    </div>
+    <div class="span-12 last relative">
+      <%unless usuario_logged.nil?%>
+      
+      <div class="right">
+        <%link_to "/sessions/destroy",:method=>:delete, :class => ("button vermelho pp") do%>
+        <%= image_tag "icon_lock.png", :class=>""%>Logout
         <%end%>
       </div>
+      <div class="right boxHeader relative">
+      
+          <a href="javascript:void(0)" class="headerBoxLink text-center tooltip" title="Clique para saber mais sobre as Necessidades diárias de calorias">
+            <div class="right">
+              <%= image_tag "btn_mais.png", :class=>""%>
+            </div>
+            <span class="text-p">Necessidade diária estimada</span><br/>
+            <span class="text-g"><%=number_with_precision(calorias(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-pp"> kcal</span>
+          </a>
+        
+        <div class="boxHelper absolute hide">
+          <div class="text-center">
+            <%= image_tag "seta_down.png", :class=>""%>
+          </div>
+          Necessidade Estimada
+        </div>
+      </div>
+      <div class="right boxHeader text-center relative zindex1000">
+        <a href="javascript:void(0)" class="headerBoxLink tooltip" title="Clique para saber mais sobre índice de Massa Corporal">
+            <div class="right">
+              <%= image_tag "btn_mais.png", :class=>""%>
+            </div>
+          <span class="text-p">IMC</span><br/>
+          <span class="text-g"><%=number_with_precision(imc(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%></span>
+        </a>
+        <div class="boxHelper absolute hide">
+          <div class="text-center">
+            <%= image_tag "seta_down.png", :class=>""%>
+          </div>
+        </div>
+      </div>
+      <%else%>
+      <div class="padding-10">
+        <div class="right">
+          <%link_to "/sessions/new",:remote=>true, :class => ("button verde") do%>
+          <%= image_tag "icon_unlock.png", :class=>""%>
+          Login
+          <%end%>
+        </div>
+        <div class="relative">
+          <div id="loginForm" class="absolute hide"></div>
+        </div>
+      </div>
+      <%end%>
+    </div>
   </div>
 </div>
-

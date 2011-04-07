@@ -20,7 +20,7 @@ $(document).ready(function(){
 		clearTimeout(intervalSub)
 		intervalSub = setTimeout(function(){
 			setSubMenu(el);
-			},600);
+			},400);
 		});
 
 		$("button#trocarMarca").live("click",function(){
@@ -60,6 +60,11 @@ $(document).ready(function(){
         }
       }
     });
+    $("a.headerBoxLink").live("click",function(){
+      var h = $(this).parents(".boxHeader"); 
+      $(".boxHeader").not(h).removeClass("boxHeaderSelected").find(".boxHelper").hide();
+      h.toggleClass("boxHeaderSelected").find(".boxHelper").toggle('fast');
+    });
     setupMasks();
     $(".tooltip").tipTip({});
     displayMsg();
@@ -70,7 +75,6 @@ function setupMasks(){
   $(".cepMask").each(function(){
     MaskInput(this,"99999999");
   });
-  
 }
 
 function displayMsg(i){

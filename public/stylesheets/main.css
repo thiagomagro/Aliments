@@ -149,6 +149,10 @@ p.error{
   margin:4px;
 }
 
+.zindex1000{
+  z-index:1000;
+}
+
 .absolute{
 	position: absolute;
 }
@@ -200,18 +204,52 @@ p.error{
 }
 
 .boxHeader{
-  color:#ddd;
-  padding: 5px 10px 5px 10px;
-  margin:6px;
-  background-color:#5f5f5f;
 }
 
 .boxHeader a{
   color:#ddd;
+  display:block;
+  padding:4px 14px;
+  margin:6px;
+  background-color:#5f5f5f;
 }
 
 .boxHeader a:hover{
+  color:#fff;
+  background-color:#777;
+}
+
+.boxHeaderSelected{
+}
+
+.boxHeaderSelected a{
   color:#ff7700;
+  background-color:#fff;
+  padding:4px 14px;
+}
+
+.boxHeaderSelected a:hover{
+  color:#ff7700;
+  background-color:#fff;
+}
+
+.boxHelper{
+  width:250px;
+  min-height:500px;
+  _height:500px;
+  padding:5px 15px;
+  top:62px;
+  right:-20px;
+  z-index:0;
+  color:#555;
+  background-image:url('../images/bg_white_transp.png');
+  background-repeat:repeat-x;
+  -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;
+}
+
+.boxHelper .boxEl{
+  display:table;
+  height:100%;
 }
 
 .text-pp{
@@ -238,24 +276,6 @@ p.error{
   text-decoration:none;
 }
 
-.boxHelper{
-  background-color:#fff;
-  border:1px solid #ddd;
-  min-width:250px;
-  _width:250px;
-  margin:auto;
-  top:60px;
-  color:#555;
-  /*-moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;*/
-  -moz-box-shadow: 0px 0px 5px #555;
-  -webkit-box-shadow: 0px 0px 5px #555;
-  box-shadow: 0px 0px 5px #555;  
-}
-
-.boxHelper .boxEl{
-  display:table;
-  height:100%;
-}
 /* FIM BOX */
 
 /*FORMS*/
