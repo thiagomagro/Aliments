@@ -17,7 +17,7 @@
         Bem-vindo
       </div>
       <div class="right boxHeader relative">
-        <a href="javascript:void(0)" class="headerBoxLink text-center tooltip" title="Clique para saber mais sobre as Necessidades diárias de calorias">          
+        <a href="javascript:void(0)" class="headerBoxLink text-center" title="Clique para saber mais sobre as Necessidades diárias de calorias">
           <span class="text-p">Necessidade diária estimada</span><br/>
           <span class="text-g"><%=number_with_precision(calorias(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-pp"> kcal</span>
           <%= image_tag "seta_white_down.gif", :class=>"absolute seta_down"%>
@@ -28,14 +28,14 @@
         </div>
       </div>
       <div class="right boxHeader relative zindex1000">
-        <a href="javascript:void(0)" class="headerBoxLink tooltip text-center" title="Clique para saber mais sobre índice de Massa Corporal">          
+        <a href="javascript:void(0)" class="headerBoxLink text-center" title="Clique para saber mais sobre índice de Massa Corporal">          
           <span class="text-p">IMC</span><br/>
           <span class="text-g"><%=number_with_precision(imc(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%> = <%=imc_nome(usuario_logged)%></span>
           <%= image_tag "seta_white_down.gif", :class=>"absolute seta_down"%>
         </a>
         <div class="boxHelper absolute hide">          
           <h4>IMC ou Índice de Massa Corporal</h4>
-          É uma medida internacional usada para classificar o peso ideal, possui as seguintes classificações:
+          É uma medida internacional usada para classificar o peso ideal. Possui as seguintes classificações: <br/>
           IMC menor 18,9 -> Baixo Peso<br/>
           IMC entre 19 e 24,9 -> Saudável<br/>
           IMC entre 25 e 29,9 -> Sobrepeso<br/>

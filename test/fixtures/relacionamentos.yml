@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  usuario_id: 1
+  relacionado_id: 1
+  tipo_relacionamento_id: 1
+  data: 2011-04-08 00:24:41
+
+two:
+  usuario_id: 1
+  relacionado_id: 1
+  tipo_relacionamento_id: 1
+  data: 2011-04-08 00:24:41

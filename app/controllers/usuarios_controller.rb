@@ -99,6 +99,7 @@ class UsuariosController < ApplicationController
         
       end
     end
+    #UsuarioMailer.cadastro_ok(@usuario).deliver
     respond_to do |format|
       if @usuario.update_attributes(params[:usuario].reject{|k,v| v.blank?})
         flash[:success] = "Dados atualizados com sucesso"

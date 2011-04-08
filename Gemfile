@@ -9,6 +9,7 @@ gem 'pg'
 gem "jquery-rails"
 gem 'sunspot_rails', '>=1.2'
 gem 'whenever', :require => false
+gem "mail", ">=2.1.3"  
 # Use unicorn as the web server
 # gem 'unicorn'
 

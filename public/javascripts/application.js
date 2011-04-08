@@ -61,12 +61,13 @@ $(document).ready(function(){
       }
     });
     $("a.headerBoxLink").live("click",function(){
+      $("#tiptip_holder").hide();
       var h = $(this).parents(".boxHeader"); 
       $(".boxHeader").not(h).removeClass("boxHeaderSelected").find(".boxHelper").hide();
       h.toggleClass("boxHeaderSelected").find(".boxHelper").toggle('fast');
     });
     setupMasks();
-    $(".tooltip").tipTip({});
+    $(".tooltip").tipTip({fadeIn:100,fadeOut:100});
     displayMsg();
 });
 

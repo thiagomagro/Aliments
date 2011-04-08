@@ -175,13 +175,13 @@ p.error{
 }
 
 .boxItem{    
-  background-color:#ded;
+  background-color:#f6dcc6;
   color:#333;
   padding: 5px 10px 5px 10px;
-  margin:6px;
-  border:1px solid #bcb;
+  margin:6px 2px 6px 0px;
+
   behavior: url(border-radius.htc);
-  -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;
+  /*-moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;*/
 }
 
 .boxItem h2{
@@ -253,11 +253,11 @@ p.error{
   top:62px;
   right:-20px;
   z-index:0;
-  color:#ddd;
+  color:#000;
   /*background-image:url('../images/bg_white_transp.png');
   background-repeat:repeat-x;*/
-  background-color:#444;
-  border:1px solid #777;
+  background-color:#b55400;
+  border:1px solid #ff7700;
   -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;
   -moz-box-shadow: 0px 5px 8px #333;
   -webkit-box-shadow: 0px 5px 8px #333;
@@ -546,7 +546,7 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 #menu ul li a{
   /*text-shadow: 0px 1px 2px #666;*/
 	text-decoration: none;
-	color:#333;
+	color:#542700;
 	padding:7px;
   padding-top:5px;
 }
@@ -565,15 +565,14 @@ button.vermelho:hover, a.vermelho:hover, input.vermelho:hover{
 
 #menu ul li a:hover{
 	background-color: #fff;
-	color:#ff7700;
+	color:#000;
   -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;
 	/*    -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;    */
 }
 
 #menu ul .active a{
 	background-color: #fff;
-	color:#ff7700;
-	font-weight:bold;
+	color:#000;
   -moz-box-shadow: 0px 0px 5px #555;
   -webkit-box-shadow: 0px 0px 5px #555;
   box-shadow: 0px 0px 5px #555;
