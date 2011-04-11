@@ -20,7 +20,8 @@ class Alimento < ActiveRecord::Base
   accepts_nested_attributes_for :marca
 
   searchable do
-      text :nome
+      text :nome, :stored => true
+      long :id, :stored => true
       boolean :ativo, :using => :ativo?
   end
 

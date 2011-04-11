@@ -1,0 +1,7 @@
+<%@usuarios.each_hit_with_result do |hit,u|%>
+	<%=hit.stored(:id)%> <%=hit.stored(:nome)%><br/>
+<%end%>
+
+<%@alimentos.each_hit_with_result do |hit,a|%>
+	<%=hit.stored(:id)%> <%=hit.stored(:nome)%><br/>
+<%end%>

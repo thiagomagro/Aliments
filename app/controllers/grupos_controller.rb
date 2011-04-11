@@ -1,4 +1,10 @@
 class GruposController < ApplicationController
+  include ApplicationHelper
+  include UsuariosHelper
+  
+  before_filter :authenticate
+  before_filter :admin_auth
+  
   def adicionar_grupo
     grupo = Grupo.find(params[:id])
     logger.info grupo

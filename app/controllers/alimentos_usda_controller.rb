@@ -1,5 +1,10 @@
 class AlimentosUsdaController < ApplicationController
+  include ApplicationHelper
+  include UsuariosHelper
+  
   before_filter :authenticate
+  before_filter :admin_auth
+  
   # GET /alimentos
   # GET /alimentos.xml
   def index

@@ -1,5 +1,9 @@
 class LugaresController < ApplicationController
   include ApplicationHelper
+  include UsuariosHelper
+  
+  before_filter :authenticate
+  #before_filter :admin_auth, :except => [:index]
   
   def new
     @usuario_lugar = UsuarioLugar.new

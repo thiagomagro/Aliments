@@ -3,6 +3,8 @@ class UsuariosController < ApplicationController
   include UsuariosHelper
   
   before_filter :authenticate, :except => [:new,:create]
+  before_filter :admin_auth, :only => [:destroy,:index]
+  
   # GET /usuarios
   # GET /usuarios.xml
   def index

@@ -1,10 +1,11 @@
 var el = $("#searchResults");
 el.fadeOut('fast',function(){
 	$(el).html("");
-  <%if @alimentos.size > 0%>
-  	<%@alimentos.each do |a|%>
-  	el.append("<%= escape_javascript( render(:partial => "/alimentos/search_#{@action_form}", :locals => {:alimento => a}) ) %>");
-  	<%end%>
+<%if @alimentos.total > 0%>
+
+<%@alimentos.each_hit_with_result do |hit,a|%>
+  	el.append("<%= escape_javascript( render(:partial => "/alimentos/search_#{@action_form}", :locals => {:alimento => hit}) ) %>");
+ <%end%>
     $(el).append("<div class=\"clear\"></div>");
   <%else%>
     $(el).append("<div class=\"clear\">Nenhum alimento encontrado</div>");

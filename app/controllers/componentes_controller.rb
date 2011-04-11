@@ -1,4 +1,10 @@
 class ComponentesController < ApplicationController
+  include ApplicationHelper
+  include UsuariosHelper
+  
+  before_filter :authenticate
+  before_filter :admin_auth
+  
   def index
     @componentes = Componente.order("ordem asc, nome asc")
     respond_to do |format|

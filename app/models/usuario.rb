@@ -28,6 +28,10 @@ class Usuario < ActiveRecord::Base
       record.errors.add attr, 'Confirmação de senha inválida' if (value.to_s[0] != :senha_confirmacao) && !:senha_valida?
   end  
   
+  searchable do
+      text :nome, :stored => true
+      long :id, :stored => true
+  end
   #before_save :senha_seguranca, :if => :senha_valida?
 
 #def senha_seguranca

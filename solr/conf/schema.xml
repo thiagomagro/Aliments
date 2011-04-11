@@ -60,11 +60,19 @@
     <fieldType name="rand" class="solr.RandomSortField" omitNorms="true"/>
     <!-- *** This fieldType is used by Sunspot! *** -->
     <fieldType name="text" class="solr.TextField" omitNorms="false">
-      <analyzer>
-        <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.StandardFilterFactory"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
-      </analyzer>
+	  <analyzer type="index">
+	    <tokenizer class="solr.StandardTokenizerFactory"/>
+	    <filter class="solr.StandardFilterFactory"/>
+	    <filter class="solr.LowerCaseFilterFactory"/>
+	    <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="15"/>
+		<filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true" />
+		<filter class="solr.PorterStemFilterFactory"/>
+	  </analyzer>
+	  <analyzer type="query">
+	    <tokenizer class="solr.StandardTokenizerFactory"/>
+	    <filter class="solr.StandardFilterFactory"/>
+	    <filter class="solr.LowerCaseFilterFactory"/>
+	  </analyzer>
     </fieldType>
     <!-- *** This fieldType is used by Sunspot! *** -->
     <fieldType name="boolean" class="solr.BoolField" omitNorms="true"/>
@@ -84,7 +92,8 @@
     <fieldType name="tfloat" class="solr.TrieFloatField" omitNorms="true"/>
     <!-- *** This fieldType is used by Sunspot! *** -->
     <fieldType name="tdate" class="solr.TrieDateField" omitNorms="true"/>
-	
+
+
   </types>
   <fields>
     <!-- Valid attributes for fields:

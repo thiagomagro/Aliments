@@ -14,7 +14,34 @@
 #some test synonym mappings unlikely to appear in real input text
 ã=>a
 á=>a
+à=>a
 â=>a
+a=>ã
+a=>á
+a=>à
+a=>â
+é=>e
+ê=>e
+e=>é
+e=>ê
+í=>i
+ì=>i
+i=>í
+ó=>o
+ò=>o
+ô=>o
+õ=>o
+o=>ó
+o=>ô
+o=>õ
+ú=>u
+ù=>u
+u=>ú
+u=>ù
+ç=>c
+c=>ç
+
+
 aaa => aaaa
 bbb => bbbb1 bbbb2
 ccc => cccc1,cccc2

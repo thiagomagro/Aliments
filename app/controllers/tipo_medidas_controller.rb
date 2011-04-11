@@ -1,5 +1,9 @@
 class TipoMedidasController < ApplicationController
+  include ApplicationHelper
+  include UsuariosHelper
+  
   before_filter :authenticate
+  before_filter :admin_auth
 
   def add_tipo
     tipoMedida = TipoMedida.find(params[:id])

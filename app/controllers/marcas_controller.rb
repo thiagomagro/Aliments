@@ -1,5 +1,9 @@
 class MarcasController < ApplicationController
+  include ApplicationHelper
+  include UsuariosHelper
+  
   before_filter :authenticate
+  before_filter :admin_auth, :only => [:new]
 
   def show
     @marcas = Marca.all

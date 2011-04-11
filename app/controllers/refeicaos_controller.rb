@@ -1,5 +1,8 @@
 class RefeicaosController < ApplicationController
   include ApplicationHelper
+  include UsuariosHelper
+  
+  before_filter :authenticate
   
   def new
     @refeicao = Refeicao.new

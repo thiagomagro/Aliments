@@ -1,5 +1,10 @@
 class AlimentosController < ApplicationController
+  include ApplicationHelper
+  include UsuariosHelper
+  
   before_filter :authenticate
+  before_filter :admin_auth, :except => [:show,:search,:search_form]
+
   # GET /alimentos
   # GET /alimentos.xml
   def index
@@ -124,12 +129,12 @@ class AlimentosController < ApplicationController
   def search
     #@search = Alimento.search(params[:search])
     #@alimentos = Alimento.find(:all, :conditions => ['nome LIKE ? ', '%'+params[:search]+'%'])
-    search = Alimento.search() do
-          keywords(params[:search])
-          with(:ativo).equal_to true
+    @alimentos = Sunspot.search(Alimento) do
+        keywords params["search"],:fields => [:nome]
+        with(:ativo).equal_to true
     end
     @action_form = params[:action_form]
-    @alimentos = search.results
+    #@alimentos = search.results
   end
 
   def search_form
@@ -145,22 +150,6 @@ class AlimentosController < ApplicationController
       ativo = false
     end
     @alimentos = Alimento.where(:ativo=>ativo).sort{|a,b| a.nome <=> b.nome}
-=begin
-    @alimentos.each do |a|
-      remove = []
-      over = []      
-      a.componente_alimentos.each do |ca|
-        if(over.index(ca.componente.id).nil?)
-          over << ca.componente.id
-        else
-          remove << ca.id
-        end
-      end
-      remove.each do |r|
-        ComponenteAlimento.find(r).destroy
-      end
-    end
-=end
     
   end
 
