@@ -2,7 +2,7 @@
 <div class="helperContainer">
   <table id="searchResults">
     <%@alimentos.each do |a|%>
-      <%= render "/alimentos/search_editar",:alimento => a%>
+      <%= render "/alimentos/search_editar_all",:alimento => a%>
     <%end%>
   </table>
 </div>

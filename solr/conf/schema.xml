@@ -64,9 +64,8 @@
 	    <tokenizer class="solr.StandardTokenizerFactory"/>
 	    <filter class="solr.StandardFilterFactory"/>
 	    <filter class="solr.LowerCaseFilterFactory"/>
-	    <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="15"/>
-		<filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true" />
-		<filter class="solr.PorterStemFilterFactory"/>
+	    <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="100"/>
+		<!-- <filter class="solr.PorterStemFilterFactory"/> -->
 	  </analyzer>
 	  <analyzer type="query">
 	    <tokenizer class="solr.StandardTokenizerFactory"/>
