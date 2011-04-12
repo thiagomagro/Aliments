@@ -20,6 +20,12 @@ class Usuario < ActiveRecord::Base
   
   has_many :refeicaos, :dependent => :destroy
   
+  has_many :imagems, :dependent => :destroy
+  accepts_nested_attributes_for :imagems,:allow_destroy => true
+  
+  has_many :albums, :dependent => :destroy
+  accepts_nested_attributes_for :albums,:allow_destroy => true
+  
   def senha_valida?
     return atualizar_senha || new_record?
   end

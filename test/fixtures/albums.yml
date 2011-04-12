@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  usuario_id: 
+  imagem_id: 
+  nome: MyString
+  criado: 2011-04-11 10:29:14
+
+two:
+  usuario_id: 
+  imagem_id: 
+  nome: MyString
+  criado: 2011-04-11 10:29:14
