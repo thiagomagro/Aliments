@@ -26,6 +26,9 @@ class Usuario < ActiveRecord::Base
   has_many :albums, :dependent => :destroy
   accepts_nested_attributes_for :albums,:allow_destroy => true
   
+  has_many :relacionamentos, :dependent => :destroy
+  accepts_nested_attributes_for :relacionamentos,:allow_destroy => true
+  
   def senha_valida?
     return atualizar_senha || new_record?
   end

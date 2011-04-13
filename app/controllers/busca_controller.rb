@@ -9,6 +9,7 @@ class BuscaController < ApplicationController
     @busca = params["busca_string"]
     @usuarios = Sunspot.search(Usuario) do
         keywords params["busca_string"],:fields => [:nome]
+        without(:id,usuario_logged.id)
     end
     @alimentos = Sunspot.search(Alimento) do
         keywords params["busca_string"],:fields => [:nome]

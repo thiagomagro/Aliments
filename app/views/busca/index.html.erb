@@ -1,5 +1,6 @@
+
 <%@usuarios.each_hit_with_result do |hit,u|%>
-	<%=hit.stored(:id)%> <%=hit.stored(:nome)%><br/>
+	<%=hit.stored(:id)%> <%=hit.stored(:nome)%> <%=relacionamento?(usuario_logged,u)%><br/>
 <%end%>
 
 <%@alimentos.each_hit_with_result do |hit,a|%>
