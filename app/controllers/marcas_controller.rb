@@ -15,7 +15,7 @@ class MarcasController < ApplicationController
 
   def marca_alimento
     #@marca = Marca.new(params[:marca])
-     @marcas = Marca.all
+     @marcas = Marca.all.sort{|a,b| a.nome <=> b.nome}
   end
 end
 
