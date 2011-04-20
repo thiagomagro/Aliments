@@ -496,28 +496,64 @@ fieldset legend{
 	padding: 8px 14px 9px;
 }
 
-.super.button, .super.button:visited { font-size: 34px; padding: 8px 14px 9px; }
+.super.button, .super.button:visited{
+	font-size: 34px; padding: 8px 14px 9px;
+}
 
-.pink.button, .magenta.button:visited	{ background-color: #e22092; }
-.pink.button:hover					{ background-color: #c81e82; }
+.pink.button, .magenta.button:visited{
+	background-color: #e22092;
+}
+.pink.button:hover{
+	background-color: #c81e82;
+}
 
-.green.button, .green.button:visited	{ background-color: #91bd09; }
-.green.button:hover				        { background-color: #749a02; }
+.green.button, .green.button:visited{
+	background-color: #91bd09;
+}
 
-.red.button, .red.button:visited		{ background-color: #e62727; }
-.red.button:hover					{ background-color: #cf2525; }
+.green.button:hover{
+	background-color: #749a02;
+}
 
-.orange.button, .orange.button:visited	{ background-color: #ff5c00; }
-.orange.button:hover				{ background-color: #d45500; }
+.red.button, .red.button:visited{
+	background-color: #e62727;
+}
 
-.blue.button, .blue.button:visited  { background-color: #3377cc; color:#fff }
-.blue.button:hover					{ background-color: #1155aa; }
+.red.button:hover{
+	background-color: #cf2525;
+}
 
-.yellow.button, .yellow.button:visited	{ background-color: #ffb515; }
-.yellow.button:hover				{ background-color: #fc9200; }
+.orange.button, .orange.button:visited{
+	background-color: #ff5c00;
+}
 
-.purple.button, .purple.button:visited	{ background-color: #820096; }
-.purple.button:hover					{ background-color: #520066; }
+.orange.button:hover{
+	background-color: #d45500;
+}
+
+.blue.button, .blue.button:visited{
+	background-color: #3377cc; color:#fff
+}
+
+.blue.button:hover{
+	background-color: #1155aa;
+}
+
+.yellow.button, .yellow.button:visited{
+	background-color: #ffb515;
+}
+
+.yellow.button:hover{
+	background-color: #fc9200;
+}
+
+.purple.button, .purple.button:visited{
+	background-color: #820096;
+}
+
+.purple.button:hover{
+	background-color: #520066;
+}
 
 /* FIM BUTTON */
 
@@ -571,9 +607,9 @@ fieldset legend{
 #menu ul .active a{
 	background-color: #fff;
 	color:#000;
-  -moz-box-shadow: 0px 0px 5px #555;
-  -webkit-box-shadow: 0px 0px 5px #555;
-  box-shadow: 0px 0px 5px #555;
+  -moz-box-shadow: 0px 2px 3px #000;
+  -webkit-box-shadow: 0px 2px 3px #000;
+  box-shadow: 0px 2px 3px #000;
   -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;
 	/*    -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;    */
 }
