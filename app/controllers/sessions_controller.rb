@@ -28,5 +28,10 @@ class SessionsController < ApplicationController
     flash[:notice] = 'Logged out'
     redirect_to :controller => 'home'
   end
+  
+  def fb
+    redirect_to "https://www.facebook.com/dialog/oauth?client_id=#{Facebook::APP_ID}&redirect_uri=/home"
+    #https://www.facebook.com/dialog/oauth?client_id=YOUR_APP_ID&redirect_uri=YOUR_URL
+  end
 end
 

@@ -1,18 +1,24 @@
 <div class="clear">
-  <%= image_tag "seta_white_up.gif", :class=>"seta_up"%>
-  Ja possui cadastro? Efetue o login abaixo
-<%= form_tag sessions_path do %>
-  <p class="clear highlighter">
-	<%= label :usuario,"Login ou Email", :class=>"title"%>
-	<%= text_field :usuario, :login, :class => "span-4"%>
-  </p>
-  <p class="clear highlighter">
-	<%= label :usuario,"Senha", :class=>"title"%>
-	<%= password_field :usuario, :senha, :class => "span-4"%>
-  </p>
+	<%= image_tag "seta_white_up.gif", :class=>"seta_up"%>
+	Ja possui cadastro? Efetue o login abaixo
+	<%= form_tag :controller=>"sessions",:action=>"create" do %>
+	<p class="clear highlighter">
+		<%= label :usuario,"Login ou Email", :class=>"title"%>
+		<%= text_field :usuario, :login, :class => "span-4"%>
+	</p>
+	<p class="clear highlighter">
+		<%= label :usuario,"Senha", :class=>"title"%>
+		<%= password_field :usuario, :senha, :class => "span-4"%>
+	</p>
 	<div class="clear">
-	<%= button_for("Entrar", :button_type => "submit",:class=>"button green large") %>
+		<%= button_for("Entrar", :button_type => "submit",:class=>"button green large") %>
 	</div>
-	
-<% end %>
+	<div id="fb-root"></div>
+	<script>
+	FB.init({ 
+		appId:'<%=Facebook::APP_ID%>', cookie:true, status:true, xfbml:true 
+	});
+	</script>
+	<fb:login-button>Login with Facebook</fb:login-button>
+	<% end %>
 </div>
