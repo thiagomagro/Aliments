@@ -106,7 +106,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fb_graph
+  fb_graph (>= 1.7.0.alpha2)
   jquery-rails
   mail (>= 2.1.3)
   paperclip (~> 2.3)

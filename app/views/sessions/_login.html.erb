@@ -1,4 +1,5 @@
 <div class="clear">
+	ID: <%= fb_config[:app_id] %><br/>
 	<%= image_tag "seta_white_up.gif", :class=>"seta_up"%>
 	Ja possui cadastro? Efetue o login abaixo
 	<%= form_tag :controller=>"sessions",:action=>"create" do %>
@@ -14,14 +15,18 @@
 		<%= button_for("Entrar", :button_type => "submit",:class=>"button green large") %>
 	</div>
 	<div id="fb-root"></div>
-	<script>
-	FB.init({
-	 appId  : '<%= Facebook::APP_ID %>',
-	 status : true, // check login status
-	 cookie : true, // enable cookies to allow the server to access the session
-	 xfbml  : true  // parse XFBML
-	 });
-	</script>
-	<fb:login-button length="long" onlogin="location.href = '/session/fb'" perms="<%= Facebook::PERMS %>">Login com Facebook</fb:login-button>
+
+	<fb:login-button length="long" onlogin="location.href = '/sessions/fb'" perms="<%= Facebook::PERMS %>">Login com Facebook</fb:login-button>
 	<% end %>
+
 </div>
+<script>
+$(document).ready(function(){
+	FB.init({
+		appId  : '<%= fb_config[:app_id] %>',
+		status : true, // check login status
+		cookie : true, // enable cookies to allow the server to access the session
+		xfbml  : true  // parse XFBML
+	});
+});
+</script>

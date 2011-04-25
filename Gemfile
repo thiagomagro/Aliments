@@ -11,7 +11,9 @@ gem 'sunspot_rails', '>=1.2'
 gem 'whenever', :require => false
 gem "mail", ">=2.1.3"
 gem "paperclip", "~> 2.3"
-gem "fb_graph"
+#gem "koala", ">=1.0.0.beta2.1"
+#gem "fb_graph"
+gem 'fb_graph', '>=1.7.0.alpha2'
 
 # Use unicorn as the web server
 # gem 'unicorn'

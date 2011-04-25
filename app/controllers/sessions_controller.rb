@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   include UsuariosHelper
+  include ApplicationHelper
   
   def new
   end
@@ -30,42 +31,33 @@ class SessionsController < ApplicationController
   end
   
   def fb
-    auth = Facebook.auth.from_cookie(cookies)
-    authenticate Facebook.identify(auth.user)
-    #auth = Facebook.auth.from_cookie(cookies)
-    #authenticate Facebook.identify(auth.user)
-    #fb_auth = FbGraph::Auth.new(Facebook::APP_ID,Facebook::SECRET)
-    #fb_auth.from_cookie(cookies)
-    #user = FbGraph::User.me(fb_auth.access_token)
-    #user = fb_auth.user
-    #print user
-    #print user
+    fb_auth = FbGraph::Auth.new(fb_config[:app_id], fb_config[:secret_key])
+    auth = fb_auth.from_cookie(cookies)
+    if auth.nil?
+      flash[:error] = "Usuario nao encontrado"
+      redirect_to :action=>"new"
+    end
+    @usuario=auth.user
     
-    #page = FbGraph::Page.fetch('smartfmteam')
-    
-    #print page
-    #print fb_auth.user
-    #print 
-    #print fb_auth.user.name
-    #user = FbGraph::User.me(fb_auth.access_token)
-    #print user.fetch
-    #print fb_auth.user.fetch
-    
-    
-    
-    #oauth = Koala::Facebook::OAuth.new(Facebook::APP_ID,Facebook::SECRET)
-    #@graph = Koala::Facebook::GraphAPI.new(oauth.get_user_info_from_cookies(cookies)['access_token'])
-    #print(@graph)
-    #begin
-    #  print @graph.get_object("me")
-    #rescue
-    #  print "Error  #{$!}"
-    #end
-    #@facebook_cookies = @auth.get_user_info_from_cookie(cookies)
-    #@oauth.get_user_info_from_cookies(cookies)
-    #redirect_to "https://www.facebook.com/dialog/oauth?client_id=#{Facebook::APP_ID}&redirect_uri=/home"
-    #https://www.facebook.com/dialog/oauth?client_id=YOUR_APP_ID&redirect_uri=YOUR_URL
-    
+    if @usuario.nil?
+      flash[:error] = "Usuario nao encontrado"
+      redirect_to :action=>"new"
+    else
+      usuario_logado = Usuario.find_by_fb_id(@usuario.identifier.to_s)
+      if usuario_logado.nil?
+        @usuario = @usuario.fetch
+        usuario_logado = Usuario.new
+        usuario_logado.nome = @usuario.name
+        usuario_logado.email = @usuario.email
+        usuario_logado.fb_id = @usuario.identifier.to_s
+        usuario_logado.nascimento = @usuario.birthday
+        usuario_logado.save(:validate => false)
+      end
+      session[:usuario] = usuario_logado.id
+      redirect_to :controller => :home
+      #@usuario.identifier.to_s
+      #session[:usuario] = usuario.id
+    end
   end
 end
 
