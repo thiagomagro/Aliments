@@ -15,10 +15,13 @@
 	</div>
 	<div id="fb-root"></div>
 	<script>
-	FB.init({ 
-		appId:'<%=Facebook::APP_ID%>', cookie:true, status:true, xfbml:true 
-	});
+	FB.init({
+	 appId  : '<%= Facebook::APP_ID %>',
+	 status : true, // check login status
+	 cookie : true, // enable cookies to allow the server to access the session
+	 xfbml  : true  // parse XFBML
+	 });
 	</script>
-	<fb:login-button>Login with Facebook</fb:login-button>
+	<fb:login-button length="long" onlogin="location.href = '/session/fb'" perms="<%= Facebook::PERMS %>">Login com Facebook</fb:login-button>
 	<% end %>
 </div>

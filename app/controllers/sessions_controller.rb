@@ -30,8 +30,42 @@ class SessionsController < ApplicationController
   end
   
   def fb
-    redirect_to "https://www.facebook.com/dialog/oauth?client_id=#{Facebook::APP_ID}&redirect_uri=/home"
+    auth = Facebook.auth.from_cookie(cookies)
+    authenticate Facebook.identify(auth.user)
+    #auth = Facebook.auth.from_cookie(cookies)
+    #authenticate Facebook.identify(auth.user)
+    #fb_auth = FbGraph::Auth.new(Facebook::APP_ID,Facebook::SECRET)
+    #fb_auth.from_cookie(cookies)
+    #user = FbGraph::User.me(fb_auth.access_token)
+    #user = fb_auth.user
+    #print user
+    #print user
+    
+    #page = FbGraph::Page.fetch('smartfmteam')
+    
+    #print page
+    #print fb_auth.user
+    #print 
+    #print fb_auth.user.name
+    #user = FbGraph::User.me(fb_auth.access_token)
+    #print user.fetch
+    #print fb_auth.user.fetch
+    
+    
+    
+    #oauth = Koala::Facebook::OAuth.new(Facebook::APP_ID,Facebook::SECRET)
+    #@graph = Koala::Facebook::GraphAPI.new(oauth.get_user_info_from_cookies(cookies)['access_token'])
+    #print(@graph)
+    #begin
+    #  print @graph.get_object("me")
+    #rescue
+    #  print "Error  #{$!}"
+    #end
+    #@facebook_cookies = @auth.get_user_info_from_cookie(cookies)
+    #@oauth.get_user_info_from_cookies(cookies)
+    #redirect_to "https://www.facebook.com/dialog/oauth?client_id=#{Facebook::APP_ID}&redirect_uri=/home"
     #https://www.facebook.com/dialog/oauth?client_id=YOUR_APP_ID&redirect_uri=YOUR_URL
+    
   end
 end
 
