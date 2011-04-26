@@ -47,12 +47,20 @@ class SessionsController < ApplicationController
       if usuario_logado.nil? or usuario_logado.size <= 0
         @usuario = @usuario.fetch
         usuario_logado = Usuario.new
+        #usuario_logado.fb_login
         usuario_logado.nome = @usuario.name
         usuario_logado.email = @usuario.email
         usuario_logado.fb_id = @usuario.identifier.to_s
         usuario_logado.nascimento = @usuario.birthday
-        usuario_logado.save(:validate => false)
-        print "USUARIO SAVED"
+        if usuario_logado.save
+          print "USUARIO SAVED"
+        else
+          usuario_logado.errors.each do |e|
+            print e
+          end
+          print "ERRO AO SALVAR"
+        end
+        
         print usuario_logado.id 
       end
       #session[:usuario] = usuario_logado.id
