@@ -43,8 +43,8 @@ class SessionsController < ApplicationController
       flash[:error] = "Usuario nao encontrado"
       redirect_to :action=>"new"
     else
-      usuario_logado = Usuario.find_by_fb_id(@usuario.identifier.to_s)
-      if usuario_logado.nil?
+      usuario_logado = Usuario.where("fb_id=?",@usuario.identifier.to_s)
+      if usuario_logado.nil? or usuario_logado.size <= 0
         @usuario = @usuario.fetch
         usuario_logado = Usuario.new
         usuario_logado.nome = @usuario.name
@@ -52,9 +52,11 @@ class SessionsController < ApplicationController
         usuario_logado.fb_id = @usuario.identifier.to_s
         usuario_logado.nascimento = @usuario.birthday
         usuario_logado.save(:validate => false)
+        print "USUARIO SAVED"
+        print usuario_logado.id 
       end
-      session[:usuario] = usuario_logado.id
-      redirect_to :controller => :home
+      #session[:usuario] = usuario_logado.id
+      #redirect_to :controller => :home
       #@usuario.identifier.to_s
       #session[:usuario] = usuario.id
     end
