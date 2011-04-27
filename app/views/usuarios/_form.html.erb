@@ -1,92 +1,93 @@
 <%= form_for(@usuario) do |f| %>
-  <%@usuario.errors.each do |e|%>
-  <%=e%>
+<%@usuario.errors.each do |e|%>
+<%=e%>
 <%end%>
 <div class="column span-9">
-  <div class="<%="error" if @usuario.errors.on(:nome)%>">
-    <%= f.label :nome,:class=>"title"%>
-    <%= f.text_field :nome %>
-    <label>Nome completo, para podermos identificar você</label>
-    <span class="errorMsg"><%=@usuario.errors.on(:nome)%></span>
-  </div>
+	<div class="<%="error" if @usuario.errors.on(:nome)%>">
+		<%= f.label :nome,:class=>"title"%>
+		<%= f.text_field :nome, :disabled=>true unless usuario_logged.fb_id.nil?%>
+		<label>Nome completo, para podermos identificar você</label>
+		<span class="errorMsg"><%=@usuario.errors.on(:nome)%></span>
+	</div>
 
-<div class="<%="error" if @usuario.errors.on(:email)%>">
-  <%= f.label :email,:class=>"title" %>
-  <%= f.text_field :email %>
-  <label>Não lhe enviamos emails sem o seu consentimento</label>
-  <span class="errorMsg"><%=@usuario.errors.on(:email)%></span>
-</div>
-<div class="highlighter <%="error" if @usuario.errors.on(:login)%>">
-  <%= f.label :login,:class=>"title" %>
-  <%= f.text_field :login %>
-  <label>Este será seu login de acesso ao site</label>
-  <span class="errorMsg"><%=@usuario.errors.on(:login)%></span>
-</div>
-<div class="<%="error" if (@usuario.errors.on(:senha) || @usuario.errors.on(:senha_atual) || @usuario.errors.on(:senha_confirmacao))%>">
-  <%unless usuario_logged?%>
-  <%= f.label :senha_atual,:class=>"title" %>
-  <%= f.password_field :senha_atual %>
-  <span class="errorMsg"><%=@usuario.errors.on(:senha_atual)%></span>
-  <%end%>
+	<div class="<%="error" if @usuario.errors.on(:email)%>">
+		<%= f.label :email,:class=>"title" %>
+		<%= f.text_field :email, :disabled=>true unless usuario_logged.fb_id.nil?%>
+		<label>Não lhe enviamos emails sem o seu consentimento</label>
+		<span class="errorMsg"><%=@usuario.errors.on(:email)%></span>
+	</div>	
+	<%if usuario_logged.fb_id.nil?%>
+	<div class="highlighter <%="error" if @usuario.errors.on(:login)%>">
+		<%= f.label :login,:class=>"title" %>
+		<%= f.text_field :login %>
+		<label>Este será seu login de acesso ao site</label>
+		<span class="errorMsg"><%=@usuario.errors.on(:login)%></span>
+	</div>
+	<div class="<%="error" if (@usuario.errors.on(:senha) || @usuario.errors.on(:senha_atual) || @usuario.errors.on(:senha_confirmacao))%>">
+		<%unless usuario_logged?%>
+		<%= f.label :senha_atual,:class=>"title" %>
+		<%= f.password_field :senha_atual %>
+		<span class="errorMsg"><%=@usuario.errors.on(:senha_atual)%></span>
+		<%end%>
+		<%= f.label "Nova Senha",:class=>"title" %>
+		<%= f.password_field :senha_flag %>
+		<span class="errorMsg"><%=@usuario.errors.on(:senha_flag)%></span>
 
-<%= f.label "Nova Senha",:class=>"title" %>
-<%= f.password_field :senha_flag %>
-<span class="errorMsg"><%=@usuario.errors.on(:senha_flag)%></span>
-
-<%= f.label "Confirmação da senha",:class=>"title" %>
-<%= f.password_field :senha_confirmacao %>
-<span class="errorMsg"><%=@usuario.errors.on(:senha_confirmacao)%></span>
-</div>
+		<%= f.label "Confirmação da senha",:class=>"title" %>
+		<%= f.password_field :senha_confirmacao %>
+		<span class="errorMsg"><%=@usuario.errors.on(:senha_confirmacao)%></span>
+	</div>
+	<%end%>
 </div>
 <div class="column span-9 last">
-  <fieldset>
-    <legend>Informações pessoais</legend>
-    <div class="highlighter <%="error" if @usuario.errors.on(:pesos)%>">
-      <%= f.label :peso,:class=>"title" %>
-      <%= text_field_tag "peso_novo",(@usuario.peso.peso unless @usuario.peso.nil?), :class=>"span-2" %>
-      <label>Em kilos (ex: 83,5)</label>    
-      <span class="errorMsg"><%=@usuario.errors.on(:altura)%></span>
-    </div>
-    
-    <div class="highlighter <%="error" if @usuario.errors.on(:altura)%>">
-    <%= f.label :altura,:class=>"title" %>
-    <%= f.text_field :altura, :class=>"span-2" %>
-    <label>Em metros (ex: 1,83)</label>
-    <span class="errorMsg"><%=@usuario.errors.on(:altura)%></span>
-    </div>
-    
-    <div class="highlighter <%="error" if @usuario.errors.on(:atividade_fisica)%>">
-    <%= f.label "Atividade Física",:class=>"title" %>
-    <%= f.select(:atividade_fisica,{"Sedentário"=>0,"Leve"=>1,"Moderado"=>2,"Intenso"=>3}.sort {|a,b| a[1] <=> b[1]},{ :include_blank => true })%>
-    <label>
-    Leve - 30 minutos por dia<br/>
-    Moderado - 1 hora por dia<br/>
-    Intenso - mais de 2 horas por dia
-    </label>
-    <span class="errorMsg"><%=@usuario.errors.on(:altura)%></span>
-    </div>
-    <div class="<%="error" if @usuario.errors.on(:nascimento)%>">
-    	<%= f.label :nascimento,:class=>"title" %>
-    	<%= f.date_select :nascimento,:start_year => 1900 %>
-      <label>Sua data de nascimento é necessária para os cálculos de IMC e ingestão de calorias diárias</label>
-      <span class="errorMsg"><%=@usuario.errors.on(:nascimento)%></span>
-    </div>
-    <div class="<%="error" if @usuario.errors.on(:sexo)%>" >
-      <%=f.label :sexo,:class=>"title"%>
-    	<%= f.radio_button :sexo,true %> <%= label_tag(:sexo, "Masculino",:class=>"inline") %>
-    	<%= f.radio_button :sexo,false %> <%= label_tag(:sexo, "Feminino",:class=>"inline") %>
-      <label>O sexo também influe nos cálculos de IMC e ingestão de calorias diárias</label>
-      <span class="errorMsg"><%=@usuario.errors.on(:sexo)%></span>
-    </div>
-    
-    <%if usuario_admin?%>
-    <div class="<%="error" if @usuario.errors.on(:perfil)%>">
-      <%=f.label :perfil,:class=>"title"%>
-    	<%= f.select(:perfil_id, Perfil.find(:all).collect {|p| [ p.nome, p.id ] },{ :include_blank => true })%>
-      <span class="errorMsg"><%=@usuario.errors.on(:perfil)%></span>
-    </div>
-    <%end%>
-  </fieldset>
+	<fieldset>
+		<legend>Informações pessoais</legend>
+		<div class="highlighter <%="error" if @usuario.errors.on(:pesos)%>">
+			<%= f.label :peso,:class=>"title" %>
+			<%= text_field_tag "peso_novo",(@usuario.peso.peso unless @usuario.peso.nil?), :class=>"span-2" %>
+			<label>Em kilos (ex: 83,5)</label>    
+			<span class="errorMsg"><%=@usuario.errors.on(:altura)%></span>
+		</div>
+
+		<div class="highlighter <%="error" if @usuario.errors.on(:altura)%>">
+			<%= f.label :altura,:class=>"title" %>
+			<%= f.text_field :altura, :class=>"span-2" %>
+			<label>Em metros (ex: 1,83)</label>
+			<span class="errorMsg"><%=@usuario.errors.on(:altura)%></span>
+		</div>
+
+		<div class="highlighter <%="error" if @usuario.errors.on(:atividade_fisica)%>">
+			<%= f.label "Atividade Física",:class=>"title" %>
+			<%= f.select(:atividade_fisica,{"Sedentário"=>0,"Leve"=>1,"Moderado"=>2,"Intenso"=>3}.sort {|a,b| a[1] <=> b[1]},{ :include_blank => true })%>
+			<label>
+				Leve - 30 minutos por dia<br/>
+				Moderado - 1 hora por dia<br/>
+				Intenso - mais de 2 horas por dia
+			</label>
+			<span class="errorMsg"><%=@usuario.errors.on(:altura)%></span>
+		</div>
+		<div class="<%="error" if @usuario.errors.on(:nascimento)%>">
+			<%= f.label :nascimento,:class=>"title" %>
+			<%= f.date_select :nascimento,:start_year => 1900 %>
+			<label>Sua data de nascimento é necessária para os cálculos de IMC e ingestão de calorias diárias</label>
+			<span class="errorMsg"><%=@usuario.errors.on(:nascimento)%></span>
+		</div>
+		<div class="<%="error" if @usuario.errors.on(:sexo)%>" >
+			<%=f.label :sexo,:class=>"title"%>
+			<%= f.radio_button :sexo,true %> <%= label_tag(:sexo, "Masculino",:class=>"inline") %>
+			<%= f.radio_button :sexo,false %> <%= label_tag(:sexo, "Feminino",:class=>"inline") %>
+			<label>O sexo também influe nos cálculos de IMC e ingestão de calorias diárias</label>
+			<span class="errorMsg"><%=@usuario.errors.on(:sexo)%></span>
+		</div>
+
+		<%if usuario_admin?%>
+		<div class="<%="error" if @usuario.errors.on(:perfil)%>">
+			<%=f.label :perfil,:class=>"title"%>
+			<%= f.select(:perfil_id, Perfil.find(:all).collect {|p| [ p.nome, p.id ] },{ :include_blank => true })%>
+			<span class="errorMsg"><%=@usuario.errors.on(:perfil)%></span>
+		</div>
+		<%end%>
+	</fieldset>
 </div>
 <div class="actions clear">
 	<%= f.submit "Cadastrar", :class => "button"%>

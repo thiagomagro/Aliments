@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   include UsuariosHelper
   include ApplicationHelper
-  
+
   def new
   end
 
@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
     flash[:notice] = 'Logged out'
     redirect_to :controller => 'home'
   end
-  
+
   def fb
     fb_auth = FbGraph::Auth.new(fb_config[:app_id], fb_config[:secret_key])
     auth = fb_auth.from_cookie(cookies)
@@ -37,35 +37,33 @@ class SessionsController < ApplicationController
       flash[:error] = "Usuario nao encontrado"
       redirect_to :action=>"new"
     end
-    @usuario=auth.user
-    
-    if @usuario.nil?
+    usuario=auth.user
+
+    if usuario.nil?
       flash[:error] = "Usuario nao encontrado"
       redirect_to :action=>"new"
     else
-      usuario_logado = Usuario.where("fb_id=?",@usuario.identifier.to_s)
-      if usuario_logado.nil? or usuario_logado.size <= 0
-        @usuario = @usuario.fetch
+      usuario_logado = Usuario.find_by_fb_id usuario.identifier.to_s
+      if usuario_logado.nil?
         usuario_logado = Usuario.new
-        #usuario_logado.fb_login
-        usuario_logado.nome = @usuario.name
-        usuario_logado.email = @usuario.email
-        usuario_logado.fb_id = @usuario.identifier.to_s
-        usuario_logado.nascimento = @usuario.birthday
-        if usuario_logado.save
-          print "USUARIO SAVED"
-        else
-          usuario_logado.errors.each do |e|
-            print e
-          end
-          print "ERRO AO SALVAR"
-        end
-        
-        print usuario_logado.id 
       end
-      #session[:usuario] = usuario_logado.id
-      #redirect_to :controller => :home
-      #@usuario.identifier.to_s
+      usuario = usuario.fetch
+      usuario_logado.nome = usuario.name
+      usuario_logado.email = usuario.email
+      usuario_logado.fb_id = usuario.identifier.to_s
+      usuario_logado.nascimento = usuario.birthday
+      usuario_logado.sexo=1 if usuario.gender == "male"
+      usuario_logado.sexo=0 if usuario.gender == "female"
+      if !usuario_logado.save
+        usuario_logado.errors.each do |e|
+          print e
+        end
+        print "ERRO AO SALVAR"
+        redirect_to :action=>"new"
+      end
+      session[:usuario] = usuario_logado.id
+      redirect_to :controller => :home
+      #usuario.identifier.to_s
       #session[:usuario] = usuario.id
     end
   end

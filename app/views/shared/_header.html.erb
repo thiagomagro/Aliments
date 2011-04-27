@@ -19,7 +19,11 @@
       <div class="right boxHeader relative">
         <a href="javascript:void(0)" class="headerBoxLink text-center" title="Clique para saber mais sobre as Necessidades diárias de calorias">
           <span class="text-p">Necessidade diária estimada</span><br/>
+		<%if calorias(usuario_logged) > 0%>
           <span class="text-g"><%=number_with_precision(calorias(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-pp"> kcal</span>
+		<%else%>
+			Não preenchido
+		<%end%>
           <%= image_tag "seta_white_down.gif", :class=>"absolute seta_down"%>
         </a>
         
@@ -30,8 +34,12 @@
       <div class="right boxHeader relative zindex1000">
         <a href="javascript:void(0)" class="headerBoxLink text-center" title="Clique para saber mais sobre índice de Massa Corporal">          
           <span class="text-p">IMC</span><br/>
+		<%if imc(usuario_logged) > 0%>
           <span class="text-g"><%=number_with_precision(imc(usuario_logged),:precision => 2,:strip_insignificant_zeros => true)%> = <%=imc_nome(usuario_logged)%></span>
-          <%= image_tag "seta_white_down.gif", :class=>"absolute seta_down"%>
+		<%else%>
+			Não preenchido
+		<%end%>
+         <%= image_tag "seta_white_down.gif", :class=>"absolute seta_down"%>
         </a>
         <div class="boxHelper absolute hide">          
           <h4>IMC ou Índice de Massa Corporal</h4>

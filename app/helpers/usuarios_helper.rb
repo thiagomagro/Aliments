@@ -109,6 +109,9 @@ module UsuariosHelper
   
   def imc_nome(usuario)
     imc = imc(usuario)
+    if imc == 0
+      return ""
+    end
     if imc < 18.5
       return "Baixo Peso"
     end

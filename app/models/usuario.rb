@@ -30,7 +30,10 @@ class Usuario < ActiveRecord::Base
   accepts_nested_attributes_for :relacionamentos,:allow_destroy => true
 
   def login_valido?
-    return (:login.nil? && :fb_login.nil?) 
+    if :login.nil? && :fb_login.nil?
+      return true
+    end
+    return false
   end
 
   def senha_valida?
