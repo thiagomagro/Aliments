@@ -2,7 +2,11 @@ module ApplicationHelper
   @@fb_config = nil
 
   def usuario_logged
-    Usuario.find session[:usuario] unless session[:usuario].nil?
+    if session[:usuario_logado].nil?
+      print "LOADING USUARIO"
+      session[:usuario_logado] = Usuario.find session[:usuario] unless session[:usuario].nil?
+    end
+    return session["usuario_logado"]
   end
 
   def usuario_logged?

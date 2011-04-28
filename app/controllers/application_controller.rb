@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   def authenticate
-    redirect_to new_sessions_path if session[:usuario].nil?
+    redirect_to "/sessions/new" if session[:usuario].nil?
   end
   
   def admin_auth

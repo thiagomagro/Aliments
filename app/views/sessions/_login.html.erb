@@ -15,7 +15,7 @@
 	</div>
 	<div id="fb-root"></div>
 
-	<fb:login-button length="long" onlogin="location.href = '/sessions/fb'" perms="<%= Facebook::PERMS %>">Login com Facebook</fb:login-button>
+	<fb:login-button length="long" onlogin="location.href = '/sessions/fb'" perms="<%= fb_config[:perms] %>">Login com Facebook</fb:login-button>
 	<% end %>
 
 </div>

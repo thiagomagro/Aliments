@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  data: 2011-04-28
+  tempo: 9.99
+  intensidade: 1
+
+two:
+  data: 2011-04-28
+  tempo: 9.99
+  intensidade: 1

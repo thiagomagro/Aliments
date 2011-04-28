@@ -2,21 +2,34 @@
 <%@usuario.errors.each do |e|%>
 <%=e%>
 <%end%>
+
+<%if !usuario_logged.nil? && !usuario_logged.fb_id.nil?%>
+	<div class="left">
+		<div class="clear"><%=image_tag "fb_stamp.png"%></div>
+	</div>
+	<div class="left padding-10">
+			Você está logado com uma conta do <b>Facebook.</b><br/>
+			<span class="small">Algumas informações só podem ser atualizadas pela sua página do Facebook.</span>
+	</div>
+	<div class="clear"></div>
+<%end%>
+
+
 <div class="column span-9">
 	<div class="<%="error" if @usuario.errors.on(:nome)%>">
 		<%= f.label :nome,:class=>"title"%>
-		<%= f.text_field :nome, :disabled=>true unless usuario_logged.fb_id.nil?%>
+		<%= f.text_field :nome,:disabled=>(!usuario_logged.nil? && !usuario_logged.fb_id.nil?)%>
 		<label>Nome completo, para podermos identificar você</label>
 		<span class="errorMsg"><%=@usuario.errors.on(:nome)%></span>
 	</div>
 
 	<div class="<%="error" if @usuario.errors.on(:email)%>">
 		<%= f.label :email,:class=>"title" %>
-		<%= f.text_field :email, :disabled=>true unless usuario_logged.fb_id.nil?%>
+		<%= f.text_field :email, :disabled=>(!usuario_logged.nil? && !usuario_logged.fb_id.nil?)%>
 		<label>Não lhe enviamos emails sem o seu consentimento</label>
 		<span class="errorMsg"><%=@usuario.errors.on(:email)%></span>
 	</div>	
-	<%if usuario_logged.fb_id.nil?%>
+	<%if usuario_logged.nil? || usuario_logged.fb_id.nil?%>
 	<div class="highlighter <%="error" if @usuario.errors.on(:login)%>">
 		<%= f.label :login,:class=>"title" %>
 		<%= f.text_field :login %>
@@ -68,14 +81,14 @@
 		</div>
 		<div class="<%="error" if @usuario.errors.on(:nascimento)%>">
 			<%= f.label :nascimento,:class=>"title" %>
-			<%= f.date_select :nascimento,:start_year => 1900 %>
+			<%= f.date_select :nascimento,:start_year => 1900, :disabled=>(!usuario_logged.nil? && !usuario_logged.fb_id.nil?)%>
 			<label>Sua data de nascimento é necessária para os cálculos de IMC e ingestão de calorias diárias</label>
 			<span class="errorMsg"><%=@usuario.errors.on(:nascimento)%></span>
 		</div>
 		<div class="<%="error" if @usuario.errors.on(:sexo)%>" >
 			<%=f.label :sexo,:class=>"title"%>
-			<%= f.radio_button :sexo,true %> <%= label_tag(:sexo, "Masculino",:class=>"inline") %>
-			<%= f.radio_button :sexo,false %> <%= label_tag(:sexo, "Feminino",:class=>"inline") %>
+			<%= f.radio_button :sexo,true,:disabled=>(!usuario_logged.nil? && !usuario_logged.fb_id.nil?) %> <%= label_tag(:sexo, "Masculino",:class=>"inline") %>
+			<%= f.radio_button :sexo,false,:disabled=>(!usuario_logged.nil? && !usuario_logged.fb_id.nil?) %> <%= label_tag(:sexo, "Feminino",:class=>"inline") %>
 			<label>O sexo também influe nos cálculos de IMC e ingestão de calorias diárias</label>
 			<span class="errorMsg"><%=@usuario.errors.on(:sexo)%></span>
 		</div>
