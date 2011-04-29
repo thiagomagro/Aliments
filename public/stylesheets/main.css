@@ -1,5 +1,5 @@
 /* LAYOUTS DEFAULT*/
-body, textarea, input, select, option, button {
+body, textarea, input, select, option {
   color: #555;
   font-family: Calibri,sans-serif,Lucida Grande,Helvetica Neue,Helvetica,Arial;
   /*font:"Lucida Grande",Lucida,helvetica,Arial,verdana,sans-serif*/
@@ -405,10 +405,10 @@ label.inline{
 
 .refeicaoListBox .refeicaoList a{
   text-decoration:none;
-  color:#777;
+
 }
 .refeicaoListBox .refeicaoList a:hover{
-  color:#ff7700;
+
 }
 
 /*FIM LAYOUT SPECIFIC*/
@@ -509,10 +509,12 @@ fieldset legend{
 
 .green.button, .green.button:visited{
 	background-color: #91bd09;
+	color: #fff;
 }
 
 .green.button:hover{
 	background-color: #749a02;
+	color: #fff;
 }
 
 .red.button, .red.button:visited{

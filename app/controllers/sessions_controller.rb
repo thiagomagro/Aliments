@@ -24,7 +24,9 @@ class SessionsController < ApplicationController
   # DELETE /usuarios/1
   # DELETE /usuarios/1.xml
   def destroy
-    session[:usuarios] = nil
+    session[:usuario] = nil
+    session[:usuario_logado] = nil
+    session[:data] = nil
     reset_session
     flash[:notice] = 'Logged out'
     redirect_to :controller => 'home'

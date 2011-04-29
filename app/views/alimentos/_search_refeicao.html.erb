@@ -1,5 +1,4 @@
 <tr class="clear">
-  <td class="span-8"><%=alimento.stored(:nome)%></td>
-  <td class="span-2"><%= link_to 'Importar',{:controller => "refeicaos",:action=>"adicionar_alimento", :id => alimento.stored(:id)}, :method => :post, :remote => true%></td>
+  <td class="span-8"><%=alimento.stored(:nome)%><hr/></td>
+  <td class="span-2"><%= link_to 'Adicione à sua refeição',{:controller => "refeicaos",:action=>"adicionar_alimento", :id => alimento.stored(:id)}, :method => :post, :remote => true, :class=>"button green"%></td>
 </tr>
-

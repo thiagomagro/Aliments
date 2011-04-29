@@ -7,11 +7,10 @@
     <span class="text-pp"> | </span>
     <span class="text-m"><%=number_with_precision(comps_r[208],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-m"> kcal</span>
     </a>
-    <%= link_to edit_refeicao_path(refeicao),:class=>"button pp" do%>
-    <%= image_tag "edit.png", :class=>""%>Editar
+    <%= link_to edit_refeicao_path(refeicao),:class=>"button green small" do%>
+    	Editar
     <%end%>
-    &nbsp;
-    <%= link_to refeicao, :confirm => 'Deseja excluir a refeição?', :method => :delete, :class=>"button pp" do%>
+    <%= link_to refeicao, :confirm => 'Deseja excluir a refeição?', :method => :delete, :class=>"button red small" do%>
       Excluir
     <%end%>
   </h2>

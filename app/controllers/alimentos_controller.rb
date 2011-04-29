@@ -132,6 +132,9 @@ class AlimentosController < ApplicationController
     @alimentos = Sunspot.search(Alimento) do
         keywords params["search"],:fields => [:nome]
         with(:ativo).equal_to true
+        adjust_solr_params do |sunspot_params|
+            sunspot_params[:rows] = 1000
+        end
     end
     @action_form = params[:action_form]
     #@alimentos = search.results
