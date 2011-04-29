@@ -32,10 +32,18 @@ class SessionsController < ApplicationController
 
   def fb
     fb_auth = FbGraph::Auth.new(fb_config[:app_id], fb_config[:secret_key])
-    auth = fb_auth.from_cookie(cookies)
+    begin
+     auth = fb_auth.from_cookie(cookies)
+    rescue
+      flash[:error] = "Usuario nao encontrado"
+      redirect_to :action=>"new"
+      return
+    end
+    
     if auth.nil?
       flash[:error] = "Usuario nao encontrado"
       redirect_to :action=>"new"
+      return
     end
     usuario=auth.user
 
@@ -60,8 +68,10 @@ class SessionsController < ApplicationController
         end
         print "ERRO AO SALVAR"
         redirect_to :action=>"new"
+        return
       end
       session[:usuario] = usuario_logado.id
+      session[:usuario_logado] = usuario_logado
       redirect_to :controller => :home
       #usuario.identifier.to_s
       #session[:usuario] = usuario.id

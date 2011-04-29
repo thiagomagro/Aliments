@@ -6,8 +6,13 @@ module ApplicationHelper
       print "LOADING USUARIO"
       session[:usuario_logado] = Usuario.find session[:usuario] unless session[:usuario].nil?
     end
-    return session["usuario_logado"]
+    return session[:usuario_logado]
   end
+
+  def usuario_logged_refresh
+    session[:usuario_logado] = Usuario.find session[:usuario] unless session[:usuario].nil?
+  end
+    
 
   def usuario_logged?
     session[:usuario].nil?

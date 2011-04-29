@@ -104,6 +104,7 @@ class UsuariosController < ApplicationController
     #UsuarioMailer.cadastro_ok(@usuario).deliver
     respond_to do |format|
       if @usuario.update_attributes(params[:usuario].reject{|k,v| v.blank?})
+        usuario_logged_refresh
         flash[:success] = "Dados atualizados com sucesso"
         format.html { redirect_to(@usuario, :notice => 'Usuario was successfully updated.') }
         format.xml  { head :ok }
@@ -139,6 +140,7 @@ class UsuariosController < ApplicationController
   def update_lugares
     @usuario = Usuario.find(params[:id])
     if @usuario.update_attributes(params[:usuario])
+      usuario_logged_refresh
       render "lugares"
     else
       render "lugares"
