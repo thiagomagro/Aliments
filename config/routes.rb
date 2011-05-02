@@ -2,7 +2,7 @@ Aliments::Application.routes.draw do
 #  get "home/index"
   root :to => "home#index"
 
-  resources :alimentos, :alimentos_usda, :usuarios, :tipo_medidas, :medidas, :marcas, :grupos, :lugares, :usuario_lugars, :refeicaos, :componentes
+  match 'grupos/listar' => 'grupos#list', :via => [:get, :post]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -33,12 +33,14 @@ Aliments::Application.routes.draw do
   match 'refeicao/listar' => 'refeicaos#list', :via => [:get, :post]
   match 'refeicao/adicionar_alimento/:id'=> 'refeicaos#adicionar_alimento', :via => [:get, :post]
   match 'busca/index' => 'busca#index', :via => [:get, :post]
+
   
   match 'sessions/fb'=>'sessions#fb'
   match 'sessions/new'=>'sessions#new'
   match 'sessions/create'=>'sessions#create'
   match 'sessions/destroy'=>'sessions#destroy'
   
+  resources :alimentos, :alimentos_usda, :usuarios, :tipo_medidas, :medidas, :marcas, :grupos, :lugares, :usuario_lugars, :refeicaos, :componentes
   #match 'sessions/:action' => ""
   
 

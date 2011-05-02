@@ -1,0 +1,10 @@
+<table>
+<%@grupos.each do |g|%>
+<tr class="clear">
+  <td class="span-8"><%=g.nome%></td>
+  <td class="span-8"><%=g.porcao%></td>
+  <td class="span-2"><%= link_to 'Editar', edit_grupo_path(g.id) %></td>
+  <td class="span-2"><%= link_to 'Apagar',{ :controller=>"grupos",:action=>"destroy",:id=>g.id},:method=>:delete,:confirm => 'Confirma a exclusão?'%></td>
+</tr>
+<%end%>
+</table>

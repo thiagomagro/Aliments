@@ -38,7 +38,7 @@ module RefeicaosHelper
   end
   
   def refeicoes_data(usuario,date)
-    refeicoes = Refeicao.find(:all,:conditions => ["extract(day from data) = ? AND extract(month from data) = ? AND extract(year from data) = ? AND usuario_id=?", date.day, date.month, date.year,usuario.id]).sort{|a,b| b.data <=> b.data}
+    refeicoes = Refeicao.find(:all,:conditions => ["extract(day from data) = ? AND extract(month from data) = ? AND extract(year from data) = ? AND usuario_id=?", date.day, date.month, date.year,usuario.id], :include => [:usuario]).sort{|a,b| b.data <=> b.data}
     return refeicoes
   end
   
@@ -75,5 +75,5 @@ module RefeicaosHelper
     #:conditions => ["created_at >= ? ", 7.days.ago],
     :order => "DATE(data) ASC"
     )
-  end
+  end  
 end

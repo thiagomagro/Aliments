@@ -7,9 +7,9 @@
     <%refeicoes_dias = refeicoes_dias(refeicoes)%>
     <%comps_refeicoes = componentes_refeicoes(refeicoes_dias[@data.strftime("%d/%m/%y")])%>
     <%unless refeicoes_dias.nil? || @data.nil? || refeicoes_dias[@data.strftime("%d/%m/%y")].nil?%>
-      <%refeicoes_dias[@data.strftime("%d/%m/%y")].each do |rf|%>
-        <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>rf}%>
-      <%end%>
+    <%refeicoes_dias[@data.strftime("%d/%m/%y")].each do |rf|%>
+    <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>rf}%>
+    <%end%>
     <%end%>
     <%if refeicoes_dias[@data.strftime("%d/%m/%y")].nil? || refeicoes_dias[@data.strftime("%d/%m/%y")].size <= 0%>
     <div class="error">Nenhuma refeição encontrada.</div>
@@ -18,10 +18,8 @@
   </div>
 </div>
 <div class="span-9 column last">
-  <div class="span-9">
-    <div class="span-4">      
-    </div>
-    <div class="span-5 last">
+  <div class="">
+    <div class="span-5">
       <div class="box text-center">
         <div>
           <span class="text-gg"><%=@data.strftime("%d")%></span>
@@ -37,23 +35,35 @@
           <%end%>
         </div>
       </div>
+      <div class="clear">
+      
+      <%refeicoes.each do |r|%>
+        <%r.refeicao_alimentos.each do |ra|%>
+          <%ra.alimento.grupo_alimentos.each do |ga|%>
+          <%=ga.grupo.nome%>
+          <%end%>
+        <%end%>
+      <%end%>
+      </div>
+    </div>
+    <div class="span-4 last">
     </div>
   </div>
   <div class="clear"></div>
   <div class="prepend-top">
     <%unless refeicoes_dias.nil? || refeicoes_dias.size <= 0%>
-    <%keys = dias_array(refeicoes_dias.keys)%>
-    <%keys.sort.each do |ks|%>
-    <%k=ks.strftime("%d/%m/%y")%>
-    <%if @data.strftime("%d/%m/%y") != k%>
-    <div class="span-2 text-center boxItem padding-4">
-      <%link_to :action=>"list",:data=>k do%>
-      <span class="text-p"><%=k%></span><br/>
-      <%=number_with_precision(componentes_refeicoes(refeicoes_dias[k])[208],:precision => 2,:strip_insignificant_zeros => true)%> kcal<br/>
-      <span class="text-pp">Refeições: </span><%=refeicoes_dias[k].size%>
+      <%keys = dias_array(refeicoes_dias.keys)%>
+        <%keys.sort.each do |ks|%>
+        <%k=ks.strftime("%d/%m/%y")%>
+        <%if @data.strftime("%d/%m/%y") != k%>
+        <div class="span-2 text-center boxItem padding-4">
+          <%link_to :action=>"list",:data=>k do%>
+          <span class="text-p"><%=k%></span><br/>
+          <%=number_with_precision(componentes_refeicoes(refeicoes_dias[k])[208],:precision => 2,:strip_insignificant_zeros => true)%> kcal<br/>
+          <span class="text-pp">Refeições: </span><%=refeicoes_dias[k].size%>
+          <%end%>
+        </div>
+        <%end%>
       <%end%>
-    </div>
-    <%end%>
-    <%end%>
     <%end%>
   </div>

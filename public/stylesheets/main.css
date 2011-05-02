@@ -1,10 +1,10 @@
 /* LAYOUTS DEFAULT*/
 body, textarea, input, select, option {
   color: #555;
-  font-family: Calibri,sans-serif,Lucida Grande,Helvetica Neue,Helvetica,Arial;
+  font-family: Calibri,Lucida Grande,Helvetica Neue,Helvetica,Arial,sans-serif;
   /*font:"Lucida Grande",Lucida,helvetica,Arial,verdana,sans-serif*/
   background-color:#fff;
-  font-size:14px;
+  font-size:13px;
 }
 body{
   background-color:#fff;
@@ -253,10 +253,10 @@ p.error{
   top:62px;
   right:-20px;
   z-index:0;
-  color:#000;
+  color:#fff;
   /*background-image:url('../images/bg_white_transp.png');
   background-repeat:repeat-x;*/
-  background-color:#b55400;
+  background-color:#663300;
   border:1px solid #ff7700;
   -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;
   -moz-box-shadow: 0px 5px 8px #333;
@@ -266,7 +266,7 @@ p.error{
 }
 
 .boxHelper h4{
-  color:#fff;
+  color:#ff7700;
 }
 
 .boxHelper .boxEl{
@@ -378,7 +378,7 @@ label.inline{
   border:1px solid #ccc;
 }
 .refeicaoListBox{
-    color:#999;
+    color:#777;
 }
 .refeicaoListBox .refeicaoList .refeicao_details{
   padding:5px;
