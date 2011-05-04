@@ -111,6 +111,6 @@ DEPENDENCIES
   mail (>= 2.1.3)
   paperclip (~> 2.3)
   pg
-  rails (= 3.0.3)
+  rails (>= 3.0.3)
   sunspot_rails (>= 1.2)
   whenever

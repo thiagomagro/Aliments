@@ -4,7 +4,7 @@ module ApplicationHelper
   def usuario_logged
     if session[:usuario_logado].nil?
       print "LOADING USUARIO"
-      session[:usuario_logado] = Usuario.find session[:usuario] unless session[:usuario].nil?
+      session[:usuario_logado] = Usuario.find(session[:usuario],:select=>"usuario.id,usuario.nome,perfil.id",:include=>[:perfil]) unless session[:usuario].nil?
     end
     return session[:usuario_logado]
   end
@@ -19,9 +19,10 @@ module ApplicationHelper
   end
 
   def usuario_admin?
-    unless session[:usuario].nil?
-      usuario = Usuario.find session[:usuario]
-      return false unless not (usuario.nil? || usuario.perfil.nil?)
+    unless session[:usuario_logado].nil?
+      #usuario = Usuario.find session[:usuario]
+      usuario = session[:usuario_logado]
+      return false if usuario.nil?
       if (usuario.perfil.nome.casecmp "administrador")==0
         return true
       else

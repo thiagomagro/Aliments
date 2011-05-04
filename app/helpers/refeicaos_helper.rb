@@ -43,7 +43,7 @@ module RefeicaosHelper
   end
   
   def refeicoes(usuario)
-    refeicoes = Refeicao.find(:all,:conditions => ["usuario_id=?",usuario.id]).sort{|a,b| b.data <=> b.data}
+    refeicoes = Refeicao.find(:all,:select=>"refeicao.id,refeicao.nome,usuario.id,refeicao_alimentos.id,refeicao_alimentos.alimento.id,refeicao_alimentos.alimento.componentes.id,refeicao_alimentos.alimento.componentes.nome",:conditions => ["usuario_id=?",usuario.id],:include=>[:usuario,{:refeicao_alimentos=>:alimento}]).sort{|a,b| b.data <=> b.data}
     return refeicoes
   end
   

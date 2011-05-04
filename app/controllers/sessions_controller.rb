@@ -7,7 +7,9 @@ class SessionsController < ApplicationController
 
   def create
     #usuario = Usuario.find_by_login_and_senha params[:usuario][:login],params[:usuario][:senha]
-    usuario = Usuario.find_by_login_and_senha_segura params[:usuario][:login],encrypt(params[:usuario][:senha],nil)
+    #usuario = Usuario.find_by_login_and_senha_segura(params[:usuario][:login],encrypt(params[:usuario][:senha],nil), :select=>"usuarios.id,usuarios.nome,usuarios.senha_segura,perfils.nome",:include=>[:perfil])
+    usuario = Usuario.find(:first,:conditions=>["login=? and senha_segura=?",params[:usuario][:login],encrypt(params[:usuario][:senha],nil)],:select=>"usuarios.id,usuarios.nome,usuarios.senha_segura,perfils.nome",:joins => "left outer join perfils on perfils.id = usuarios.perfil_id")
+    
     if usuario
       if usuario.senha_segura.nil?
         usuario.senha_segura = encrypt(usuario.senha,nil)
