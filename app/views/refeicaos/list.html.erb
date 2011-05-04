@@ -8,7 +8,7 @@
     <%comps_refeicoes = componentes_refeicoes(refeicoes_dias[@data.strftime("%d/%m/%y")])%>
     <%unless refeicoes_dias.nil? || @data.nil? || refeicoes_dias[@data.strftime("%d/%m/%y")].nil?%>
     <%refeicoes_dias[@data.strftime("%d/%m/%y")].each do |rf|%>
-    <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>rf}%>
+      <%=render :partial=>"/refeicaos/refeicao",:locals=>{:refeicao=>rf}%>
     <%end%>
     <%end%>
     <%if refeicoes_dias[@data.strftime("%d/%m/%y")].nil? || refeicoes_dias[@data.strftime("%d/%m/%y")].size <= 0%>
@@ -38,20 +38,22 @@
       <div class="clear">
         <span class="text-g">Grupos de Alimentos</span><br/><span class="small">Confira as porções ingeridas de cada grupo de alimentos</span>
         <br/><hr/>
+        <%unless refeicoes_dias[@data.strftime("%d/%m/%y")].nil? || refeicoes_dias[@data.strftime("%d/%m/%y")].size <= 0%>
         <%grupos = getGruposInfo(refeicoes_dias[@data.strftime("%d/%m/%y")],comps_refeicoes)%>
         <table>
           <thead>
             <tr></tr>
           </thead>
           <tbody>
-            <%grupos.keys.each do |g|%>        
+            <%grupos.keys.each do |g|%>
             <tr>
               <td><%=g.nome%></td>
               <td><%=number_with_precision(grupos[g],:precision => 2,:strip_insignificant_zeros => true )%></td>
             </tr>
-            <%end%>            
+            <%end%>
           </tbody>
         </table>
+        <%end%>
       </div>
     </div>
     <div class="span-4 last">

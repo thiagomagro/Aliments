@@ -39,11 +39,13 @@ module RefeicaosHelper
   
   def refeicoes_data(usuario,date)
     refeicoes = Refeicao.find(:all,:conditions => ["extract(day from data) = ? AND extract(month from data) = ? AND extract(year from data) = ? AND usuario_id=?", date.day, date.month, date.year,usuario.id], :include => [:usuario]).sort{|a,b| b.data <=> b.data}
+    #refeicoes = Refeicao.by_usuario_id(usuario.id)
     return refeicoes
   end
   
   def refeicoes(usuario)
-    refeicoes = Refeicao.find(:all,:select=>"refeicao.id,refeicao.nome,usuario.id,refeicao_alimentos.id,refeicao_alimentos.alimento.id,refeicao_alimentos.alimento.componentes.id,refeicao_alimentos.alimento.componentes.nome",:conditions => ["usuario_id=?",usuario.id],:include=>[:usuario,{:refeicao_alimentos=>:alimento}]).sort{|a,b| b.data <=> b.data}
+    #refeicoes = Refeicao.find(:all,:select=>"refeicao.id,refeicao.nome,usuario.id,refeicao_alimentos.id,refeicao_alimentos.alimento.id,refeicao_alimentos.alimento.componentes.id,refeicao_alimentos.alimento.componentes.nome",:conditions => ["usuario_id=?",usuario.id],:include=>[:usuario,{:refeicao_alimentos=>:alimento}]).sort{|a,b| b.data <=> b.data}
+    refeicoes = Refeicao.by_usuario_id(usuario.id)
     return refeicoes
   end
   

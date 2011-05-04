@@ -1,0 +1,6 @@
+<%agora=Time.now.to_f  %>
+<div>
+  <%=hidden_field_tag "alimento[alimnto_tags_attributes][#{agora}][id]", tag.id,:class=>"tag_alimento_id"%>  
+	<div class="left span-3"><%= text_field_tag "alimento[alimnto_tags_attributes][#{agora}][nome]",tag.nome, :class => "")%></div>
+</div>
+

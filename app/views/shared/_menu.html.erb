@@ -2,7 +2,7 @@
   <div class="clear container">
     <div id="menu">
       <div class="right">
-		<%form_tag(:controller=>"busca",:action=>"index") do%>
+		<%= form_tag(:controller=>"busca",:action=>"index") do%>
         	<%=search_field_tag("busca_string",@busca)%>
 		<%end%>
       </div>

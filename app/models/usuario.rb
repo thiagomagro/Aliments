@@ -1,5 +1,6 @@
 class Usuario < ActiveRecord::Base
   include UsuariosHelper
+  include ApplicationHelper
   include ActiveModel::Validations
 
   validates_presence_of :login, :if => :login_valido?
@@ -51,12 +52,20 @@ class Usuario < ActiveRecord::Base
   searchable do
     text :nome, :stored => true
     long :id, :stored => true
-  end
-  #before_save :senha_seguranca, :if => :senha_valida?
+  end  
 
-  #def senha_seguranca
-  #   self.senha_segura = encrypt(senha_flag,nil)
-  #end
+  class << self
+    def by_login_senha_segura(login,senha_segura)
+      default_select.joins(:perfil,:peso).where("usuarios.login=? and usuarios.senha_segura=?",login,senha_segura).first
+    end
+    def by_id(id)
+      default_select.joins(:perfil,:peso).where("usuarios.id=?",id).first
+    end
+    def default_select
+      select("usuarios.id,usuarios.nome,usuarios.login,usuarios.senha_segura,usuarios.altura,usuarios.nascimento,usuarios.atividade_fisica,usuarios.sexo,usuarios.fb_id,perfils.nome perfil_nome,pesos.peso as peso_peso")
+    end
+  end
+  
 end
 
 

@@ -23,16 +23,16 @@ module UsuariosHelper
     cals = 0
     meses = meses(usuario)
     naf = 1
-    return 0 if (idade(usuario).nil? || usuario.peso.nil? || usuario.altura.nil? || usuario.atividade_fisica.nil?)
-    
+    return 0 if (idade(usuario).nil? || usuario.peso_peso.nil? || usuario.altura.nil? || usuario.atividade_fisica.nil?)
+    usuario.peso_peso = usuario.peso_peso.to_f
     if meses < 4
-      cals = 89 * usuario.peso.peso - 100 + 175
+      cals = 89 * usuario.peso_peso - 100 + 175
     elsif meses < 7
-      cals = 89 * usuario.peso.peso - 100 + 56
+      cals = 89 * usuario.peso_peso - 100 + 56
     elsif meses < 13
-      cals = 89 * usuario.peso.peso - 100 + 22
+      cals = 89 * usuario.peso_peso - 100 + 22
     elsif meses < 36
-      cals = 89 * usuario.peso.peso - 100 + 20
+      cals = 89 * usuario.peso_peso - 100 + 20
     elsif idade < 19
       if usuario.atividade_fisica==0
         naf = 1
@@ -58,15 +58,15 @@ module UsuariosHelper
       
       if idade < 9
         if usuario.sexo
-          cals = 88.5 - 61.9 * idade + naf * ((26.7 * usuario.peso.peso) + (903 * usuario.altura)) + 20
+          cals = 88.5 - 61.9 * idade + naf * ((26.7 * usuario.peso_peso) + (903 * usuario.altura)) + 20
         else
-          cals = 135.3 - 30.8 * idade + naf * ((10 * usuario.peso.peso) + (934 * usuario.altura)) + 20
+          cals = 135.3 - 30.8 * idade + naf * ((10 * usuario.peso_peso) + (934 * usuario.altura)) + 20
         end
       elsif idade < 19
         if usuario.sexo
-          cals = 88.5 - 61.9 * idade + naf * ((26.7 * usuario.peso.peso) + (903 * usuario.altura)) + 25
+          cals = 88.5 - 61.9 * idade + naf * ((26.7 * usuario.peso_peso) + (903 * usuario.altura)) + 25
         else
-          cals = 135.3 - 30.8 * idade + naf * ((10 * usuario.peso.peso) + (934 * usuario.altura)) + 25
+          cals = 135.3 - 30.8 * idade + naf * ((10 * usuario.peso_peso) + (934 * usuario.altura)) + 25
         end
       end
     else
@@ -93,9 +93,9 @@ module UsuariosHelper
       end
       
       if usuario.sexo
-        cals = 662 - (9.53 * idade) + naf * ((15.91 * usuario.peso.peso) + (539.6 * usuario.altura))
+        cals = 662 - (9.53 * idade) + naf * ((15.91 * usuario.peso_peso) + (539.6 * usuario.altura))
       else
-        cals = 354 - (6.91 * idade) + naf * ((9.36 * usuario.peso.peso) + (727 * usuario.altura))
+        cals = 354 - (6.91 * idade) + naf * ((9.36 * usuario.peso_peso) + (727 * usuario.altura))
       end
       
     end
@@ -103,8 +103,9 @@ module UsuariosHelper
   end
   
   def imc(usuario)
-    return 0 if (usuario.peso.nil? || usuario.peso.peso.nil? || usuario.altura.nil?)
-    return (usuario.peso.peso / (usuario.altura ** 2))
+    return 0 if (usuario.peso_peso.nil? || usuario.altura.nil?)
+    usuario.peso_peso = usuario.peso_peso.to_f
+    return (usuario.peso_peso / (usuario.altura ** 2))
   end
   
   def imc_nome(usuario)
@@ -129,14 +130,7 @@ module UsuariosHelper
     end
     
     return "Obesidade Grau 3"
-  end
-  
-  def encrypt(text,salt)
-    if salt.nil?
-      salt="2pO$sdF#ca8@6ads-sD%f"
-    end
-    return Digest::SHA1.hexdigest("--#{salt}--#{text}--")
-  end
+  end  
   
   def cep_format(cep)
     if cep.nil? || cep==0

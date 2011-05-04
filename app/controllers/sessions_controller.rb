@@ -1,15 +1,12 @@
 class SessionsController < ApplicationController
   include UsuariosHelper
   include ApplicationHelper
-
+  
   def new
   end
-
+  
   def create
-    #usuario = Usuario.find_by_login_and_senha params[:usuario][:login],params[:usuario][:senha]
-    #usuario = Usuario.find_by_login_and_senha_segura(params[:usuario][:login],encrypt(params[:usuario][:senha],nil), :select=>"usuarios.id,usuarios.nome,usuarios.senha_segura,perfils.nome",:include=>[:perfil])
-    usuario = Usuario.find(:first,:conditions=>["login=? and senha_segura=?",params[:usuario][:login],encrypt(params[:usuario][:senha],nil)],:select=>"usuarios.id,usuarios.nome,usuarios.senha_segura,perfils.nome",:joins => "left outer join perfils on perfils.id = usuarios.perfil_id")
-    
+    usuario = Usuario.by_login_senha_segura(params[:usuario][:login],encrypt(params[:usuario][:senha],nil))
     if usuario
       if usuario.senha_segura.nil?
         usuario.senha_segura = encrypt(usuario.senha,nil)
@@ -22,7 +19,7 @@ class SessionsController < ApplicationController
       render :new
     end
   end
-
+  
   # DELETE /usuarios/1
   # DELETE /usuarios/1.xml
   def destroy
@@ -33,11 +30,11 @@ class SessionsController < ApplicationController
     flash[:notice] = 'Logged out'
     redirect_to :controller => 'home'
   end
-
+  
   def fb
     fb_auth = FbGraph::Auth.new(fb_config[:app_id], fb_config[:secret_key])
     begin
-     auth = fb_auth.from_cookie(cookies)
+      auth = fb_auth.from_cookie(cookies)
     rescue
       flash[:error] = "Usuario nao encontrado"
       redirect_to :action=>"new"
@@ -50,7 +47,7 @@ class SessionsController < ApplicationController
       return
     end
     usuario=auth.user
-
+    
     if usuario.nil?
       flash[:error] = "Usuario nao encontrado"
       redirect_to :action=>"new"

@@ -13,12 +13,16 @@ class Alimento < ActiveRecord::Base
 
   has_many :alimento_medidas, :dependent => :destroy
   has_many :medidas, :through => :alimento_medidas
+  
+  has_many :alimento_tags
 
   accepts_nested_attributes_for :componente_alimentos,:allow_destroy => true
   accepts_nested_attributes_for :alimento_medidas,:allow_destroy => true
   accepts_nested_attributes_for :grupo_alimentos,:allow_destroy => true
   accepts_nested_attributes_for :marca
 
+  accepts_nested_attributes_for :alimento_tags, :allow_destroy => :true,:reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? }}
+  
   searchable do
       text :nome, :stored => true
       long :id, :stored => true

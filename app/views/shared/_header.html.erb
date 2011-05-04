@@ -7,9 +7,8 @@
     </div>
     <div class="span-16 last relative">
       <%unless usuario_logged.nil?%>
-      
       <div class="right">
-        <%link_to "/sessions/destroy",:method=>:delete, :class => ("button red small") do%>
+        <%= link_to "/sessions/destroy",:method=>:delete, :class => ("button red small") do%>
         <%= image_tag "icon_lock.png", :class=>""%>Logout
         <%end%>
       </div>
@@ -55,7 +54,7 @@
       <%else%>
       <div class="padding-10">
         <div class="right">
-          <%link_to "/sessions/new",:remote=>true, :class => ("button green") do%>
+          <%= link_to "/sessions/new",:remote=>true, :class => ("button green") do%>
           <%= image_tag "icon_unlock.png", :class=>""%>
           Login
           <%end%>
