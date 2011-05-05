@@ -405,10 +405,20 @@ label.inline{
 
 .refeicaoListBox .refeicaoList a{
   text-decoration:none;
-
 }
 .refeicaoListBox .refeicaoList a:hover{
+}
 
+
+.top_tab{
+  padding:14px;
+  background-color:#eee;
+  font-size:16px;
+  color:#555;
+  position:relative;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px;
 }
 
 /*FIM LAYOUT SPECIFIC*/
