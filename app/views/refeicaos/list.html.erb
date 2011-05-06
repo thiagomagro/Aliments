@@ -5,7 +5,12 @@
 </div>
 <div class="span-9 last"></div>
 <div class="clear span-19 last prepend-top">
-  <%=@refeicoes.size()%>
-  <hr/>
+  <%@refeicoes.each do |r|%>
+    <%=r%>
+    <hr/>
+  <%end%>
 </div>
-<%=select_date(@data)%>
+<%form_tag :action=>"list",:controller=>"refeicaos",:method=>"post" do%>
+  <%=select_date(@data)%>
+  <%=button_for "Enviar"%>
+<%end%>

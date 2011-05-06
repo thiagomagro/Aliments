@@ -36,18 +36,21 @@ class RefeicaosController < ApplicationController
   end
   
   def list
-    if !params[:data].nil?
-      @data = DateTime.strptime(params[:data],"%d/%m/%y").to_time
-      session[:data] = @data
-    else
+    if params[:date].nil?
       if(session[:data].nil?)
         @data = Date.today
       else
         @data = session[:data]
       end
+    else
+      print params[:date][:month]
+      #@data = Date.civil(params[:date][:month].to_i,params[:date][:day].to_i,params[:date][:year].to_i)
+      #print params[:date]
+      @data = DateTime.strptime("${params[:date]/params[:month]/params[:year]}","%d/%m/%y").to_time
+      #session[:data] = @data      
     end
     #@refeicoes = Refeicao.by_usuario_id(usuario_logged.id)
-    @refeicoes = Refeicao.by_usuario_date(@data,usuario_logged)
+    #@refeicoes = Refeicao.by_usuario_date(@data,usuario_logged)
     #@refeicoes = Refeicao.where(:usuario_id=>usuario_logged.id).sort{|a,b| b.data <=> b.data}
   end
   
