@@ -43,14 +43,17 @@ class RefeicaosController < ApplicationController
         @data = session[:data]
       end
     else
+      print params[:date][:day]
       print params[:date][:month]
+      print params[:date][:year]
       #@data = Date.civil(params[:date][:month].to_i,params[:date][:day].to_i,params[:date][:year].to_i)
       #print params[:date]
-      @data = DateTime.strptime("${params[:date]/params[:month]/params[:year]}","%d/%m/%y").to_time
-      #session[:data] = @data      
+      #@data = DateTime.strptime("${params[:date][:day]}/${params[:date][:month]}/${params[:date][:year]}","%d/%m/%y").to_time
+      @data = Time.mktime(params[:date][:year],params[:date][:month],params[:date][:day]) 
+      session[:data] = @data      
     end
     #@refeicoes = Refeicao.by_usuario_id(usuario_logged.id)
-    #@refeicoes = Refeicao.by_usuario_date(@data,usuario_logged)
+    @refeicoes = Refeicao.by_usuario_date(@data,usuario_logged)
     #@refeicoes = Refeicao.where(:usuario_id=>usuario_logged.id).sort{|a,b| b.data <=> b.data}
   end
   
