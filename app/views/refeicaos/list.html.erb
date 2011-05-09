@@ -3,13 +3,15 @@
   <h1>Minhas Refeições</h1>
   <h3>Acompanhe aqui as suas refeições realizadas, e saiba como anda a sua alimentação</h3>
 </div>
-<div class="span-8 last prepend-top text-center">
+<div class="span-8 last prepend-top">
   <span class="text-pp">Você esta no dia</span><br/><span class="text-gg"><%=@data.strftime("%d/%m/%y")%></span><br/>
   <span class="text-pp">Foram ingeridas</span><br/>
+  <%comps[208]=0 if comps[208].nil?%>
   <span class="text-gg"><%=number_with_precision(comps[208],:precision => 2,:strip_insignificant_zeros => true )%></span> kcal
 </div>
 
 <div class="column span-12">  
+  Refeições realizadas: <hr/>
   <div class="refeicaoListBox clear prepend-1 span-11 last">
     <%@refeicoes.each do |r|%>
       <!--<span class="text-p"><%=r.data.strftime("%Hh%M")%></span> <%=r.tipo_refeicao.nome%>-->
