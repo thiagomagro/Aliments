@@ -2,6 +2,7 @@
   <td class="span-8"><%=alimento.stored(:nome)%></td>
   <td class="span-2"><%= link_to 'Exibir', :controller=>"alimentos", :action=>"show", :id=>alimento.stored(:id) %></td>
   <td class="span-2"><%= link_to 'Editar', edit_alimento_path(alimento.stored(:id)) %></td>
+  <td class="span-2"><%= link_to 'Importar', :controller=>"alimentos",:action=>"importar",:id=>alimento.stored(:id) %></td>
   <td class="span-2"><%= link_to 'Apagar',{ :controller=>"alimentos",:action=>"destroy",:id=>alimento.stored(:id)},:method=>:delete,:confirm => 'Are you sure?'%></td>
 </tr>
 

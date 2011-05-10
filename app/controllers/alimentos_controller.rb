@@ -153,7 +153,30 @@ class AlimentosController < ApplicationController
       ativo = false
     end
     @alimentos = Alimento.where(:ativo=>ativo).sort{|a,b| a.nome <=> b.nome}
+  end
+  
+  def importar
+    alimento = Alimento.find(params[:id])
+    @alimento = alimento.clone
+    alimento.componente_alimentos.each do |ca|
+      comp_a = ca.clone
+      comp_a.alimento = @alimento
+      @alimento.componente_alimentos << comp_a
+    end
+    alimento.alimento_medidas.each do |am|
+      alimento_m = am.clone
+      alimento_m.alimento = @alimento
+      @alimento.alimento_medidas << alimento_m
+    end
+    alimento.grupo_alimentos.each do |ga|
+      grupo_a = ga.clone
+      grupo_a.alimento = @alimento
+      @alimento.grupo_alimentos << grupo_a
+    end
+    marca = alimento.marca
+    @alimento.marca = marca
     
+    render :action => "edit"
   end
 
 end
