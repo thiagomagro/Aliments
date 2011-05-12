@@ -1,5 +1,13 @@
 <div class="clear refeicaoList ">
   <h2 class="text-g">    
+    <div class="right">
+      <%= link_to edit_refeicao_path(refeicao),:class=>"button small" do%>
+      	Editar
+      <%end%>
+      <%= link_to refeicao, :confirm => 'Deseja excluir a refeição?', :method => :delete, :class=>"button small" do%>
+        Excluir
+      <%end%>
+    </div>
     <a href="javascript:void(0)" class="expand toggleEl tooltip" title="Clique para expandir" rel="{parent:'.refeicaoList'}">
       <span class="text-p plus">[+]</span>
     <%comps_r = componentes_refeicao(refeicao) if comps_r.nil?%>
@@ -7,12 +15,7 @@
     <span class="text-pp"> | </span>
     <span class="text-m"><%=number_with_precision(comps_r[208],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-m"> kcal</span>
     </a>
-    <%= link_to edit_refeicao_path(refeicao),:class=>"button green small" do%>
-    	Editar
-    <%end%>
-    <%= link_to refeicao, :confirm => 'Deseja excluir a refeição?', :method => :delete, :class=>"button red small" do%>
-      Excluir
-    <%end%>
+    
   </h2>
   <div class="refeicao_details text-p">
     <div class="span-4">Carboidratos: <span class="text-m"><%=number_with_precision(comps_r[205],:precision => 2,:strip_insignificant_zeros => true)%></span><span class="text-p"> g</span></div>

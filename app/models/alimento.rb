@@ -27,6 +27,9 @@ class Alimento < ActiveRecord::Base
       text :nome, :stored => true
       long :id, :stored => true
       boolean :ativo, :using => :ativo?
+      text :tag_nomes do
+        alimento_tags.map { |tag| tag.nome}
+      end
   end
 
 end

@@ -53,6 +53,7 @@ class RefeicaosController < ApplicationController
       session[:data] = @data      
     end
     #@refeicoes = Refeicao.by_usuario_id(usuario_logged.id)
+    @grupos = Grupo.all.sort{|a,b| a.nome <=> b.nome}
     @refeicoes = Refeicao.by_usuario_date(@data,usuario_logged)
     #@refeicoes = Refeicao.where(:usuario_id=>usuario_logged.id).sort{|a,b| b.data <=> b.data}
   end
