@@ -58,15 +58,15 @@ module UsuariosHelper
       
       if idade < 9
         if usuario.sexo
-          cals = 88.5 - 61.9 * idade + naf * ((26.7 * usuario.peso_peso) + (903 * usuario.altura)) + 20
+          cals = 88.5 - 61.9 * idade + (naf * (26.7 * usuario.peso_peso)) + (903 * usuario.altura) + 20
         else
-          cals = 135.3 - 30.8 * idade + naf * ((10 * usuario.peso_peso) + (934 * usuario.altura)) + 20
+          cals = 135.3 - 30.8 * idade + (naf * (10 * usuario.peso_peso)) + (934 * usuario.altura) + 20
         end
       elsif idade < 19
         if usuario.sexo
-          cals = 88.5 - 61.9 * idade + naf * ((26.7 * usuario.peso_peso) + (903 * usuario.altura)) + 25
+          cals = 88.5 - 61.9 * idade + (naf * (26.7 * usuario.peso_peso)) + (903 * usuario.altura) + 25
         else
-          cals = 135.3 - 30.8 * idade + naf * ((10 * usuario.peso_peso) + (934 * usuario.altura)) + 25
+          cals = 135.3 - 30.8 * idade + (naf * (10 * usuario.peso_peso)) + (934 * usuario.altura) + 25
         end
       end
     else
@@ -93,9 +93,9 @@ module UsuariosHelper
       end
       
       if usuario.sexo
-        cals = 662 - (9.53 * idade) + naf * ((15.91 * usuario.peso_peso) + (539.6 * usuario.altura))
+        cals = 662 - (9.53 * idade) + (naf * (15.91 * usuario.peso_peso)) + (539.6 * usuario.altura)
       else
-        cals = 354 - (6.91 * idade) + naf * ((9.36 * usuario.peso_peso) + (727 * usuario.altura))
+        cals = 354 - (6.91 * idade) + (naf * (9.36 * usuario.peso_peso)) + (727 * usuario.altura)
       end
       
     end

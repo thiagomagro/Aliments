@@ -81,7 +81,7 @@
 		</div>
 		<div class="<%="error" if @usuario.errors.on(:nascimento)%>">
 			<%= f.label :nascimento,:class=>"title" %>
-			<%= f.date_select :nascimento,:start_year => 1900, :disabled=>(!usuario_logged.nil? && !usuario_logged.fb_id.nil?)%>
+			<%= f.date_select :nascimento,:start_year => 1900,:end_year=>Time.now.year, :disabled=>(!usuario_logged.nil? && !usuario_logged.fb_id.nil?)%>
 			<label>Sua data de nascimento é necessária para os cálculos de IMC e ingestão de calorias diárias</label>
 			<span class="errorMsg"><%=@usuario.errors.on(:nascimento)%></span>
 		</div>

@@ -2,6 +2,7 @@
   <td class="span-8"><%=alimento.nome%></td>
   <td class="span-2"><%= link_to 'Exibir', :controller=>"alimentos", :action=>"show", :id=>alimento.id %></td>
   <td class="span-2"><%= link_to 'Editar', edit_alimento_path(alimento) %></td>
+  <td class="span-2"><%= link_to 'Importar', :controller=>"alimentos",:action=>"importar",:id=>alimento.id %></td>
   <td class="span-2"><%= link_to 'Apagar',{ :controller=>"alimentos",:action=>"destroy",:id=>alimento.id},:method=>:delete,:confirm => 'Are you sure?'%></td>
 </tr>
 
